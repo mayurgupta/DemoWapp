@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Dignity Health</title>
+<meta name="viewport" content="initial-scale=1">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<!-- CSS -->
+<link rel="stylesheet" href="js/lib/bootstrap.min.css">
+<link rel="stylesheet" href="js/lib/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="js/lib/font-awesome.css">
+
+<!--common-->
+<link rel="stylesheet" href="css/template.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .main{margin-top:45px}
+  .navbar-fixed-top{box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);}
+</style>
+
+</head>
+
+<body data-ng-app="myApp" data-ng-controller="mainCtrl">
+<div id="wrapper">
+  <div style="background: url(&quot;img/dignityhealth-logo-bg.png&quot;) no-repeat scroll right top rgb(255, 255, 255);" class="row-fluid navbar-fixed-top"> <span class="span4 logo"> <img class="saama" src="img/saama-logo.png" alt="Saama"> </span> <span class="span4 logo"> <img class="sixthsense" src="img/sixthsense-logo.png" alt="Sixth SENSE"> </span> <span class="span4 logo"> <img class="dignityhealth" src="img/dignityhealth-logo.png" alt="Dignity Health"> </span> </div>
+  <div class="clearfix"></div>
+  
+  <div class="row-fluid main">
+    <div class="main container">
+      <div class="main-inner">
+        <div id="errorPage">
+          <div class="row-fluid">
+            <div class="span12">
+              <div class="span4">
+                <div class="errorType">
+                  <div class="number">401</div>
+                  Error </div>
+              </div>
+              <div class="span8 errorDescription">
+                <h5 class="errorTitle"><!--Uh Oh!--> <span>Authorization required</span></h5>
+                <p> You are not Authorized to view this page without login<br />
+                  Please <a href="landingPage.html">Login</a> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="clearFooter"></div>
+  <div class="row-fluid footer">
+    <div class="span12"> &copy; 2013 <span style="color: #CD2604" class="ng-binding">Dignity Health</span> | <a href="#/sitemap">Sitemap</a> </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,2161 @@
+@import url('template.css');
+@import url('common.css');
+
+/*TAB1 - SOCIAL MEDIA SENTIMENTS---------------*/
+/*------------HOME PAGE TABS ICONS-----------------*/
+.nav li .icon-socialHealth,
+.nav li .icon-patientVoice,
+.icon-socialMediaDistribution,
+.nav li .icon-timeline,
+.nav li .icon-compititorAnalysis,
+.nav li .icon-ranking,
+.nav li .icon-employeeSentiment,
+.sprit{
+	width:30px !important;
+	height:30px;
+	background-image:url(../img/color-sprite.png);
+	background-repeat:no-repeat;
+	float:left;
+	margin:2px 4px 0 0
+}
+
+.icon-socialHealth {
+	background-position: -127px -73px;
+}
+.icon-patientVoice {
+	background-position: -156px -73px;
+}
+.icon-socialMediaDistribution{
+	background-position: -214px -73px;
+}
+.icon-timeline {
+	background-position: -186px -73px;
+}
+.icon-compititorAnalysis{
+	background-position: -276px -73px;
+}
+.icon-ranking {
+	background-position: -244px -73px;
+}
+.icon-employeeSentiment {
+	background-position: -426px -98px;
+}
+
+/*score info of Homepage (MertoUI)*/
+.emotionBalloons {
+	min-height: 100px !important;
+	position: relative;
+	z-index: 2
+}
+
+.emotionBalloons .well:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+	font-size: 0;
+}
+
+.emotionBalloons [class^="span"] {
+	text-align: center;
+	padding: 5px 0 5px;
+}
+
+.emotionBalloons .well {
+	border:0;
+	border-radius: 5px;
+	padding: 10px;
+	position: relative;
+	color: #fff;
+	line-height:31px;
+}
+.emotionBalloons .well[class$="rating"] {
+	background: #4f678d;
+	color: #fff;
+}
+
+.emotionBalloons .starsImg {
+	float: left;
+	margin: 20px 0 8px 0 !important;
+}
+.overallEmotion {
+	font-size: 18px;
+	margin-top:10px;
+} 
+.emotionType{
+    font-size: 25px;
+    line-height: inherit;
+    margin-top: 6px;
+}
+
+#social-health .emotionBalloons>.open[class^="span"] .overallBtn {
+	bottom: 15px
+}
+.overallBtn:hover, .overallBtn:focus{
+	color:#fff;
+}
+.typeofEmotion {
+	font-size: 16px;
+	line-height: 60px;
+	margin-top: 30px;
+	border-top-width:4px;
+	border-top-style: solid; 
+}
+.percentage{
+	font:normal 28px century gothic;
+}
+
+/*Score Dropdown-------*/
+.detailedScore{
+    margin-top: -24px;
+    padding-top: 10px;	
+}
+.detailedScore[style=""]{
+	-webkit-transition:all linear 0.5s;
+	-moz-transition:all linear 0.5s;
+	-o-transition:all linear 0.5s;
+	transition:all linear 0.5s;
+	display:block!important;
+}
+
+.detailedScore .detailedScoreInr {
+    background-color: #FFFFFF !important;
+    border-radius: 7px 7px 7px 7px;
+    border-style: solid;
+    border-width: 3px;
+    height: 305px;
+    position: absolute;
+    z-index: 10;
+    left:0;
+}
+.emotionBalloons div[class^="span"]:first-child .detailedScore .detailedScoreInr{
+	border-radius: 0 7px 7px 7px;
+}
+.detailedScore[class$="rating"]{
+	background-color:#4F678D;
+}
+.detailedScore .detailedScoreInr[class$="rating"]{
+	border-color:#4F678D;
+	border-radius: 7px 0 7px 7px;
+}
+.scoreWrapper {
+	padding: 38px 15px;
+}
+.scoreEmotions {
+    background: url("../img/color-sprite.png") no-repeat scroll -137px 2px transparent;
+    font:normal 17px century gothic;
+    height: 60px;
+    margin: 0 auto 4px;
+    padding: 15px 0 0 10px;
+    width: 76px;
+}
+.scoreWrapper .emotion {
+    float: left;
+    width: 14.285%;
+}
+.scoreWrapper .opinion {
+    float: left;
+    width: 33.33%;
+}
+.scoreWrapper .humanImg {
+	margin-top: 17px;
+	/* background: #CCC */
+}
+
+/*Score Dropdown > Rating-------*/
+.detailedScoreInr .rating{float:left; width:19.66%}
+
+/*Keywords----------------*/
+
+.bubble {
+	position: relative;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: #f3f2f2;
+	margin-top: -46px;
+	padding: 50px 0 5px;
+	height: 257px;
+}
+
+.bubbleCirclePositive {
+	background: #27ae60;
+}
+
+.bubbleCircleNeutral {
+	background: #e7bd14;
+}
+
+.bubbleCircleNegative {
+	background: #e74c3c;
+}
+
+.bubbleTopic {
+	padding: 5px 0;
+	text-align: center;
+	margin: 0 auto;
+	line-height:30px;
+}
+
+.topicHeading {
+	color: #FFF;
+	font-size: 19px;
+	line-height: 83px;
+	height: 91px;
+	width: 91px;
+	text-align: center;	
+	border: 4px solid #fff;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	z-index: 1;
+	position: relative;
+	margin: 0 auto;
+}
+
+.overallBtn {
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	border-radius: 50px 50px 50px 50px;	
+	cursor: pointer;
+	font-size: 12px;
+	height: 25px;
+	line-height: 26px;
+	width: 25px;
+	padding: 0;
+	position:absolute;
+	top: 59px;
+	right: 10px;	
+}
+
+/*Top Reviews This Week*/
+.hidechart .chartBySources{
+	display: none;
+}
+.viewAllComments {
+	height: 0px;
+	font-size: 14px;
+	z-index: 4;
+	position:relative;
+	float:right;
+	margin-right: 16px;
+}
+.viewAllComments i{
+	margin-left:3px;
+    color: #888888;
+    font-size: 14px;	
+}
+
+.topReviewsThisWeekRatings .widget-header h3{
+	margin-bottom:0
+}
+.topReviewsThisWeekRatings .icon-list-alt{
+	margin-right: 8px;
+	font-size:15px;		
+}
+
+.topReviewsThisWeekRatings .sourceComment {
+	display: none
+}
+
+.topReviewsThisWeekChart, .chartBySources {
+	text-align: center !important;
+	position: relative;
+	height: 215px;
+	margin: 0 auto;
+	width: 335px;
+}
+.topReviewsChart.hidechart{margin-top:15px;}
+.topReviewsChart.hidechart .viewAllComments{
+	margin-top: -27px;
+}
+.topReviewsThisWeekRatings>.widget-content{
+	border-radius:5px;
+	border:1px solid #dbdbdb;
+	height: 400px;
+	padding:15px 0;
+}
+.topReviewsThisWeekRatings .widget-header{
+    margin-top: 3px;
+    padding: 0 0 5px;
+}
+
+.topReviewsThisWeekRatings .sources{ margin:0; width:auto}
+.topReviewsThisWeekRatings .commentBySource #feeds{height:185px}
+.topReviewsThisWeekRatings .commentBySource .avatar #feeds{height:308px}
+.topReviewsThisWeekRatings .commentBySource .titleBar span{margin-top: 95px;}
+.showComments{
+	background: #b5b5b5;
+	padding: 2px 45px;
+	text-align: center;
+	cursor: pointer;
+	border: 1px solid #E5E5E5;
+	color: #fff;
+	margin: 15px 0 0;
+	position:relative;
+	height: 55px;
+	line-height: 53px;	
+}
+.showComments span{
+	font-size: 17px;	
+}
+.icon-chevron-right {
+	border: 2px solid #70777f;
+	height: 25px;
+	width: 25px;
+	line-height: 23px;
+	float: left;
+	border-radius: 25px;
+	color: #70777f;
+	background: #fff;
+	margin-top: 13px;
+}
+
+.showComments.active .icon-chevron-right{
+	position:absolute;
+	right: 40px;
+	-moz-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+	line-height: 21px;
+}
+
+.detailedInfo > .clearfix{display:none}
+.topReviewsThisWeekRatings .detailedInfo > .clearfix{
+	display:block	
+}
+
+/*--TAB 2 ---- PATIENT VOICE ----------*/
+.topics .listView {
+	position: relative;
+	z-index: 100
+}
+.topics .listView li{
+	clear:both
+}
+.topics .listView li span {
+	line-height: 47px;
+}
+
+.topics .listView li.th span {
+	line-height: 35px;
+}
+
+.topics .listView li span.ratings {
+	padding-top: 3px
+}
+
+.topics .listView li.active {
+	margin: 0 -3px 0 -2px;
+	border-right: 0;
+	position: relative;
+	height: 47px;
+	background: #e2e1e1 !important;
+}
+
+.topics .listView li .reviewsTd {
+	line-height: 46px;
+}
+
+.topics .listView li.active:after, .topics .listView li.active:before {
+	left: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.topics .listView li.active:after {
+	border-color: rgba(226, 225, 225, 0);
+	border-left-color: #e2e1e1;
+	border-width: 20px;
+	top: 50%;
+	margin-top: -20px;
+}
+
+.topics .listView li.active:before {
+	border-color: rgba(226, 226, 225, 0);
+	border-left-color: #e2e1e1;
+	border-width: 20px 20px 20px 12px;
+	top: 50%;
+	margin-top: -20px;
+}
+.twitter{
+	margin-right:10px
+}
+/*.patientVoicePieChart {
+	height: 230px;
+}
+ */
+.titleId {
+	border-bottom: 1px solid #CCC;
+	color: #333333;
+	font-size: 17px;
+	margin: 0px 9px 0;
+	padding-left: 5px;
+	line-height: 32px;
+	text-align: left !important;
+}
+
+.overallRating {
+	font-size: 20px;
+	line-height: 25px;
+	padding-top: 10px;
+}
+
+.overallRating .ratings {
+	padding: 0 20px;
+}
+
+.overallRating .number {
+	font-size: 20px
+}
+
+.patientCentrich .span2 {
+	width: 17.365%;
+}
+
+.patientCentrich [class*="span"] {
+	text-align: center !important;
+	padding: 0;
+	margin-left: 0;
+}
+
+.patientCentrich [class*="span"] a {
+	padding-bottom: 2px !important;
+	font-weight: normal;
+}
+
+.overallScore {
+	float: left;
+	margin-left: 10px;
+	font:normal 18px 'century gothic';
+}
+
+.sources {
+	border-top: 3px solid #D6D4D4;
+	margin-top: 5px;
+	background: #ebeaea;
+	text-align: center !important;
+	height: 85px;
+}
+
+.sources [class*="span"] {
+	background: #ebeaea;
+	border-right: 1px solid #FFFFFF;
+	display: inline-block;
+	float: none;
+	margin: -3px 0 0 0
+}
+
+.sources [class*="span"]:first-child {
+	border-left: 1px solid #FFFFFF;
+}
+
+.sources [class*="span"]:hover {
+	cursor: pointer
+}
+
+.source {
+	padding: 3px 0;
+	text-align: center;
+	font-size: 14px;
+	color: #555555;
+	position: relative;
+	text-align: center;
+	border-top-width: 3px;
+	border-top-style: solid
+}
+
+.sources .sourceScore {
+	font:bold 15px/24px 'century gothic';
+}
+
+.source .ratings {
+	float: none
+}
+
+.source.active {
+	margin-top: -3px;
+	padding-bottom: 6px;
+}
+
+.source.active:before,.source.active:after {
+	position: absolute;
+	top: 100%;
+	content: '';
+	width: 50%;
+	height: 10px;
+}
+/* .sources{
+	overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+}
+.sources ul{
+	white-space: nowrap;
+}
+
+.sources ul li.sp{
+display: inline-block;
+} */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	/* Safari and Chrome */
+	.source.active:before,.source.active:after {
+		background: none
+	}
+
+	/* Safari only override */
+	::i-block-chrome,.source.active:before,.source.active:after {
+		background: #EBEAEA;
+		width: 50%;
+		top: 74px;
+	}
+	::i-block-chrome,.source.active:before {
+		-webkit-transform: rotate(12deg);
+		margin-left: 3px
+	}
+	::i-block-chrome,.source.active:after {
+		-webkit-transform: rotate(169deg);
+		margin-right: 3px
+	}
+}
+
+.source.active:before {
+	left: 0px;
+	background-image: linear-gradient(to right top, rgba(255, 255, 255, 0) 50%, rgba(235, 234, 234, 1) 50%);
+	background-image: -moz-linear-gradient(to right top, transparent 50%, #EBEAEA 50%);
+	background-image: -webkit-linear-gradient(to right top, transparent 50%, #EBEAEA 50%);
+	background-image: -o-linear-gradient(to right top, transparent 50%, #EBEAEA 50%);
+	background-image: -ms-linear-gradient(to right top, transparent 50%, #EBEAEA 50%);
+}
+
+.source.active:after {
+	right: 0px;
+	background-image: linear-gradient(to left top, transparent 50%, #EBEAEA 50%);
+	background-image: -moz-linear-gradient(to left top, transparent 50%, #EBEAEA 50%);
+	background-image: -webkit-linear-gradient(to left top, transparent 50%, #EBEAEA 50%);
+	background-image: -o-linear-gradient(to left top, transparent 50%, #EBEAEA 50%);
+	background-image: -ms-linear-gradient(to left top, transparent 50%, #EBEAEA 50%);
+}
+
+.chartDisplayForTab {
+	border: 1px solid #D5D5D5;
+	margin: 0 auto !important;
+	overflow: hidden;
+	border: 1px solid #DBDBDB;
+	border-radius: 5px 5px 5px 5px;
+	width: 59.8291% !important;
+	position: relative;
+}
+
+.chartDisplayForTab .titleBar span {
+	margin-top: 195px;
+}
+
+.chartDisplayForTab .widget-border {
+	margin: 100px 0 0;
+}
+
+.chartDisplayForTab .avatar {
+	margin-top: 10px;
+}
+
+.chartDisplayForTab chartledgends {/*Element By Directive*/
+	width: 100%;
+	position: absolute;
+	margin-top: 27px;
+}
+
+.commentBySource #feeds {
+	height: 430px;
+	overflow-x: hidden;
+}
+
+/*--TAB 3--SOCIAL MEDIA DISTRIBUTION (Social Media Sentiments)----------*/
+.commentsOnSelection .titleBar span {
+	margin-top: 356px
+}
+
+.commentsOnSelection #feeds {
+	/* height: 695px; */
+	overflow: auto;
+}
+
+#networkContainer {
+	height: 410px;
+	width: 100%;
+	margin: 0 auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	position: relative;
+}
+
+#networkContainer svg {
+	margin: 20px auto
+}
+
+#networkContainer circle {
+	cursor: pointer;
+}
+
+.labelBubble {
+	background-color: #E6E6E6;
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+	color: #333333;
+	font: bold 13px/1.7em Helvetica;
+	padding: 0 6px;
+	position: absolute;
+	margin: -15px 0 0 -8px;
+}
+
+#popupDisplayBubble {	
+	opacity: 0.8;
+	padding: 3px 7px;
+	margin-left: 70px;	
+	position: absolute;
+	display: none;
+	width: 132px;
+	text-align: left;
+	font-size: 11px;
+	line-height: 20px;
+	-moz-box-shadow: 0 0 6px 1px #9F9F9F;
+	-webkit-box-shadow: 0 0 6px 1px #9F9F9F;
+	box-shadow: 0 0 6px 1px #9F9F9F;
+	background: none repeat scroll 0 0 white;
+	border-radius: 5px;
+	border: 1px solid #CCCCCC;	
+}
+
+.commentBasedOnSelection>.selected {
+	margin-left: 19%;
+	margin-top: 32px;
+	position: absolute;
+	z-index: 1;
+}
+
+.commentsOnSelection [on="totalItems>10"] {
+	height: 50px;
+}
+
+.selectionColor {
+	color: #FFFFFF;
+	font-weight: bold;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 4px;
+	text-align: center;
+	width: 120px;
+}
+/*Opinion Distribution----------*/
+#trendsTopMenu {
+	text-align: center;
+	display: block;
+}
+
+/*--TAB 5--NATIONAL RANKINGS TAB (Social Media Sentiments)----------*/
+.nationalrankings .table tbody tr td:first-child {
+	text-align: center
+}
+.nationalRankings .table tr td:first-child {
+	text-align: center;
+}
+
+.nationalRankings .table tr td:first-child img {
+	display: inline-block;
+	float: none;
+}
+
+.hospitalName {
+	color: #1E96DE;
+	font-size: 18px;
+	margin-left: 5px;
+}
+
+.nationalrankings .icon-silver,.nationalrankings .icon-gold {
+	width: 34px !important;
+	display: inline-block;
+    float: none;
+}
+
+.smartRating {
+	margin: 11px 0 0 10px;
+	float: left;
+}
+
+.smartRating span {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.smartRating .icon-info-sign {
+	color: #999999;
+	font-size: 17px;
+	margin-left: 5px;
+}
+
+.findTheBestRatings h4 {
+	color: #666666;
+	font-weight: bold;
+	padding: 0 10px;
+	margin-top: 20px
+}
+
+.findTheBestRatings .listView li:last-child {
+	margin-bottom: 10px;
+}
+
+.findTheBestRatings .listView li:first-child {
+	border-top: 1px solid #EBEAEA !important;
+}
+
+.findTheBestRatings .listView li {
+	border-right: 0;
+	cursor: default
+}
+
+.findTheBestRatings .listView li:nth-child(2n+1) {
+	background: #F9F9F9;
+}
+
+.findTheBestRatings .listView li span {
+	line-height: 45px;
+}
+
+.findTheBestRatings .listView li .topicsTd {
+	width: 64% !important;
+}
+
+.findTheBestRatings .listView .reviewValue {
+	display: inline
+}
+
+.findTheBestRatings .ratingTd {
+	float: right;
+	width: 30%;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.findTheBestRatings .listView li span.ratings {
+	margin-top: 5px;
+}
+
+.findTheBestRatings .topicsTd span {
+	color: #000;
+}
+
+.findTheBestRatings .ratingCircle {
+	float: right;
+	margin-right: 10px;
+}
+
+.findTheBestRatings .ratingCircle .badge {
+	background: #BBBBBB;
+	border-radius: 100px;
+	color: #FFFFFF;
+	font-size: 15px;
+	font-weight: bold;
+	height: 30px;
+	line-height: 28px;
+	margin-top: 8px;
+	width: 31px;
+}
+
+.findTheBest {
+	width:153px;
+	height:20px;
+	background:url(../img/color-sprite.png) -570px -100px no-repeat;
+	display:inline-block;
+	margin: 5px 0;
+	font-size:0
+}
+.modal-dialog .findTheBest {
+	margin: 8px 0 0 0;
+}
+
+/*--TAB 7--EMPLOYEE SENTIMENTS TAB (Social Media Sentiments)----------*/
+.humanFigure {
+	margin: 85px 0 0;
+	width: 60%;
+}
+.emotionCharts .span6 {
+	width: calc(50% -1px);
+}
+.emotionCharts .span6:first-child {
+	margin-left: 30px
+}
+
+.emotionCharts .span6:last-child {
+	width: calc(50% -1px);
+	margin-left: 0
+}
+.emotionCharts .span6:first-child .widget-border {
+	background: none repeat scroll 0 0 #F1F1F1;
+	border: 1px solid #DDDDDD;
+	border-radius: 7px 0 0 7px;
+	border-right: 0;
+	margin-bottom: 15px;
+	padding: 15px 0 15px 15px;	
+	width: calc(50% -1px);
+}
+
+.emotionCharts .span6:last-child .widget-border {
+	background: none repeat scroll 0 0 #F1F1F1;
+	border: 1px solid #DDDDDD;
+	border-left: 0;
+	border-radius: 0 7px 7px 0;
+	margin-bottom: 15px;
+	padding: 15px 15px 16px 15px;
+}
+.emotionCharts .widget-border {
+	position: relative;
+}
+
+.emotionCharts .widget-border .widget-border-header {
+	background: #fff;
+	padding-top: 5px;
+	border: 1px solid #D5D5D5;
+	border-bottom: none;
+	border-radius: 6px 6px 0 0;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+}
+.emotionCharts .widget-border-header h5 {
+	font-size: 17px;
+	font-weight: normal;
+	color: #333;
+	margin: 14px 0 -3px;
+}
+
+.emotionCharts .widget-border .widget-border-header select {
+	margin-top: 7px;
+	font-size: 14px;
+}
+
+.emotionCharts .widget-border .widget-border-content {
+	background: none repeat scroll 0 0 #fff;
+	border-radius: 0 0 6px 6px;
+	border-top: 0 none;
+	border-width: 0 1px 1px;
+	height: 269px;
+	text-align: center;
+	z-index: 0;
+}
+
+.emotionCharts .span6:last-child .widget-border .widget-border-content {
+	height: 261px;
+}
+.emotionCharts text.link[font-size="12px"] {
+    font-size: 12px;
+}
+.emotionCharts text.link[font-size="13px"] {
+    font-size: 13px;
+}
+#baseChartEmotionsContainer,
+#compareChartEmotionsContainer,
+#baseChartPolarityContainer,
+#compareChartPolarityContainer {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 5px
+}
+
+.emotionCharts>.span12>.span6>.widget-border-content {
+	position: relative
+}
+
+.verticleTitleBar span {
+	color: #666666;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: bold;
+	transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+	z-index: 8;
+    margin:145px 0 0 -33px;
+    padding-right: 30px;	
+}
+
+.verticleTitleBar {
+	background: none repeat scroll 0 0 #F1F1F1;
+	border-radius: 6px 0 0 6px;
+	-moz-border-radius: 6px 0 0 6px;
+	-webkit-border-radius: 6px 0 0 6px;
+	-o-border-radius: 6px 0 0 6px;
+	border: 1px solid #ddd;
+	border-right: 0;
+	float: left;
+	margin: -16px 0 0 -44px;
+	height: 337px;
+	width: 39px;
+	position: absolute;
+}
+
+/*--TAB 6--COMPITITOR ANALYSIS TAB (Social Media Sentiments)----------*/
+/*------Comparator Tab--------*/
+.comparatorTab .table,.comparatorTab .table td,
+.comparatorTab .table td>span,
+.comparatorTab .table td>strong,
+.comparatorTab .table td>a {
+	font-size: 14px;
+}
+.comparator .widget-border .widget-border-content {
+	padding: 15px;
+	min-height: 154px;
+}
+.comparator #selectedData.widget-border .widget-border-content .well {
+	margin-bottom: 10px;
+}
+.comparator .topicsTd, .comparator .ratingTd, .comparator .reviewsTd {
+	line-height: 25px;
+}
+.selectCompareOptions .row-fluid {
+	padding: 0 0 10px 0;
+}
+.selectCompareOptions li:last-child {
+	padding-left: 15px
+}
+
+/*------Overview Tab--------*/
+.comparatorTab table.table>thead>tr>th {
+	padding: 5px 10px;
+}
+
+.comparatorTab table.table>thead>tr>th>div{
+	font-size: 15px;
+	font-weight: bold;
+	color: #000;
+	text-align: center;
+}
+
+.comparatorTab h5 {
+	font-size: 20px;
+	color: #000;
+	text-align: center;
+}
+
+.comparatorTab .sentimentTab h5 {
+	font-size: 14px;
+	text-align: left;
+	margin-bottom: 2px;
+}
+
+.comparatorTab table.table>thead>tr>th:last-child,
+.comparatorTab table.table>tbody>tr>td:last-child {
+	border-left: 1px solid #ddd
+}
+
+.sentimentTab,.overviewTab {
+	font-size: 14px;
+}
+
+.sentimentTab table.table>thead>tr>th:first-child,
+.sentimentTab table.table>tbody>tr>td:first-child,
+.overviewTab table.table>thead>tr>th:first-child,
+.overviewTab table.table>tbody>tr>td:first-child,
+table.slideTable>tbody>tr>td:first-child {
+	border-right: 1px solid #ddd;
+	color: #000;
+	font-size: 14px;
+	font-weight: bold;
+	vertical-align: top;
+	background: #F7F7F7;
+	padding-left: 10px;
+}
+.employeeStats table tr:nth-child(odd) td,
+.patientStats table tr:nth-child(odd) td,
+.hospitalServices table tr:nth-child(odd) td {
+	background: #e2effa !important;
+}
+
+.employeeStats table,.patientStats table, .hospitalServices table {
+	margin-bottom: 0
+}
+.employeeStats table,.patientStats table,.hospitalServices table,
+.employeeStats table td,.patientStats table td,.hospitalServices table td,
+.employeeStats table th,.patientStats table th,.hospitalServices table th {
+	border: none !important;
+	color: #6a6a6a !important;
+}
+
+.employeeStats table tr:nth-child(even) td:first-child,
+.patientStats table tr:nth-child(even) td:first-child {
+	background: none !important;
+}
+
+
+.employeeStats table td:first-child,
+.patientStats table td:first-child {
+	color: #000000 !important;
+	font-size: 14px !important;
+	padding-left: 10px !important;
+	font-weight: normal !important;
+}
+
+.hospitalServices table tr td {
+	/*display: none*/
+}
+
+/*------Sentiment Tab----------*/
+tr.distributionBySource td {
+	padding-bottom: 0;
+	border-top: 0 !important;
+	border-bottom: 0 !important
+}
+.sentimentTab .titleBar span {
+	margin-top: 165px;
+}
+.distributionBySource .widget-border {
+	margin-bottom: 0
+}
+.sentimentTab .detailedInfo>.clearfix {
+	display: block
+}
+/*-----Rating Tab----------*/
+.comparatorTab .listView li {
+	border-right: 0;
+	padding: 5px 0
+}
+
+.comparatorTab .listView li:hover {
+	cursor: default;
+}
+.comparatorTab .topics .listView li.th span{
+	line-height: 30px;
+}
+.comparatorTab .listView li .topicsTd,
+.comparatorTab .listView li .ratingTd,
+.comparatorTab .listView li .reviewsTd {
+	line-height: 25px !important;
+	color: #000
+}
+.comparatorTab .listView li .topicsTd {
+	padding: 0 10px;
+	width: calc(46% - 20px);
+}
+
+.comparatorTab .listView li .ratingTd {
+	width: 36%;
+}
+
+.comparatorTab .listView li .reviewsTd {
+	width: 22%
+}
+
+.comparatorTab .topics .listView li span {
+	line-height: 30px
+}
+
+.comparatorTab .topics .listView li.th span a {
+	font-size: 16px
+}
+.comparatorTab .topics .listView li span.topicTitle{
+	color:#000;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	/* Safari only override */
+	::i-block-chrome,.comparatorTab .listView li .ratingTd {
+		width: 34%;
+	}
+	::i-block-chrome,.comparatorTab .listView li .topicsTd {
+		width: 42%;
+	}
+	::i-block-chrome,.comparatorTab .listView li .reviewsTd {
+	width: 22%
+	}
+	.emotionCharts .widget-border .widget-border-content{
+		height: 270px;
+	}
+	::i-block-chrome,.emotionCharts .widget-border .widget-border-content{
+		height: 276px;
+	}
+	::i-block-chrome,.verticleTitleBar{
+		height: 343px;
+	}
+}
+
+/*------Ranking Tab--------*/
+.rankingsTab table table,.rankings table table td {
+	border: 0;
+}
+
+.rankingsTab table table tr td {
+	border-bottom: 1px solid #EBEAEA;
+}
+
+.rankingsTab table table tr td:first-child {
+	border-right: 1px solid #DDDDDD;
+}
+.rankingsTab .listView li {
+	cursor: pointer
+}
+
+.comparatorTab .rankingsTab table tbody tr td:first-child,
+.comparatorTab .rankingsTab table thead tr th:first-child {
+	border-right: 1px solid #CCCCCC
+}
+.competitiveLink{
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+
+.comparatorTab .rankingsTab .findTheBestRatings{
+	margin-top:10px
+}
+.comparatorTab .rankingsTab .findTheBestRatings h4{
+	margin-top: 10px;
+}
+
+/*----------CMS ANALYSIS (PAGE2)--------------------*/
+.cmsAnalysis .nav-tabs {
+	background: #6DBF53;
+	border-radius: 5px 5px 0 0;
+}
+
+.cmsAnalysis .nav-tabs>li:first-of-type>a {
+	border-radius: 5px 0 0 0;
+}
+
+.cmsAnalysis .nav-tabs>li>a {
+	background: #6DBF53;
+	color: #FFFFFF;
+}
+
+.cmsAnalysis .nav-tabs>li>a:hover {
+	border-color: #4C9F31;
+	background: #4C9F31;
+}
+
+.cmsAnalysis .nav-tabs>.active>a {
+	margin-top: -5px;
+	border-bottom: none;
+	background: #fff;
+	color: #000;
+}
+
+.cmsAnalysis .nav-tabs>.active>a:hover {
+	background: #FFFFFF;
+	border-width: 1px solid #DDDDDD;
+	border-color: #ddd;
+	border-bottom: 0;
+	color: #000000;
+	margin: -5px 0 0 0;
+}
+
+.hospitalCMStab>div>.span3 {
+	width: 24.6769%;
+	margin-left: 0.9641%;
+}
+
+.well[class$="box-cms"] {
+	color: #fff;
+	height: 135px;
+	border-radius: 6px 6px 6px 6px;
+}
+
+.box-cms {
+	text-align: center
+}
+
+.box-cms .percentage {
+	margin: 10px 0 3px;
+	display: block;
+	font-size: 38px
+}
+
+.box-cms p {
+	font-size: 17px;
+	line-height: 18px;
+	margin-top: 18px;
+}
+
+/*-------------HCAHPS CORRELATION MATRIX (CMS Analysis)-------------*/
+table.correlation th,table.regression th,table.HCAHPSsummary th,table.Overview_tab th
+	{
+	background: #F5F5F5;
+	color: #000
+}
+
+table.correlation tbody tr td,table.correlation thead tr th,
+table.regression tbody tr td,table.regression thead tr th,
+table.HCAHPSsummary tbody tr td,table.HCAHPSsummary thead tr th,
+table.Overview_tab tbody tr td,table.Overview_tab thead tr th
+	{
+	vertical-align: middle;
+	text-align: center
+}
+
+table.correlation tbody tr td:first-child,table.correlation thead tr th:first-child,
+table.regression tbody tr td:first-child,table.regression thead tr th:first-child,
+table.HCAHPSsummary tbody tr td:first-child,table.HCAHPSsummary thead tr th:first-child,
+table.Overview_tab tbody tr td:first-child,table.Overview_tab thead tr th:first-child
+	{
+	background: #F5F5F5;
+	text-align: left
+}
+
+table.correlation .percentage,
+table.regression .percentage,
+table.HCAHPSsummary .percentage,
+table.overviewTab .percentage,
+table.Overview_tab .percentage
+	{
+	font: 23px century gothic !important
+}
+
+/*-----------HCAHPS DETAILED TIMELINE (CMS Analysis)--------------*/
+.dropDownFilter {
+	background-color: #F5F5F5;
+	border: 1px solid #E3E3E3;
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+	margin: 15px auto 0;
+	padding: 10px;
+}
+
+#showTrending {
+	margin-top: 10px
+}
+#divisionLine {
+text-align: center;
+padding: 10px;
+}
+#divisionLine .leftBorder {
+border-bottom: 5px solid rgba(0, 0, 0, 0);
+border-right: 350px solid #E66627;
+border-top: 5px solid rgba(0, 0, 0, 0);
+font-size: 0;
+height: 0;
+line-height: 0;
+width: 0;
+}
+#divisionLine .badge {
+background-color: #CD2604;
+border-radius: 35px 35px 35px 35px;
+box-shadow: 0 0 6px 6px #EEEEEE;
+margin: 10px;
+padding: 10px;
+z-index: 15;
+}
+#divisionLine .rightBorder {
+border-bottom: 5px solid rgba(0, 0, 0, 0);
+border-left: 350px solid #E66627;
+border-top: 5px solid rgba(0, 0, 0, 0);
+font-size: 0;
+height: 0;
+line-height: 0;
+width: 0;
+}
+.roundedContainer {
+	background-color: #F8F8F8;
+	border: 1px solid #E3E3E3;
+	margin-top: 10px;
+}
+.group path {
+	fill-opacity: .5;
+}
+.panel {
+	margin-bottom: 0;
+}
+
+.panel-success .panel-heading {
+	background-color: #5DAC5E;
+	border-bottom: 4px solid #4c954d;
+	padding-bottom: 5px
+}
+
+.panel-success .panel-body {
+	background-color: #DFF0D8;
+	padding: 5px 15px;
+}
+
+.panel-danger .panel-heading {
+	background-color: #D44B48;
+	border-bottom: 4px solid #c6322f;
+}
+
+.panel-danger .panel-body {
+	background-color: #F2DEDE;
+	padding: 5px 15px;
+}
+
+.panel .panel-heading h3 {
+	color: #FFFFFF !important;
+	text-shadow: 0 0 #FFFFFF;
+}
+
+.panel .panel-body ul li {
+	border-bottom: 1px dotted;
+	list-style: none;
+	line-height: 28px;
+}
+/*---------HCAHPS Measures by Facility (CMS Analysis)--------------*/
+.facilityTable {
+    height: 555px;
+    margin-top: 60px;
+    overflow: auto;
+}
+.facilityTable table tr {
+    color: white;
+    opacity: 0.6;
+}
+#chordChart {
+	width: 700px;
+	height: 700px;
+}
+.measureByFacility tr td,.measureByFacility tr th {
+	text-align: center
+}
+
+.measureByFacility tr td:first-child {
+	color: #fff;
+	text-align: left
+}
+
+.measureByFacility tr:nth-child(even) td {
+	background: #F9F9F9
+}
+
+.measureByFacility tr:hover td {
+	background-color: #ffa;
+}
+
+/*----------------HCAHPS Measures DH-ST-NATL summary (CMS Analysis)--------------------*/
+.HCAHPSsummary tr th:nth-child(3),.HCAHPSsummary tr th:nth-child(4) {
+	border-top: 2px solid #ddd !important;
+	border-bottom: 2px solid #ddd !important;
+}
+
+.HCAHPSsummary tr:last-child td:nth-child(3),
+.HCAHPSsummary tr:last-child td:nth-child(4)
+{
+	border-bottom: 2px solid #ddd !important;
+}
+
+.HCAHPSsummary tr th:nth-child(5),
+.HCAHPSsummary tr th:nth-child(6) {
+	border-top: 2px solid #ddd !important;
+	border-bottom: 2px solid #dd !important;
+}
+
+.HCAHPSsummary tr:last-child td:nth-child(5),
+.HCAHPSsummary tr:last-child td:nth-child(6){
+	border-bottom: 2px solid #ddd !important;
+}
+
+.HCAHPSsummary tr th:nth-child(7),
+.HCAHPSsummary tr th:nth-child(8) {
+	border-top: 2px solid #ddd !important;
+	border-bottom: 2px solid #ddd !important;
+}
+
+.HCAHPSsummary tr:last-child td:nth-child(7),
+.HCAHPSsummary tr:last-child td:nth-child(8){
+	border-bottom: 2px solid #ddd !important;
+}
+
+.HCAHPSsummary tr th:nth-child(2),.HCAHPSsummary tr td:nth-child(2),
+.HCAHPSsummary tr th:nth-child(4),.HCAHPSsummary tr td:nth-child(4),
+.HCAHPSsummary tr th:nth-child(6),.HCAHPSsummary tr td:nth-child(6),
+.HCAHPSsummary tr th:nth-child(8),.HCAHPSsummary tr td:nth-child(8){
+	border-right: 2px solid #ccc
+}
+
+/*------------ P INDEX BY FACILITY (CMS ANALYSIS)----------*/
+.pIndexByFacility .dropDownFilter {
+	margin: 0 auto;
+}
+
+/*------------ Competitor Analysis (CMS ANALYSIS)----------*/
+.cmsCompetitor .selectCompareOptions, .competitor .selectCompareOptions {
+    margin-bottom: 0;
+}
+.cmsCompetitor, .competitor{
+	position:relative
+}
+.comparatorTab #basicFilter .form-control {
+	display: inline;
+	min-width: 250px;
+	width: auto;
+}
+
+.comparatorTab #basicFilter .filterLabel {
+	padding-right: 15px;
+}
+
+#basicFilter button[type="button"], .dropDownbtn {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #F5F5F5;
+    background-image: linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) #B3B3B3;
+    border-image: none;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
+    padding: 4px 12px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;
+}
+.biggerLegend{height:200px}
+.smallerLegend{height:100px} 
+
+/*------AVATAR ANALYSIS (Page3)-------------*/
+.nav li .icon-avatarDistribution,
+.nav li .icon-aIndex,
+.nav li .icon-measuresByFacilities{
+	width:30px !important;
+	height:30px;
+	background-image:url(../img/color-sprite.png);
+	background-repeat:no-repeat;
+	float:left;
+	margin:2px 4px 0 0
+}
+.icon-avatarDistribution {
+	background-position: -531px -203px;
+}
+.avatarPages .nav-tabs > .active > a .icon-avatarDistribution{
+	background-position: -531px -173px;
+}
+
+.icon-aIndex {
+	background-position: -500px -203px;
+}
+.avatarPages .nav-tabs > .active > a .icon-aIndex{
+	background-position: -500px -173px;
+}
+
+.icon-measuresByFacilities{
+	background-position: -471px -202px;
+}
+.avatarPages .nav-tabs > .active > a .icon-measuresByFacilities{
+	background-position: -471px -173px;
+}
+
+.avatarPages .icon-socialHealth{
+	background-position: -127px -173px;
+}
+
+.avatarPages .nav-tabs > .active> a .icon-socialHealth{
+	background-position: -127px -73px;
+}
+
+.avatarPages .icon-patientVoice{
+	background-position: -156px -173px;
+}
+
+.avatarPages .nav-tabs > .active> a .icon-patientVoice{
+	background-position: -156px -73px;
+}
+.avatarPages .nav-tabs{
+	background:#F1622F;
+	border-radius: 5px 5px 0 0;
+}
+.avatarPages .nav-tabs > li:first-of-type > a{
+	border-radius: 5px 0 0 0;
+}
+.avatarPages .nav-tabs > li > a{
+    background:#F1622F;
+    color: #FFFFFF;
+}
+.avatarPages .nav-tabs > li > a:hover{
+	border-color:#DF5829;
+	background:#DF5829
+}
+.avatarPages .nav-tabs > .active > a{
+	margin-top: -5px;
+	border-bottom:none;
+	background:#fff;
+	color:#000;
+}
+.avatarPages .nav-tabs > .active > a:hover{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #DDDDDD #DDDDDD -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    color: #000000;
+    margin-top: -5px;
+}
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close{top: 6px;}
+.avatar #networkContainer {
+	height: 230px;
+}
+
+
+/*----------BEST PRACTICE(PAGE)------------*/
+.hangingMenu{
+	position:fixed;
+	top:210px;
+	width: 170px;
+}
+.hangingMenu .nav-tabs > li > a, .hangingMenu .nav-pills > li > a{
+	border-radius: 3px;
+	background:#EEEEEE;
+	padding: 5px 5px 5px 11px;
+}
+.hangingMenu .nav-pills > li.active > a, 
+.hangingMenu .nav-pills > li.active > a:hover, 
+.hangingMenu .nav-pills > li.active > a:focus{
+	border-left:5px solid #428BCA;
+	color:#428BCA;
+	margin-left: -5px;
+	background:#EEEEEE;
+}
+.nav li .icon-careOutcome,
+.nav li .icon-communication,
+.nav li .icon-patientExperience,
+.nav li .icon-generalOperations,
+.nav li .icon-changeManagement{
+	width:30px !important;
+	height:30px;
+	background-image:url(../img/color-sprite.png);
+	background-repeat:no-repeat;
+	float:left;
+	margin:2px 4px 0 0
+}
+
+.icon-careOutcome {
+	background-position: -363px -200px;
+}
+.bestPracticesPage .nav-tabs > .active > a .icon-careOutcome{
+	background-position: -360px -130px;
+}
+.icon-communication {
+	background-position: -361px -171px;
+}
+.bestPracticesPage .nav-tabs > .active > a .icon-communication{
+	background-position: -361px -100px;
+}
+.icon-patientExperience{
+	background-position: -391px -171px;
+}
+.bestPracticesPage .nav-tabs > .active > a .icon-patientExperience{
+	background-position: -391px -100px;
+}
+.icon-generalOperations{
+	background-position: -398px -202px;	
+}
+.bestPracticesPage .nav-tabs > .active > a .icon-generalOperations{
+	background-position: -397px -131px;
+}
+.icon-changeManagement{
+	background-position: -433px -202px;	
+}
+.bestPracticesPage .nav-tabs > .active > a .icon-changeManagement{
+	background-position: -431px -130px;
+}
+.scrollspy{
+	padding-right:20px
+}
+.widget-header .scrollspy h3, .widget-content .scrollspy h3 {
+    font-weight: bold;
+    margin-top: 20px;
+}
+.scrollspy h4{
+	color:#000
+}
+.scrollspy h2{
+   	border-bottom: 3px solid #CCCCCC;
+    font-size: 25px;
+    font-weight: normal;
+    padding-bottom: 7px;
+    margin-bottom: 5px;
+    color: #1E96DE;
+}
+.scrollspy ul{
+	padding-left:20px
+}
+.scrollspy ul li{
+	list-style:disc;
+	padding-left:5px
+}
+.scrollspy table{
+	margin-top:10px
+}
+.scrollspy table th{
+	font-weight:bold
+}
+.bestPracticesPage .tab-content .tab-pane{
+	padding-left:15px;
+	background:#fff;
+}
+.bestPracticesPage h1{
+    font-size: 24px;
+    line-height: 13px;
+    margin: 6px 5px 0 15px;
+    padding: 9px 12px;
+    position: absolute;
+    color:#fff
+}
+.BPcontentWithImage:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+	font-size: 0;
+}
+.bestPracticesPage .nav-tabs{
+	padding-left:300px;
+	background:#4096CF;
+}
+.bestPracticesPage .nav-tabs > li > a{
+    background:#4096CF;
+    color: #FFFFFF;
+}
+.bestPracticesPage .nav-tabs > li > a:hover{
+	border-color:#4096CF;
+	background:#2384BF
+}
+.bestPracticesPage .nav-tabs > .active > a{
+	margin-top: -5px;
+	border-bottom:none;
+	background:#fff;
+	color:#000;
+}
+.bestPracticesPage .nav-tabs > .active > a:hover{
+	-moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #ddd #ddd -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    color: #000000;
+    margin-top: -5px;
+}
+.scrollUp{
+	background: #E15E28;
+    border-radius: 10px;
+    bottom: 35px;
+    height: 40px;
+    opacity: 0.8;
+    position: fixed;
+    right: 55px;
+    width: 40px;
+    text-align: center;
+    color: #fff;
+}
+.scrollUp i{
+	font-size: 35px
+}
+.scrollUp hr{
+    border-width: 2px;
+    margin-top: -5px;
+}
+
+/*-------------SITEMAP (PAGE)-----------------*/
+.siteMap .widget-header{
+	border-radius:5px;
+	padding-bottom:10px; 
+}
+.siteMap .widget-content{
+	padding:70px 40px;
+	background:none;
+}
+.siteMap h4{float:left}
+.siteMap h4 span{
+	border:3px solid #38ae96;
+	border-radius:100px;
+	width:100px;
+	display:block;
+	background:#7d7b7c;
+	font-size:16px;
+	text-align:center;
+	line-height:95px;
+	color:#fff;
+	font-weight:bold;
+}
+.siteMap .categories {
+	overflow:hidden;
+	padding-left:15px;
+	margin-top: 65px;
+}
+ .branch{
+ 	border:3px solid #38ae96;
+ 	border-right:0;
+ 	border-radius:0 0 0 15px;
+    padding-top: 20px;
+    margin:-20px 0 0 -2px;
+ }
+ .branchConnector{
+    border-color: #38AE96;
+    border-image: none;
+    border-style: solid;
+    border-width: 3px 3px 0 0;
+    height: 20px;
+    margin-left: -50px;
+    width: 51px; 
+ }
+ .hideBorder{
+ 	background:#fff;
+ 	height:20px;
+ 	width:20px;
+ 	display:none;
+ }
+.siteMap .categories ul.topCategories>li:last-child .branch{
+	border-top: 0 solid #EBEAEA;
+    height: 37px !important;
+    margin-top: -3px;
+    padding-top: 0;
+}
+.siteMap .categories ul.topCategories>li:last-child .branchConnector{
+	border-radius: 0 20px 0 0;
+}
+.siteMap .categories ul.topCategories>li:nth-child(odd) .branch{
+	height:155px;
+}
+.siteMap .categories ul.topCategories>li:nth-child(even) .branch{
+	height:50px;
+}
+.siteMap .categories .topCategories>li>h5 {
+    background: none repeat scroll 0 0 #7D7B7C;
+    border-radius: 10px 10px 10px 10px;
+    color: #FFFFFF;
+    font-size: 17px;
+    line-height: 45px;
+    margin: -25px 0 0 15px;
+    overflow: hidden;
+    padding-left: 20px;
+}
+.siteMap .categories .topCategories>li>ul{
+	margin: 10px 0 0 33px
+}
+.siteMap .categories .topCategories>li>ul>li{
+	margin-bottom:8px;
+}
+.siteMap .categories .topCategories>li>ul>li>a{
+	color:#333;
+}
+.siteMap .categories .topCategories>li>ul>li>ul{
+	margin-left: 15px;
+}
+.siteMap .categories .topCategories>li>ul>li>ul>li>a{
+	font-size: 14px;
+	color: #4a769f
+}
+.siteMap .categories .topCategories > li > ul > li > ul > li > a:before{
+	content:"- "
+}
+.data-not-available { 
+color: darkgray;	
+	
+}
+
+/*---------KEY INSIGHT (PAGE)----------*/
+.keyInsight .carousel-inner > .item > a > img,
+.keyInsight .carousel-inner > .item > img{
+-moz-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+-webkit-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2); 
+}
+.topicsTableDiv {
+	margin-top: 12px;
+}
+table.slideTable>thead>tr>th>div {
+	font-size: 16px;
+	color: #000;
+}
+ 
+/*To make menu in small size with hover animation in "Social Media Sentiments"*/	 
+/* .tabExtraCLass .tabbable ul>li:not(.active)>a tab-heading span{
+	font-size:0;
+	transition: font-size 0.25s;
+	transition-timing-function:linear;
+}	
+.tabExtraCLass .tabbable ul>li.active{
+	border-left:0px ;
+}
+.tabExtraCLass .tabbable ul>li:last-child{
+	border-right:0px ;
+}
+.tabExtraCLass>div>ul>li:not(.active){
+	
+	border-right:1px solid #CCC;
+}
+.tabExtraCLass .tabbable ul>li>a:hover tab-heading span{
+	font-size:16px;
+}
+.tabExtraCLass .tabbable ul>li.active>a:hover tab-heading span{
+	font-size:14px;
+}
+.tabExtraCLass .tabbable .icon-book{
+	font-size: 24px;
+    padding-top: 3px;
+}
+.tabExtraCLass .tabbable .nav > li.disabled > a {
+    color: #999999;
+    padding-top: 4px;
+}
+.tabExtraCLass .tabbable .nav > li.disabled > a:hover{
+	border:0px !important;
+	} */
+	
+	
+
+/* Key insights*/
+.pageHeading {
+	float: left;
+ 	margin-left: 5.4%;
+}
+
+.hspTitle > div {
+	/* font-size: 21px;
+    font-weight: bold;
+    line-height: 35px;
+    text-align: center;
+    color: #595555; */
+     color: #595555;
+    font-size: 21px;
+    font-weight: bold;
+    height: 33px;
+    text-align: center;
+}
+
+
+.hspDescription > p {
+	background-color: #72BEEA;
+    color: #FFFFFF;
+    font-size: 17px;
+    margin-top: 11px;
+    padding: 10px 9px;
+}
+
+.bltPoints {
+	 margin-left: 39px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.pointsLi {
+	margin-top: 10px;
+	font-size: 16px;
+}
+.hchapsTableDiv {margin-top: 30px;}
+
+.containerSlide {
+	background-color: #FFFFFF;
+    border: 3px solid #D3D3D3;
+    height: auto;
+    margin-bottom: 77px;
+    margin-left: 76px;
+    margin-top: 8px;
+    /* width: 1110px !important; */
+    width: 84% !important;
+    padding:5px 15px 0px 15px;
+}
+ul.bltPoints li{
+/*  list-style-image: url("../img/bullet7.gif"); */
+    list-style-position: inherit;
+    list-style-type: disc;
+}
+ul.subBullet li{
+	background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("../img/WikEd_fix_dash.png");
+    background-origin: padding-box;
+    background-position: -2px 7px !important;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    padding-left: 21px;
+}
+
+.subBlts {
+	/* margin-left: 58px; */
+}
+.topTopicsKeyInsights{
+	/*  height: 20px;
+    width: 478px;
+      float: right; */
+     /*  margin-top:-33px; */
+}
+.topicsTableDiv {
+	margin-top: 12px;
+}
+/* Ends here */
+
+/* Topic Analysis*/
+/* .feedsDiv .feedList {
+	height: 460px;
+} */
+#accordion .table{
+	 height: 521px;
+}
+.feedsDiv .titleBar span{
+	margin-top: 224px;
+}
+
+.feedsDiv .widget-border-content {
+    border: 1px solid #D5D5D5 !important;
+    padding: 5px !important;
+}
+
+
+
+.topicNamesDropDown {
+ 	float: right;
+    font-size: 14px;
+    height: 23px;
+    margin-bottom: 14px;
+    margin-right: 24px;
+    margin-top: -35px;
+   width: 24%;
+}
+
+.feedsDiv {
+	margin-left: -8px;
+	float: right;
+	
+}
+
+.feedsTitle {
+	margin-bottom: 17px;
+	margin-left: 17px;
+}
+
+#accordion {
+	float: left;
+	margin-top: 46px;
+	
+}
+
+.tabNames {
+	margin-left: 114px;
+}
+
+.analysisHeading {
+	background-color: #38ACEB;
+    border: 1px solid #D3D3D3;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+    padding: 10px 15px;
+}
+.panel-collapse {height:auto !important;}
+.accordianDivTitle{margin-top:-41px;}
+#timeLineSliderFilter{ margin-top: 1%;}
+/* Ends here */
+
+/*Hospital CMS New starts here */
+.leftPanel {
+	border: 1px solid #D3D3D3;
+	margin-top: 20%;
+	width: 225px;
+}
+
+.PanelTab {
+	border-bottom: 1px solid #D3D3D3;
+}
+
+.columnchartDiv {
+	margin-top: 5%;
+}
+
+.clusterFilterBtn {
+	background-color: #539CDB;
+	border: 1px solid;
+	color: #FFFFFF;
+	height: 39px;
+	padding: 5px 19px 7px 17px;
+	text-align: center;
+	width: 121px;
+	cusrsor: pointer;
+}
+
+.HospitalFilterBtn {
+	background-color: lightgray;
+	border: 1px solid;
+	color: #FFFFFF;
+	height: 39px;
+	padding: 5px 19px 7px 17px;
+	text-align: center;
+	width: 121px;
+	cusrsor: pointer;
+}
+
+.clusterFilterSelect {
+	margin-left: 2px !important;
+	margin-bottom: -55px;
+}
+
+.modelSelect {
+	margin-left: 82px;
+    margin-top: 17px;
+}
+
+.hospView{
+	margin-left: 7%;
+	margin-top: 2px;
+}
+
+.pageHeader {
+	margin-top: 0%;
+}
+
+.facilityPanel li.ative {
+	background-color: #25BFEA;
+}
+
+.cmsHospitalViewClusterSelect {
+	width: 119px;
+}
+
+.clusterFilterBtn {
+	float: right !important;
+	margin-right: 102px !important;
+	margin-top: -34px !important;
+	width: 96px !important;
+}
+.clusterFilterSelect span5 {
+	margin-left: 1% !important;
+}
+#slide2 table tbody tr td span i.starsImg{
+	height: 10px;
+  /*   margin-left: 5px; */
+	}
+.noData{
+	font-size: 17px;
+    font-weight: bold;
+    color: #666666;
+    text-align: center;
+}
+.noDataDivCls {
+	min-height:400px!important;padding-top: 167px;
+}
+.slideTitle {
+	font-size: 22px;
+	font-weight: bold;
+}
+/* Ends here*/
+/*  commom css for ribbon and alignment of slide*/
+.containerSlide {
+background-color: #FFFFFF;
+border: 3px solid #D3D3D3;
+height: auto;
+
+margin-left: 5.5% !important;
+padding-left: 15px;
+
+}
+/* ribbon css*/
+
+.ribbon {
+    background: #57B74E;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    text-align: center;
+    font: 600 16px sans-serif;
+    color: #fff;
+    line-height: 27px;
+    border: 0;
+    float: right;
+    margin-top: -42px;
+}
+
+div.ribbon:after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+    height: 0;
+    width: 0;
+    border: solid 15px #57B74E;
+    border-bottom-color: transparent;
+}
+.ribbonnoData {
+    background: #57B74E;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    text-align: center;
+    font: 600 16px sans-serif;
+    color: #fff;
+    line-height: 27px;
+    border: 0;
+    float: right;
+    margin-top: -192px;
+}
+
+div.ribbonnoData:after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+    height: 0;
+    width: 0;
+    border: solid 15px #57B74E;
+    border-bottom-color: transparent;
+}
+
+/* div.ribbon:hover {
+    background: purple;
+}
+
+div.ribbon:hover:after {
+    border-color: purple;
+    border-bottom-color: transparent;
+} */
+/* .ribbon > span{
+	color: #fff;
+	font-weight: bold
+} */
+.ribbonvalue{
+color: #FFFFFF;
+    display: block;
+    font-size: 21px;
+    margin-top: -3px;
+    position: absolute;
+    width: 100%;
+    z-index: 1200;
+}
+.emptySlideHeading {
+	 float: left;
+    font-size: 21px;
+    font-weight: bold;
+    margin-left: 182px;
+    margin-top: -157px;
+    text-align: center;
+}
+.changePwdBtn {
+	cursor: pointer;
+	float: left;
+	font-size: 13px;
+	margin-top: 0;
+	text-decoration: underline;
+}

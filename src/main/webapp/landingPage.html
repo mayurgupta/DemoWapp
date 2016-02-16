@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Dignity Health</title>
+<meta name="viewport" content="initial-scale=1">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<!-- CSS -->
+<link rel="stylesheet" href="js/lib/bootstrap.min.css">
+<link rel="stylesheet" href="js/lib/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="js/lib/font-awesome.css">
+
+<link rel="stylesheet" href="css/login.css">
+
+<style>
+.main{
+    padding-top: 120px;
+}
+.logo{    
+    text-align: center;
+    vertical-align: middle;
+}
+</style>
+</head>
+
+<body data-ng-app="landingApp" data-ng-controller="mainCtrl">
+    <div id="wrapper">
+        <div class="row-fluid navbar-fixed-top" id="fixedNavBar" style="background: url(&quot;img/{{hospitalName | join}}-logo-bg.png&quot;) no-repeat scroll right top #fff;">
+            <span class="span4 logo">
+                <img alt={{companyName}} src="img/{{companyName | join}}-logo.png" class="{{companyName | join}}">
+            </span>
+            <span class="span4 logo">
+                <img alt={{serviceName}} src="img/{{serviceName | join}}-logo.png" class="{{serviceName | join}}">
+            </span>
+            <span class="span4 logo">
+                <img alt={{hospitalName}} src="img/{{hospitalName | join}}-logo.png" class="{{hospitalName | join}}">
+            </span>
+            
+        </div>
+        <!-- Inner View -->
+        <div class="row-fluid main" data-ng-view></div>
+        <div id="clearFooter"></div>
+        <div class="row-fluid footer">
+            <div class="span12">
+                &copy; 2013 <span style="color: #CD2604">{{hospitalName}}</span>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- JS -->
+    <script type="text/javascript" src="js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/lib/ui-bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="js/saama/landingApp.js"></script>    
+    <script type="text/javascript" src="js/saama/filters/filter.js"></script>
+    <script type="text/javascript" src="js/saama/controllers/loginCtrl.js"></script>
+    <script type="text/javascript" src="js/saama/controllers/registerCtrl.js"></script>
+ <!--    <script type="text/javascript" src="js/saama/controllers/changePasswordCtrl.js"></script> -->
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/saama/controllers/forgotPasswordCtrl.js"></script>
+</body>
+</html>

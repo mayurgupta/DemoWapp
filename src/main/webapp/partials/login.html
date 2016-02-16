@@ -1,0 +1,61 @@
+<style>
+.labelError{
+	border-radius: 10px 10px 10px 10px;
+    float: right;
+    font-size: 14px;
+    height: 20px;
+    margin-right: 8px;
+    width: 20px;
+}
+
+</style>
+
+
+<div id="loginMainPage">
+	<form id="loginForm" name="myForm" class="form-horizontal" data-ng-submit="submit()" >
+		<fieldset>
+			<div id="top">
+				<h4>{{buttonName}}</h4> 
+				<!-- TODO -->
+					<!-- Add a refresh link with functionality -->
+			</div>
+			
+			<!-- USER-NAME / PWD -->
+			<div id="innerContent">				
+				<div class="control-group" data-ng-repeat="loginEntity in loginEntities">
+					<div class="controls">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="{{loginEntity.icon}}"></i></span> 
+							<input class="form-control" id="{{ loginEntity.name }}" type="{{loginEntity.type}}" placeholder="{{loginEntity.placeholder}}"
+							data-ng-model="typeValues[loginEntity.name]" data-ng-trim="false" required value="">
+						</div>
+					</div>
+				</div>
+				<div class="forgotpwdlink" data-ng-click="forgotpwdpge()">Forgot Password</div>
+				<!-- ERROR MSG -->				
+				<div class="alert alert-danger error" data-ng-show="myForm.$error.pattern">
+					<strong>Single word only!</strong> - Please try Again
+				</div>				
+				<div class="alert alert-danger alertWarningMsg" data-ng-show="invalid" data-ng-click="closeAlert()" title="Click to hide alert">
+					<strong>Invalid UserName/Password</strong> - Please try Again
+				</div>
+				
+				
+				<div class="alert" style="display: none">
+					<span style="color: #B91A07; font-size: 16px"><i
+						class="icon-warnidata-ng-sign"></i></span> <strong>Uh Oh!</strong> You have
+					entered incorrect values 3 times in a row
+				</div>
+				<div class="alert alert-info" data-ng-show="loading">
+					Signing in...<img src="img/ajax-loader1.gif">
+				</div>
+			</div>
+
+			<!-- BUTTON -->
+			<div class="control-group" id="bottom">				
+				<button type="submit" class="btn btn-danger">{{buttonName}}</button>
+			</div>
+			<!-- /BUTTON -->
+		</fieldset>
+	</form>    
+</div>

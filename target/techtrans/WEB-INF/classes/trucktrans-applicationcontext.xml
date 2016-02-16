@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:cache="http://www.springframework.org/schema/cache"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:util="http://www.springframework.org/schema/util"
+  
+  xsi:schemaLocation="http://www.springframework.org/schema/jdbc
+    http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd 
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-4.0.xsd
+    http://www.springframework.org/schema/cache 
+    http://www.springframework.org/schema/cache/spring-cache.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+ 
+ 	<context:annotation-config />
+ 	<!-- <context:property-placeholder location="WEB-INF/classes/conf/properties/database.properties" /> -->
+ 	<context:component-scan base-package="com.trucktrans" />
+ 	<!-- <task:annotation-driven /> -->
+	<aop:aspectj-autoproxy/>
+	<!-- <cache:annotation-driven />  -->
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	 <property name="locations">  
+        <list>
+            <value>classpath:/conf/properties/application.properties</value> 
+            <value>classpath:/conf/properties/database.properties</value> 
+        </list> 
+        </property>  
+	</bean>
+	
+ 	<import resource="/trucktrans-hibernate.xml"/>
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>${sender.host}</value>
+		</property>
+		<property name="port">
+			<value>${sender.port}</value>
+		</property>
+		<property name="username">
+			<value>${sender.username}</value>
+		</property>
+		<property name="password">
+			<value>${sender.password}</value>
+		</property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">${mail.transport.protocol}</prop>
+				<prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+				<prop key="mail.smtp.starttls.enable">${mail.smtp.starttls.enable}</prop>
+				<prop key="mail.smtp.from">${sender.username}</prop>
+				<prop key="mail.debug">${mail.debug}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- EhCache manager--> 
+	<!-- 
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cache-manager-ref="ehcache"/>
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="WEB-INF/ehcache.xml"/>
+ 	 -->
+ 	 
+ 	<!-- cache definitions -->
+	<!-- 
+	<cache:advice id="cacheAdvice_dashboard" cache-manager="cacheManager">
+	    <cache:caching cache="dashboard.socialhealth">
+	        <cache:cacheable method="getSocialHealth"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.patientvoice">
+	        <cache:cacheable method="getPatientVoice"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.timeline">
+	        <cache:cacheable method="getTimeline"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.ratings">
+	        <cache:cacheable method="getRatings"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.socialmediadistribution">
+	        <cache:cacheable method="getSocialMediaDistribution"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.trendz">
+	        <cache:cacheable method="getTrendz"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.trendz">
+	        <cache:cacheable method="getTrendz"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.trendz">
+	        <cache:cacheable method="getTrendz"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.emp_emotion">
+	        <cache:cacheable method="getEmployeeEmotions"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.emp_trendz">
+	        <cache:cacheable method="getEmployeeActivityTrendz"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.compare_overview">
+	        <cache:cacheable method="getComparativeOverview"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.compare_sentiment">
+	        <cache:cacheable method="getComparativeSentiment"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.compare_rating">
+	        <cache:cacheable method="getComparativeRating"/>
+	    </cache:caching>
+	    <cache:caching cache="dashboard.compare_sentiment">
+	        <cache:cacheable method="getComparativeSentiment"/>
+	    </cache:caching>
+	</cache:advice>
+	
+	<cache:advice id="cacheAdvice_feeds" cache-manager="cacheManager">
+	    <cache:caching cache="feedservice.feeds">
+	        <cache:cacheable method="getFeeds"/>
+	    </cache:caching>
+	</cache:advice>
+
+	<aop:config>
+	    <aop:advisor advice-ref="cacheAdvice_dashboard" pointcut="execution(* com.saama.dh.sixthsense.services.IDashboardService.*(..))"/>
+	    <aop:advisor advice-ref="cacheAdvice_feeds" pointcut="execution(* com.saama.dh.sixthsense.services.IFeedsService.*(..))"/>
+	</aop:config>
+	 -->
+
+ 	<!-- i18n -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:/properties/messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	<!-- For multi part File uploading handling -->
+	<bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+    <!-- one of the properties available; the maximum file size in bytes -->
+    <property name="maxUploadSize" value="100000"/>
+    </bean>
+    
+    <!-- load keyinsight rule properties -->
+  
+	<bean id="propertyService"
+		class="com.trucktrans.services.impl.PropertiesServiceImpl"
+		p:location="classpath:/conf/properties/commonConstants.properties" /> 
+    
+ </beans>

@@ -1,0 +1,21 @@
+.container {
+    min-height: 600px;
+}
+
+body {
+
+}
+
+footer {
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
+header {
+    border-bottom: 1px solid;
+    min-height: 25px;
+
+}
