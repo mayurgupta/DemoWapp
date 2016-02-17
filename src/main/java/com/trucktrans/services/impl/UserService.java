@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronizationAdapter;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
-import com.saama.dh.sixthsense.entity.web.WCluster;
 import com.sun.jersey.api.ConflictException;
 import com.trucktrans.constants.MessageConstants;
 import com.trucktrans.constants.RoleConstants.Role;
@@ -134,10 +133,6 @@ public class UserService implements IUserService{
 		result.put("userDetail", wUser);
 		result.put("clusters", userInitFilter);
 		return result;
-
-	
-		
-		return null;
 	}
 
 	@Override
