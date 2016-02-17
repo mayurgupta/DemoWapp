@@ -4,6 +4,7 @@
 package com.trucktrans.dao;
 
 import com.trucktrans.entity.dto.UserBookingReqDTO;
+import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.web.WUserBooking;
 
 /**
@@ -11,8 +12,10 @@ import com.trucktrans.entity.web.WUserBooking;
  * 11:10:51 pm, 29-Oct-2015
  *
  */
-public interface IUserBookingDao extends IEntityDao<UserBookingReqDTO, Long>{
+public interface IUserBookingReqDao extends IEntityDao<UserBookingReqDTO, Long>{
 
 	void planTransportation(WUserBooking userBooking);
+
+	Object getBookingHistory(UserDTO user);
 	
 }

@@ -3,12 +3,16 @@
  */
 package com.trucktrans.services.impl;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.trucktrans.dao.IUserBookingReqDao;
+import com.trucktrans.dao.IUserDao;
 import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.services.IFilterServices;
 import com.trucktrans.web.WFilterResponse;
@@ -26,6 +30,10 @@ import com.trucktrans.web.WFilterResponse;
 @Transactional(readOnly = true)
 public class FilterServiceImpl implements IFilterServices{
 
+	
+	@Autowired
+	IUserBookingReqDao userBookingReqDao;
+	
 	@Override
 	public Map<String, List<WFilterResponse>> getFilters() {
 		// TODO Auto-generated method stub
@@ -34,8 +42,8 @@ public class FilterServiceImpl implements IFilterServices{
 
 	@Override
 	public List getAppInitialFilters(UserDTO user, boolean includeCompetitor) {
-		
-		
+		Map<String, Object> userDataMap=new LinkedHashMap<String, Object>();
+		userDataMap.put("userBookingHistory", userBookingReqDao.getBookingHistory(user));
 		return null;
 	}
 	

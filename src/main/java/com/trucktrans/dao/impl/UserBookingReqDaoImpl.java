@@ -3,10 +3,12 @@
  */
 package com.trucktrans.dao.impl;
 
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import com.trucktrans.dao.IUserBookingDao;
+import com.trucktrans.dao.IUserBookingReqDao;
 import com.trucktrans.entity.dto.UserBookingReqDTO;
+import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.web.WUserBooking;
 
 /**
@@ -14,7 +16,7 @@ import com.trucktrans.entity.web.WUserBooking;
  *
  */
 @Repository
-public class UserBookingDaoImpl extends AbstractHibernateDaoImpl<UserBookingReqDTO, Long> implements IUserBookingDao {
+public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingReqDTO, Long> implements IUserBookingReqDao {
 
 	@Override
 	public void planTransportation(WUserBooking userBooking) {
@@ -23,5 +25,14 @@ public class UserBookingDaoImpl extends AbstractHibernateDaoImpl<UserBookingReqD
 		//TODO
 //		userBookingReqDTO.setDestinationPlaceId(userBooking.getDestinationPlace());
 	}
+
+	@Override
+	public Object getBookingHistory(UserDTO user) {
+		// TODO Auto-generated method stub
+		return (UserBookingReqDTO)getSessionFactory().getCurrentSession().createCriteria(UserBookingReqDTO.class)
+				.add(Restrictions.eq("UserDTO.userId", user.getUserId()));
+	}
+	
+	
 
 }
