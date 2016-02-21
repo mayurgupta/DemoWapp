@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trucktrans.dao.IUserBookingReqDao;
+import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.web.WUserBooking;
 import com.trucktrans.services.IDashBoardService;
 
@@ -27,8 +28,8 @@ public class DashboardServiceImpl implements IDashBoardService{
 	
 	
 	@Override
-	public Object planTransportation(WUserBooking userBooking) {
-		userBookingDao.planTransportation(userBooking);
+	public Object planTransportation(WUserBooking userBooking, UserDTO userDTO) {
+		userBookingDao.planTransportation(userBooking,userDTO);
 		return null;
 	}
 

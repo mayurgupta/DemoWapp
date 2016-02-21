@@ -34,11 +34,11 @@ public class UserBookingReqDTO implements java.io.Serializable {
 	
 	private int bookingId;
 	private UserDTO user;
-	private int sourceStateId;
-	private int sourcePlaceId;
+	private StateInfoDTO sourceState;
+	private String sourcePlace;
 	private String sourceAddress;
-	private int destinationStateId;
-	private int destinationPlaceId;
+	private StateInfoDTO destinationState;
+	private String destinationPlace;
 	private String destinationAddress;
 	
 
@@ -51,25 +51,25 @@ public class UserBookingReqDTO implements java.io.Serializable {
 	public UserBookingReqDTO() {
 	}
 
-	public UserBookingReqDTO(int bookingId, UserDTO user, int sourceStateId, int sourcePlaceId, int destinationStateId,
-			int destinationPlaceId) {
+	public UserBookingReqDTO(int bookingId, UserDTO user, StateInfoDTO sourceStateId, String sourcePlace, StateInfoDTO destinationStateId,
+			String destinationPlace) {
 		this.bookingId = bookingId;
 		this.user = user;
-		this.sourceStateId = sourceStateId;
-		this.sourcePlaceId = sourcePlaceId;
-		this.destinationStateId = destinationStateId;
-		this.destinationPlaceId = destinationPlaceId;
+		this.sourceState = sourceStateId;
+		this.sourcePlace = sourcePlace;
+		this.destinationState = destinationStateId;
+		this.destinationPlace = destinationPlace;
 	}
 
-	public UserBookingReqDTO(int bookingId, UserDTO user, int sourceStateId, int sourcePlaceId, int destinationStateId,
-			int destinationPlaceId, Date dateOfRequest, String truckType, Boolean partialLoadFlag, String remarks,
+	public UserBookingReqDTO(int bookingId, UserDTO user, StateInfoDTO sourceState, String sourcePlace, StateInfoDTO destinationState,
+			String destinationPlace, Date dateOfRequest, String truckType, Boolean partialLoadFlag, String remarks,
 			Set<TransComQuotesDTO> transComQuotesDTOs, String sourceAddress, String destinationAddress) {
 		this.bookingId = bookingId;
 		this.user = user;
-		this.sourceStateId = sourceStateId;
-		this.sourcePlaceId = sourcePlaceId;
-		this.destinationStateId = destinationStateId;
-		this.destinationPlaceId = destinationPlaceId;
+		this.sourceState = sourceState;
+		this.sourcePlace = sourcePlace;
+		this.destinationState = destinationState;
+		this.destinationPlace = destinationPlace;
 		this.dateOfRequest = dateOfRequest;
 		this.truckType = truckType;
 		this.partialLoadFlag = partialLoadFlag;
@@ -99,23 +99,35 @@ public class UserBookingReqDTO implements java.io.Serializable {
 	public void setUser(UserDTO user) {
 		this.user = user;
 	}
-
-	@Column(name = "SOURCE_STATE_ID", nullable = false)
-	public int getSourceStateId() {
-		return this.sourceStateId;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "SOURCE_STATE", nullable = false)
+	public StateInfoDTO getSourceState() {
+		return this.sourceState;
 	}
 
-	public void setSourceStateId(int sourceStateId) {
-		this.sourceStateId = sourceStateId;
+	public void setSourceState(StateInfoDTO sourceStateId) {
+		this.sourceState = sourceStateId;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "DESTINATION_STATE", nullable = false)
+	public StateInfoDTO getDestinationState() {
+		return this.destinationState;
 	}
 
-	@Column(name = "SOURCE_PLACE_ID", nullable = false)
-	public int getSourcePlaceId() {
-		return this.sourcePlaceId;
+	public void setDestinationState(StateInfoDTO destinationStateId) {
+		this.destinationState = destinationStateId;
+	}
+	
+
+	@Column(name = "SOURCE_PLACE", nullable = false)
+	public String getSourcePlace() {
+		return this.sourcePlace;
 	}
 
-	public void setSourcePlaceId(int sourcePlaceId) {
-		this.sourcePlaceId = sourcePlaceId;
+	public void setSourcePlace(String sourcePlace) {
+		this.sourcePlace = sourcePlace;
 	}
 
 	@Column(name = "SOURCE_ADDRESS", nullable = false)
@@ -127,22 +139,15 @@ public class UserBookingReqDTO implements java.io.Serializable {
 		this.sourceAddress = sourceAddress;
 	}
 	
-	@Column(name = "DESTINATION_STATE_ID", nullable = false)
-	public int getDestinationStateId() {
-		return this.destinationStateId;
+	
+
+	@Column(name = "DESTINATION_PLACE", nullable = false)
+	public String getDestinationPlace() {
+		return this.destinationPlace;
 	}
 
-	public void setDestinationStateId(int destinationStateId) {
-		this.destinationStateId = destinationStateId;
-	}
-
-	@Column(name = "DESTINATION_PLACE_ID", nullable = false)
-	public int getDestinationPlaceId() {
-		return this.destinationPlaceId;
-	}
-
-	public void setDestinationPlaceId(int destinationPlaceId) {
-		this.destinationPlaceId = destinationPlaceId;
+	public void setDestinationPlace(String destinationPlace) {
+		this.destinationPlace = destinationPlace;
 	}
 
 	@Column(name = "DESTINATION_ADDRESS", nullable = false)

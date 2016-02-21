@@ -32,6 +32,8 @@ public class StateInfoDTO implements java.io.Serializable {
 	private String name;
 	private String stateDesc;
 	private Boolean enabled;
+	private Set<UserBookingReqDTO> sourceState=new HashSet<UserBookingReqDTO>(0);
+	private Set<UserBookingReqDTO> destinationState=new HashSet<UserBookingReqDTO>(0);
 	private Set<SourceDestinationInfoDTO> sourceDestinationInfoDTOs = new HashSet<SourceDestinationInfoDTO>(0);
 
 	public StateInfoDTO() {
@@ -44,15 +46,18 @@ public class StateInfoDTO implements java.io.Serializable {
 	}
 
 	public StateInfoDTO(int stateId, int pincode, String name, String stateDesc, Boolean enabled,
-			Set<SourceDestinationInfoDTO> sourceDestinationInfoDTOs) {
+			Set<SourceDestinationInfoDTO> sourceDestinationInfoDTOs, Set<UserBookingReqDTO> destinationState, Set<UserBookingReqDTO> sourceState) {
 		this.stateId = stateId;
 		this.pincode = pincode;
 		this.name = name;
 		this.stateDesc = stateDesc;
 		this.enabled = enabled;
 		this.sourceDestinationInfoDTOs = sourceDestinationInfoDTOs;
+		this.destinationState=destinationState;
+		this.sourceState=sourceState;
 	}
 
+	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "STATE_ID", unique = true, nullable = false)
@@ -108,5 +113,23 @@ public class StateInfoDTO implements java.io.Serializable {
 	public void setSourceDestinationInfoDTOs(Set<SourceDestinationInfoDTO> sourceDestinationInfoDTOs) {
 		this.sourceDestinationInfoDTOs = sourceDestinationInfoDTOs;
 	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sourceState")	
+	public Set<UserBookingReqDTO> getSourceState() {
+		return sourceState;
+	}
+
+	public void setSourceState(Set<UserBookingReqDTO> sourceState) {
+		this.sourceState = sourceState;
+	}
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "destinationState")
+	public Set<UserBookingReqDTO> getDestinationState() {
+		return destinationState;
+	}
+
+	public void setDestinationState(Set<UserBookingReqDTO> destinationState) {
+		this.destinationState = destinationState;
+	}
+
 
 }

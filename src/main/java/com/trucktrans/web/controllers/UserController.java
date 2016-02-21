@@ -23,9 +23,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 
+import com.sun.jersey.api.core.InjectParam;
 import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.web.WPassword;
 import com.trucktrans.entity.web.WUser;
+import com.trucktrans.entity.web.WUserBooking;
 import com.trucktrans.entity.web.WUserDetails;
 import com.trucktrans.exceptions.services.ResourceNotFoundException;
 import com.trucktrans.services.IUserService;
@@ -152,5 +154,4 @@ public class UserController extends AbstractRestController<UserDTO> {
                         wPassword)).build();
 
     }
-
 }

@@ -3,6 +3,7 @@
  */
 package com.trucktrans.services;
 
+import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.web.WUserBooking;
 
 /**
@@ -12,6 +13,6 @@ import com.trucktrans.entity.web.WUserBooking;
  */
 public interface IDashBoardService {
 
-	Object planTransportation(WUserBooking userBooking);
+	Object planTransportation(WUserBooking userBooking, UserDTO userDTO);
 
 }

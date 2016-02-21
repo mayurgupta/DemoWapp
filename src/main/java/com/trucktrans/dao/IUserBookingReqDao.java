@@ -14,7 +14,7 @@ import com.trucktrans.entity.web.WUserBooking;
  */
 public interface IUserBookingReqDao extends IEntityDao<UserBookingReqDTO, Long>{
 
-	void planTransportation(WUserBooking userBooking);
+	void planTransportation(WUserBooking userBooking, UserDTO userDTO);
 
 	Object getBookingHistory(UserDTO user);
 	
