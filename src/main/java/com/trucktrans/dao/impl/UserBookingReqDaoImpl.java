@@ -76,7 +76,7 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 		String emailBody = propertyService.findByPropertyName(
 				"transport.plan.content").getPropertyValue();
 		String passwordKey = String.valueOf(PwdGenerator.generatePswd(8, 15, 2, 1, 1));
-		//TODO make the full email content
+//TODO make the full email content ------------------------------
 		String content = StringEscapeUtils.unescapeJava(Util.formatString(emailBody, new Object[] { userDTO.getName(),
 				userBookingReqDTO.getDestinationAddress() }));
 		userService.sendMailAfterCommit(userDTO.getEmail(), subject, content);

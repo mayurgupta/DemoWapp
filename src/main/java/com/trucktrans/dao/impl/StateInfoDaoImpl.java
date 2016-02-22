@@ -3,6 +3,8 @@
  */
 package com.trucktrans.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +28,11 @@ public class StateInfoDaoImpl extends AbstractHibernateDaoImpl<StateInfoDTO, Lon
 	public StateInfoDTO getById(Long stateId){
 		return (StateInfoDTO)getSessionFactory().getCurrentSession().createCriteria(StateInfoDTO.class)
 				.add(Restrictions.eq("stateId", stateId));
+	}
+
+	@Override
+	public List<StateInfoDTO> getAllStates() {
+		return (List<StateInfoDTO>) getSessionFactory().getCurrentSession().createCriteria(StateInfoDTO.class).list();
 	}
 	
 }

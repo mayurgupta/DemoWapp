@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.trucktrans.dao.IStateInfoDao;
 import com.trucktrans.dao.IUserBookingReqDao;
 import com.trucktrans.dao.IUserDao;
 import com.trucktrans.entity.dto.UserDTO;
@@ -33,6 +34,8 @@ public class FilterServiceImpl implements IFilterServices{
 	
 	@Autowired
 	IUserBookingReqDao userBookingReqDao;
+	@Autowired
+	IStateInfoDao stateInfoDao;
 	
 	@Override
 	public Map<String, List<WFilterResponse>> getFilters() {
@@ -41,10 +44,11 @@ public class FilterServiceImpl implements IFilterServices{
 	}
 
 	@Override
-	public List getAppInitialFilters(UserDTO user, boolean includeCompetitor) {
+	public Map<String, Object> getAppInitialFilters(UserDTO user, boolean includeCompetitor) {
 		Map<String, Object> userDataMap=new LinkedHashMap<String, Object>();
 		userDataMap.put("userBookingHistory", userBookingReqDao.getBookingHistory(user));
-		return null;
+		userDataMap.put("stateList", stateInfoDao.getAllStates());
+		return userDataMap;
 	}
 	
 	

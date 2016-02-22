@@ -122,7 +122,7 @@ public class UserService implements IUserService{
 		
 
 		@SuppressWarnings("unchecked")
-		List<WUserHistory> userInitFilter = filterServices
+		Map<String, Object> userInitFilter = filterServices
 				.getAppInitialFilters(user,includeCompetitor);
 		Map<String, Object> result = new LinkedHashMap<>();
 		WUser wUser = new WUser(user);
@@ -131,7 +131,7 @@ public class UserService implements IUserService{
 			wUser.setPwdChanged(true);
 		}
 		result.put("userDetail", wUser);
-		result.put("clusters", userInitFilter);
+		result.put("initAppData", userInitFilter);
 		return result;
 	}
 

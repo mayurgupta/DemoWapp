@@ -32,5 +32,5 @@ public interface IFilterServices {
 	 * @param user
 	 * @return list clusters<br>
 	 */
-	List getAppInitialFilters(UserDTO user,boolean includeCompetitor);
+	Map<String, Object> getAppInitialFilters(UserDTO user,boolean includeCompetitor);
 }
