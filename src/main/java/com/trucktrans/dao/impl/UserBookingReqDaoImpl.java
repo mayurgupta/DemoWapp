@@ -49,13 +49,10 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 			WUser wUser=new WUser();
 			wUser.setEmail(wUserBooking.getEmail());
 			wUser.setName(wUserBooking.getName());
-			
 			userService.addUser(wUser);
-			
 			UserDTO newUserDto=new UserDTO();
 			newUserDto.setEmail(wUserBooking.getEmail());
 			newUserDto.setName(wUserBooking.getName());
-			// TODO generate auto password here
 			userBookingReqDTO.setUser(userDao.getByEmail(wUserBooking.getEmail()));
 		}
 		userBookingReqDTO.setDestinationAddress(wUserBooking.getDestinationAddress());
