@@ -6,6 +6,7 @@ package com.trucktrans.dao.impl;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,11 @@ import com.trucktrans.entity.dto.UserBookingReqDTO;
 import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.web.WUser;
 import com.trucktrans.entity.web.WUserBooking;
+import com.trucktrans.helpers.PwdGenerator;
+import com.trucktrans.helpers.Util;
 import com.trucktrans.services.IUserService;
+import com.trucktrans.services.PropertiesService;
+import com.trucktrans.services.impl.UserService;
 
 /**
  * @author Mayur 11:14:32 pm, 29-Oct-2015
@@ -28,13 +33,13 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 
 	@Autowired
 	IStateInfoDao stateInfo;
-	
 	@Autowired
 	IUserDao userDao;
-	
 	@Autowired
 	IUserService userService;
-	
+	@Autowired
+	private PropertiesService propertyService;
+	@Autowired
 	
 	@Override
 	public void planTransportation(WUserBooking wUserBooking, UserDTO userDTO) {
@@ -65,6 +70,17 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 		userBookingReqDTO.setSourcePlace(wUserBooking.getSourcePlace());
 		userBookingReqDTO.setSourceState(stateInfo.getByName(wUserBooking.getSourceState()));
 		merge(userBookingReqDTO);
+//		send the success mail---------------------------
+		String subject = propertyService.findByPropertyName(
+				"transport.plan.subject").getPropertyValue();
+		String emailBody = propertyService.findByPropertyName(
+				"transport.plan.content").getPropertyValue();
+		String passwordKey = String.valueOf(PwdGenerator.generatePswd(8, 15, 2, 1, 1));
+		//TODO make the full email content
+		String content = StringEscapeUtils.unescapeJava(Util.formatString(emailBody, new Object[] { userDTO.getName(),
+				userBookingReqDTO.getDestinationAddress() }));
+		userService.sendMailAfterCommit(userDTO.getEmail(), subject, content);
+		
 	}
 
 	@Override

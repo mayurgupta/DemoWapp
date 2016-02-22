@@ -98,4 +98,6 @@ public interface IUserService {
 	WStatus forgotPassword(WPassword wPassword);
 
 	Boolean validateUser(String username, List<Long> hospitalIds);
+	
+	void sendMailAfterCommit(final String email,final String subject,final String emailBody);
 }

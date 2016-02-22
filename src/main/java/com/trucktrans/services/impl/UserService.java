@@ -415,7 +415,8 @@ public class UserService implements IUserService{
 	 * @param subject
 	 * @param emailBody
 	 */
-	private void sendMailAfterCommit(final String email,final String subject,final String emailBody) {
+	@Override
+	public void sendMailAfterCommit(final String email,final String subject,final String emailBody) {
 		TransactionSynchronizationManager
 				.registerSynchronization(new TransactionSynchronizationAdapter() {
 					@Override
