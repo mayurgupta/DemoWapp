@@ -47,8 +47,8 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 		}
 		else if (userDao.getByEmail(wUserBooking.getEmail()) == null) {
 			WUser wUser=new WUser();
-			wUser.setEmail(email);
-			wUser.setName(name);
+			wUser.setEmail(wUserBooking.getEmail());
+			wUser.setName(wUserBooking.getName());
 			
 			userService.addUser(wUser);
 			
