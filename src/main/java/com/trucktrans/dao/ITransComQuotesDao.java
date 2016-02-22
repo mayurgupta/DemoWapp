@@ -15,6 +15,8 @@ public interface ITransComQuotesDao extends IEntityDao<TransComQuotesDTO, Long>{
 
 	List<TransComQuotesDTO> getAllBookingId(Long bookingId);
 
+	List<TransComQuotesDTO> createQuote(Long bookingId);
+
 	
 	
 }

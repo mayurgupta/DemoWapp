@@ -21,4 +21,11 @@ public class TransComQuotesDaoImpl extends AbstractHibernateDaoImpl<TransComQuot
 		return (List<TransComQuotesDTO>)getSessionFactory().getCurrentSession().createCriteria(TransComQuotesDTO.class)
 		.add(Restrictions.eq("userBookingReqDTO.bookingId", bookingId)).list();
 	}
+	
+	@Override
+	public List<TransComQuotesDTO> createQuote(Long bookingId){
+		
+		return null;
+	}
+	
 }
