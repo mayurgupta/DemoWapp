@@ -57,8 +57,15 @@ public interface IUserDao extends IEntityDao<UserDTO, Long> {
     	private Date updatedDate;
     	private Boolean passwordChanged;
     	private Long companyId;
+    	private String companyDesc;
     	
-    	public String getConfPassword() {
+    	public String getCompanyDesc() {
+			return companyDesc;
+		}
+		public void setCompanyDesc(String companyDesc) {
+			this.companyDesc = companyDesc;
+		}
+		public String getConfPassword() {
 			return confPassword;
 		}
 		public void setConfPassword(String confPassword) {

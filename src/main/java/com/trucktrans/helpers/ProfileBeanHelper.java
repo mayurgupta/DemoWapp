@@ -18,20 +18,20 @@ public class ProfileBeanHelper {
 	
 	
 	
-	public static void main(WUserProfile user) {
+	public static void main(WUserProfile userProfile) {
 		ProfileQueryBuilder profileQueryBuilder=new ProfileQueryBuilder();
-		if (user.getName() != null) {
-			profileQueryBuilder.setName(user.getName());
+		if (userProfile.getName() != null) {
+			profileQueryBuilder.setName(userProfile.getName());
 		} 
-		if (user.getUserName() != null) {
-			profileQueryBuilder.setUserName(user.getUserName());
+		if (userProfile.getUserName() != null) {
+			profileQueryBuilder.setUserName(userProfile.getUserName());
 		}		
-		if (user.getPassword() != null) {
-			profileQueryBuilder.setPassword(user.getPassword());
-			profileQueryBuilder.setConfPassword(user.getPassword1());
+		if (userProfile.getPassword() != null) {
+			profileQueryBuilder.setPassword(userProfile.getPassword());
+			profileQueryBuilder.setConfPassword(userProfile.getPassword1());
 		}
-		if (user.get) {
-			
+		if (userProfile.getCompanyDesc()!= null) {
+			profileQueryBuilder.setCompanyDesc(userProfile.getCompanyDesc());
 		}
 	}
 

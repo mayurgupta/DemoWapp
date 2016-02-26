@@ -36,8 +36,19 @@ public class WUserProfile {
 	private String name;
 	@NotNull(message = "email cannot be null")
 	private String email;
+	private String companyDesc;
 	
+
 	private boolean pwdChanged;
+
+	
+	public String getCompanyDesc() {
+		return companyDesc;
+	}
+	
+	public void setCompanyDesc(String companyDesc) {
+		this.companyDesc = companyDesc;
+	}
 
 	public String getUserName() {
 		return userName;
