@@ -62,7 +62,7 @@ implements IUserDao{
     }
     
     
-    private Criteria buildQueryFromParams(FeedQueryBuilder queryBuilder) {
+    private Criteria buildQueryFromParams(ProfileQueryBuilder queryBuilder) {
     	
     }
 

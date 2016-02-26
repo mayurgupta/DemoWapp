@@ -43,13 +43,14 @@ public interface IUserDao extends IEntityDao<UserDTO, Long> {
     void activate(UserDTO userDTO);
     
     
-    public static class FeedQueryBuilder{
+    public static class ProfileQueryBuilder{
     	private long userId;
     	private String email;
     	private Boolean enabled;
     	private String name;
     	private String password;
-    	private String userName;
+    	private String confPassword;
+		private String userName;
     	private String createdBy;
     	private Date createdDate;
     	private String updatedBy;
@@ -57,6 +58,12 @@ public interface IUserDao extends IEntityDao<UserDTO, Long> {
     	private Boolean passwordChanged;
     	private Long companyId;
     	
+    	public String getConfPassword() {
+			return confPassword;
+		}
+		public void setConfPassword(String confPassword) {
+			this.confPassword = confPassword;
+		}
     	
 		public long getUserId() {
 			return userId;
@@ -130,6 +137,7 @@ public interface IUserDao extends IEntityDao<UserDTO, Long> {
 		public void setCompanyId(Long companyId) {
 			this.companyId = companyId;
 		}
+		
     }
     
     

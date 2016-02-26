@@ -464,4 +464,10 @@ public class UserService implements IUserService{
 		sendMailAfterCommit(userDTO.getEmail(), subject, content);
 		return userDao.save(userDTO);
 	}
+
+	@Override
+	public Object editProfile(WUser wuser) {
+		ProfileQueryBuilder profileQueryBuilder=
+		return null;
+	}
 }

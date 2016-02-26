@@ -102,4 +102,6 @@ public interface IUserService {
 	void sendMailAfterCommit(final String email,final String subject,final String emailBody);
 
 	Object registerUser(WUser wuser);
+
+	Object editProfile(WUser wuser);
 }
