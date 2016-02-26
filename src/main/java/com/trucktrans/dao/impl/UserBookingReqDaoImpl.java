@@ -88,6 +88,17 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 		return (UserBookingReqDTO)getSessionFactory().getCurrentSession().createCriteria(UserBookingReqDTO.class)
 				.add(Restrictions.eq("UserDTO.userId", user.getUserId()));
 	}
+
+	@Override
+	public Object getSearchResults(String source, String destination,
+			long datefrom, long dateto) {
+		
+		return (UserBookingReqDTO) getSessionFactory().getCurrentSession()
+				.createCriteria(UserBookingReqDTO.class)
+				.add(Restrictions.eq("sourceState", source))
+				.add(Restrictions.eq("destinationState", destination))
+				.add(Restrictions.between("dateOfRequest", datefrom, dateto));
+	}
 	
 	
 

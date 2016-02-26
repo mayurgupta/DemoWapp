@@ -3,6 +3,9 @@
  */
 package com.trucktrans.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.trucktrans.dao.IUserBookingReqDao;
 import com.trucktrans.services.IBnQService;
 
 /**
@@ -10,12 +13,15 @@ import com.trucktrans.services.IBnQService;
  *
  */
 public class BnQServiceImpl implements IBnQService{
-
+	@Autowired
+	IUserBookingReqDao userBookingReqDao;
+	
+	
 	@Override
 	public Object searchBookings(String source, String destination,
 			long datefrom, long dateto) {
-		// TODO Auto-generated method stub
-		return null;
+		return userBookingReqDao.getSearchResults(source, destination, datefrom, dateto);
+		
 	}
 
 }

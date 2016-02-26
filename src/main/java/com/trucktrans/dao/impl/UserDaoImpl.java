@@ -60,4 +60,11 @@ implements IUserDao{
         }
         update(userDTO);
     }
+    
+    
+    private Criteria buildQueryFromParams(FeedQueryBuilder queryBuilder) {
+    	
+    }
+
+    
 }
