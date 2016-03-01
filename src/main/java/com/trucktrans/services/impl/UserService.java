@@ -467,7 +467,7 @@ public class UserService implements IUserService{
 
 	@Override
 	public Object editProfile(WUser wuser) {
-		ProfileQueryBuilder profileQueryBuilder=
+//		ProfileQueryBuilder profileQueryBuilder=
 		return null;
 	}
 }

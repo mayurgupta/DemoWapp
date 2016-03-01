@@ -63,6 +63,7 @@ implements IUserDao{
     
     
     private Criteria buildQueryFromParams(ProfileQueryBuilder queryBuilder) {
+		return null;
     	
     }
 
