@@ -59,8 +59,10 @@ public class DashboardController extends AbstractRestController<Object>{
 	public Response planMyTransportation(@Context UriInfo uriInfo,@InjectParam WUserBooking userBooking){
 		System.out.println("executed the controller");
 		System.out.println("this is URI info"+uriInfo);
-		Response.ok(dashboardService.planTransportation(userBooking,getUserDetails().getUserDto())).build();
-		return null;
+		if (getUserDetails() == null) {
+			return Response.ok(dashboardService.planTransportation(userBooking,null)).build();
+		}else{
+			return Response.ok(dashboardService.planTransportation(userBooking,getUserDetails().getUserDto())).build();
+		}
 	}
-	
 }
