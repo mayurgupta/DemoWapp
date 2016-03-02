@@ -8,7 +8,7 @@ truckTransApp.service('LoginService', function ($http) {
             // showProcessDialog();
             console.log(loginData);
             var promise = $.ajax({
-                url: Server + "/truckTrans/login",
+                url: Server + "api/authenticate",
                 data: JSON.stringify(loginData),
                 type: "POST",
                 contentType: "application/json",
