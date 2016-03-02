@@ -154,4 +154,26 @@ public class UserController extends AbstractRestController<UserDTO> {
                         wPassword)).build();
 
     }
+    @POST
+    @Path("/registeruser")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response registerUser(@Valid WUser wuser) {
+    	
+    	return Response.ok(
+    			userService.registerUser(wuser)).build();
+    	
+    }
+    
+    @POST
+    @Path("/editprofile")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editProfile(@Valid WUser wuser) {
+    	
+    	return Response.ok(
+    			userService.editProfile(wuser)).build();
+    	
+    }
+    
 }

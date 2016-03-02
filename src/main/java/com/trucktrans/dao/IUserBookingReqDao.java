@@ -17,5 +17,8 @@ public interface IUserBookingReqDao extends IEntityDao<UserBookingReqDTO, Long>{
 	void planTransportation(WUserBooking userBooking, UserDTO userDTO);
 
 	Object getBookingHistory(UserDTO user);
+
+	Object getSearchResults(String source, String destination, long datefrom,
+			long dateto);
 	
 }

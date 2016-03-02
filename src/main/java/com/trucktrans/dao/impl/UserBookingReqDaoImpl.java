@@ -39,7 +39,10 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 	IUserService userService;
 	@Autowired
 	private PropertiesService propertyService;
+<<<<<<< HEAD
 	
+=======
+>>>>>>> refs/remotes/origin/master
 	
 	@Override
 	public void planTransportation(WUserBooking wUserBooking, UserDTO userDTO) {

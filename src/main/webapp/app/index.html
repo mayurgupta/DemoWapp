@@ -1,109 +1,649 @@
 <!DOCTYPE html>
-<html ng-app="truckTransApp">
-<head>
-    <meta charset="ISO-8859-1">
-    <title>TruckTrans</title>
-    <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="assets/css/jquery/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap-select.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap-theme.min.css">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>TruckTrans... Simplifying the Logistics</title>
+		<meta name="description" content="B2B/C2B service providin transporters to manufacturers" />
+		<meta name="keywords" content="truck, logistics, goods, carrier, transport, manufacturers, transporters, goods carrier" />
+		<meta name="author" content="Mayur Gupta" />
+		<!-- Bootstrap -->
+		<script src="assets/libs/others/modernizr.custom.js"></script>
+		<link href="assets/css/common.css" rel="stylesheet" type="text/css"/>
+		<link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/css/jquery/jquery.fancybox.css" rel="stylesheet">
+		<link href="assets/css/custom/flickity.css" rel="stylesheet" >
+		<link href="assets/css/custom/animate.css" rel="stylesheet">
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+		<link href="assets/css/custom/styles.css" rel="stylesheet">
+		<link href="assets/css/custom/queries.css" rel="stylesheet">
+		<!-- Facebook and Twitter integration -->
+		<meta property="og:title" content=""/>
+		<meta property="og:image" content=""/>
+		<meta property="og:url" content=""/>
+		<meta property="og:site_name" content=""/>
+		<meta property="og:description" content=""/>
+		<meta name="twitter:title" content="" />
+		<meta name="twitter:image" content="" />
+		<meta name="twitter:url" content="" />
+		<meta name="twitter:card" content="" />
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="assets/css/custom/custom.css">
+		<!-- Angular JS-->
+		<script src="assets/libs/angularJs/angular.min.js"></script>
+		<script src="assets/libs/angularJs/angular-ui-router.js"></script>
+		<script src="assets/libs/angularJs/angular-route.min.js"></script>
 
-    <!--jQuery-->
-    <script type="text/javascript" src="assets/libs/Jquery/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="assets/libs/Jquery/jquery-ui.js"></script>
-    <script type="text/javascript" src="assets/libs/bootstrap/bootstrap.min.js"></script>
+		<!--Controllers & other JS files-->
+		<script src="app.js" type="text/javascript"></script>
 
+		<!--Booking Details-->
+		<script src="components/booking/bookingController.js"></script>
+		<script src="components/booking/bookingService.js"></script>
 
+		<!--Login Details-->
+		<script src="components/login/loginController.js"></script>
+		<script src="components/login/loginService.js"></script>
+		
+		
+	</head>
+	<body ng-app="truckTransApp" ng-controller="mainController"	>
+		<!--[if lt IE 7]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		<!-- open/close -->
+		<header>
+		<section class="hero">
+				<div class="texture-overlay"></div>
+				<div class="container">
+					<div class="row nav-wrapper">
+						<div class="col-md-6 col-sm-6 col-xs-6 text-left">
+							<a href="#"><img src="assets/img/logo-white.png" alt="Boxify Logo"></a>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
+							<p>MENU</p><a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#"><span></span></a>
+						</div>
+					</div>
+					<div class="row hero-content">
+						<div class="col-md-12">
+							<h1 class="animated fadeInDown">TruckTrans... Simplifying Logistics at your Ease</h1>
+							<a href="#plantransport" class="use-btn animated fadeInUp">Plan Transportation</a> <a href="#about" class="learn-btn animated fadeInUp">Learn more here<i class="fa fa-arrow-down"></i></a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</header>
+		<section class="video" id="about">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<h1><a href="http://www.youtube.com/embed/9No-FiEInLA?autoplay=1&wmode=opaque&fs=1" class="youtube-media"><i class="fa fa-play-circle-o"></i> Watch the Video</a></h1>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="features-intro">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-6 nopadding features-intro-img">
+						<div class="features-bg">
+							<div class="texture-overlay"></div>
+							<div class="features-img wp1">
+							<!-- cat apply truckzoo logo if required -->
+								<!-- <img src="img/html5-logo.png" alt="HTML5 Logo"> -->
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 nopadding">
+						<div class="features-slider">
+								<ul class="slides" id="featuresSlider">
+									<li>
+										<h1>Multi-Purpose User Centric Process</h1>
+										<p>Booking your Truck is now just a matter of few clicks</p>
+										<!-- <p><a href="http://tympanus.net/codrops/?p=22554" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p> -->
+									</li>
+									<li>
+										<h1>Made with Love, at your Doorsteps</h1>
+										<p>Hassel free service, payment after compleation</p>
+										<!-- <p><a href="http://tympanus.net/codrops/?p=22554" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p> -->
+									</li>
+									<li>
+										<h1>The Fore-front of connecting India &amp; Technology</h1>
+										<p>kuch socho likhne ko </p><br 	>
+										<!-- <p><a href="#features" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p> -->
+									</li>
+								</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="features-list" id="features">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
 
-    <!-- Angular JS-->
-    <script src="assets/libs/angularJs/angular.min.js"></script>
-    <script src="assets/libs/angularJs/angular-ui-router.js"></script>
-    <script src="assets/libs/angularJs/angular-route.min.js"></script>
+						<div class="col-md-4 feature-1 wp2">
+							<div class="feature-icon">
+								<i class="fa fa-desktop"></i>
+							</div>
+							<div class="feature-content">
+								<h1>Reliable</h1>
+								<p>On Time delivery with GPS tracking</p>
+								<a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+							</div>
+						</div>
+						<div class="col-md-4 feature-2 wp2 delay-05s">
+							<div class="feature-icon">
+								<i class="fa fa-flash"></i>
+							</div>
+							<div class="feature-content">
+								<h1>Productive</h1>
+								<p>Now increase your Productivity by keeping all the trucks engaged</p>
+								<a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+							</div>
+						</div>
+						<div class="col-md-4 feature-3 wp2 delay-1s">
+							<div class="feature-icon">
+								<i class="fa fa-heart"></i>
+							</div>
+							<div class="feature-content">
+								<h1>Hassel-Free</h1>
+								<p>follow 3-Steps process, Sit back and grab a glass of beer</a>. </p>
+								<a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+							</div>
+						</div>
 
-    <!--Controllers & other JS files-->
-    <script src="app.js"></script>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="showcase">
+			<div class="showcase-wrap">
+				<div class="texture-overlay"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="device wp5">
+								<!-- <div class="device-content">
+									<div class="showcase-slider">
+										<ul class="slides" id="showcaseSlider">
+											<li>
+												<img src="img/screen1.jpg" alt="Device Content Image">
+											</li>
+											<li>
+												<img src="img/screen2.jpg" alt="Device Content Image">
+											</li>
+											<li>
+												<img src="img/screen3.jpg" alt="Device Content Image">
+											</li>
+										</ul>
+									</div>
+								</div> -->
+							</div>
+						</div>
+						<div class="col-md-6">
+							<h1>Showcase your Product or Service</h1>
+							<p>think of some good content here,think of some good content here,think of some good content here,think of some good content here,think of some good content here,think of some good content here,think of some good content here</p>
+							<blockquote class="team-quote">
+								<div class="avatar"><img src="assets/img/avatar.png" alt="User Avatar"></div>
+								<p>"think of some good content here,think of some good content here,think of some good content here,think of some good content here,think of some good content here" - Proud to be a gamer</p>
+								<div class="logo-quote">
+									<a href="http://tympanus.net/codrops/"><img src="assets/img/codrops-logo.png" alt="Codrops Logo"></a>
+								</div>
+							</blockquote>
+							<a href="http://tympanus.net/codrops/?p=22554" class="download-btn">Download! <i class="fa fa-download"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <script src="components/home/homeController.js"></script>
+		<section class="screenshots-intro" id="plantransport" ng-controller="bookingController">
+			<form name="userForm" ng-submit="book(user)" novalidate>
 
-</head>
-<body>
-<header ng-controller="headerController">
-    <div class="">
-        <ul>
-            <li><a href="" style="float: left">Logo</a></li>
-            <li><a href="" style="float: right" ng-click="openSignUpForm()">SignIn/SignUp</a></li>
-        </ul>
-    </div>
-</header>
+			<div class="div-left">
 
-<div ng-view></div>
-<footer>
-    <div>
-        Version 1.0|Copyright &#169; Truck-Trans
-    </div>
-</footer>
+<h1>Source Details</h1>
 
-
-<!-- Sign Up pop-up-->
-<div id="user-sign-up" class="modal" role="dialog" ng-controller="headerController">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="message-header" style="font-weight:bold;">SignUp here</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" role="form" method="post"
-                      ng-submit="signUp(user)">
-                    <div class="form-group">
-                        <label class="control-label col-sm-5" for="fullName">Full Name:</label>
-
-                        <div class="col-sm-7">
-                            <input type="text" name="fullName" id="fullName"
-                                   ng-model="user.fullName"
-                                   class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-sm-5" for="email">Email Address:</label>
-
-                        <div class="col-sm-7">
-                            <input type="email" name="email" id="email"
-                                   ng-model="user.email"
-                                   class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-5" for="Address">Address:</label>
-
-                        <div class="col-sm-7">
-                            <textarea name="Address" id="Address"
-                                      ng-model="user.Address"
-                                      class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <input type="submit" class="btn btn-default" value="SignUp">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                Cancel
-                            </button>
-
-                        </div>
-                    </div>
-                </form>
-            </div>
-
+<!-- NAME -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+            <input type="text" name="name"  placeholder="Name*" class="form-controll" ng-model="user.name" required>
+            <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
         </div>
 
-    </div>
-</div>
+<!-- EMAIL -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+            <input type="email" placeholder="E-mail*"  name="email" class="form-controll" ng-model="user.email">
+            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+        </div>
 
-</body>
+
+<!-- Primary contact -->
+				<div class="form-group"
+					ng-class="{ 'has-error' : userForm.primaryContact.$invalid && !userForm.primaryContact.$pristine }">
+					 <input type="number"  placeholder="Primary Contact" name="primaryContact"
+						class="form-controll" ng-model="user.primaryContact" ng-minlength="10"
+						ng-maxlength="10">
+					<p ng-show="userForm.primaryContact.$error.minlength" class="help-block">primary contact
+						is too short.</p>
+					<p ng-show="userForm.primaryContact.$error.maxlength" class="help-block">primary contact
+						is too long.</p>
+				</div>
+
+
+<!-- Secondary contact -->
+				<div class="form-group"
+					ng-class="{ 'has-error' : userForm.secondaryContact.$invalid && !userForm.secondaryContact.$pristine }">
+					<input type="number"   placeholder="Source Secondary Contact"  name="secondryContact"
+						class="form-controll" ng-model="user.secondaryContact" ng-minlength="10"
+						ng-maxlength="10">
+					<p ng-show="userForm.secondaryContact.$error.minlength" class="help-block">Secondary contact
+						is too short.</p>
+					<p ng-show="userForm.secondaryContact.$error.maxlength" class="help-block">Secondary contact
+						is too long.</p>
+				</div>
+					
+<!-- source state -->
+					<div class="form-group"
+					ng-class="{ 'has-error' : userForm.srcState.$invalid && !userForm.srcState.$pristine }">
+					<select name="srcState"  class="form-controll" ng-model="user.srcState" required>
+					  <option default selected disabled="disabled" value=""  > Select Your State</option>
+					  <option value="Madhyapradesh">Madhya-Pradesh</option>
+					</select> 
+					<p ng-show="userForm.srcState.$invalid && !userForm.srcState.$pristine" class="help-block">Source state is required.</p>
+					</div>
+
+<!-- source City -->
+					<div class="form-group"
+					ng-class="{ 'has-error' : userForm.srcCity.$invalid && !userForm.srcCity.$pristine }">
+					<select name="srcCity"  class="form-controll" ng-model="user.srcCity" required>
+					  <option default selected disabled="disabled" value=""  > Select Your City</option>
+					  <option value="Indore">Indore</option>
+					</select> 
+					<p ng-show="userForm.srcCity.$invalid && !userForm.srcCity.$pristine" class="help-block">Source city is required.</p>
+					</div>
+				
+<!-- Source address-->
+				<div class="form-group"
+					ng-class="{ 'has-error' : userForm.srcAddress.$invalid && !userForm.srcAddress.$pristine }">
+					<input type="text" placeholder="Source Address" name="srcAddress"
+						class="form-controll" ng-model="user.srcAddress" required >
+					<p ng-show="userForm.srcAddress.$invalid && !userForm.srcAddress.$pristine" class="help-block">You name is required.</p>
+				</div>				
+
+<!-- Pin No.-->
+				<div class="form-group"
+					ng-class="{ 'has-error' : userForm.srcPin.$invalid && !userForm.srcPin.$pristine }">
+					 <input type="number"  placeholder="Pin No." name="srcPin"
+						class="form-controll" ng-model="user.srcPin" ng-minlength="6"
+						ng-maxlength="6">
+					<p ng-show="userForm.srcPin.$error.minlength" class="help-block">Should be 6 Digits</p>
+					<p ng-show="userForm.srcPin.$error.maxlength" class="help-block">Should be 6 Digits</p>
+				</div>
+				
+
+ <!-- Truck Type-->				
+<!--					<div class="form-group"
+					ng-class="{ 'has-error' : userForm.srcpin.$invalid && !userForm.srcpin.$pristine }">
+					<select name="truckType" class="form-controll" ng-model="user.truckType" required>
+					  <option value="volvo">Volvo</option>
+					  <option value="saab">Saab</option>
+					  <option value="mercedes">Mercedes</option>
+					  <option value="audi">Audi</option>
+					</select> 
+					<p ng-show="userForm.srcaddress.$invalid && !userForm.srcaddress.$pristine" class="help-block">srcaddress is required.</p>
+					</div>
+ -->				
+
+
+<!-- Gooods details and remarks-->				
+					<div class="form-group"
+					ng-class="{ 'has-error' : userForm.goodsDescp.$invalid && !userForm.goodsDescp.$pristine }">
+					<textarea placeholder="Goods Description" rows="8" class="textareablk" cols="65" name="goodsDescp" ng-model="user.goodsDescp" required >
+						</textarea>
+					<p ng-show="userForm.goodsDescp.$invalid && !userForm.goodsDescp.$pristine" class="help-block">Goods description is required.</p>
+					</div>
+			</div>
+			
+			
+			
+			
+				<div class="div-right">
+<h1>Destination Details</h1>
+
+<!--Destination NAME -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.desname.$invalid && !userForm.desname.$pristine }">
+            <input type="text" name="desname"  placeholder="Destination Point of Contact" class="form-controll" ng-model="user.desname" required>
+            <p ng-show="userForm.desname.$invalid && !userForm.desname.$pristine" class="help-block">You name is required.</p>
+        </div>
+
+<!--Destination Primary contact -->
+				<div class="form-group"
+					ng-class="{ 'has-error' : userForm.desPrimarycontact.$invalid && !userForm.desPrimarycontact.$pristine }">
+					 <input type="number"  placeholder="Destination Primary Contact" name="desPrimarycontact"
+						class="form-controll" ng-model="user.desPrimarycontact" ng-minlength="10"
+						ng-maxlength="10">
+					<p ng-show="userForm.desPrimarycontact.$error.minlength" class="help-block">Destination primary contact
+						is too short.</p>
+					<p ng-show="userForm.desPrimarycontact.$error.maxlength" class="help-block">Destination primary contact
+						is too long.</p>
+				</div>
+
+
+<!-- Secondary contact -->
+				<div class="form-group"
+					ng-class="{ 'has-error' : userForm.desSecondarycontact.$invalid && !userForm.desSecondarycontact.$pristine }">
+					<input type="number"   placeholder="Destination Secondary Contact"  name="desSecondarycontact"
+						class="form-controll" ng-model="user.desSecondarycontact" ng-minlength="10"
+						ng-maxlength="10">
+					<p ng-show="userForm.desSecondarycontact.$error.minlength" class="help-block">Destination secondary contact
+						is too short.</p>
+					<p ng-show="userForm.desSecondarycontact.$error.maxlength" class="help-block">Destination secondary contact
+						is too long.</p>
+				</div>
+					
+<!-- source state -->
+<!-- 					<div class="form-group"
+					ng-class="{ 'has-error' : userForm.srcstate.$invalid && !userForm.srcstate.$pristine }">
+					<select name="srcstate"  class="form-controll" ng-model="user.srcstate" required>
+					  <option default selected disabled="disabled" value=""  > Select Your State</option>
+					  <option value="Madhyapradesh">Madhyapradesh</option>
+					</select> 
+					<p ng-show="userForm.srcstate.$invalid && !userForm.srcstate.$pristine" class="help-block">srcstate is required.</p>
+					</div>
+
+source City
+					<div class="form-group"
+					ng-class="{ 'has-error' : userForm.srccity.$invalid && !userForm.srccity.$pristine }">
+					<select name="srccity"  class="form-controll" ng-model="user.srccity" required>
+					  <option default selected disabled="disabled" value=""  > Select Your City</option>
+					  <option value="Indore">Indore</option>
+					</select> 
+					<p ng-show="userForm.srccity.$invalid && !userForm.srccity.$pristine" class="help-block">srccity is required.</p>
+					</div>
+ -->				
+<!--Destination address-->
+				<div class="form-group"
+					ng-class="{ 'has-error' : userForm.desAddress.$invalid && !userForm.desAddress.$pristine }">
+					<input type="text" placeholder="Destination Address" name="desAddress"
+						class="form-controll" ng-model="user.desAddress" required >
+					<p ng-show="userForm.desAddress.$invalid && !userForm.desAddress.$pristine" class="help-block">Destination Address required.</p>
+				</div>				
+
+<!-- Pin No.-->
+				<div class="form-group"
+					ng-class="{ 'has-error' : userForm.desPin.$invalid && !userForm.desPin.$pristine }">
+					 <input type="number"  placeholder="Destination Pin No." name="desPin"
+						class="form-controll" ng-model="user.desPin" ng-minlength="10"
+						ng-maxlength="10">
+					<p ng-show="userForm.desPin.$error.minlength" class="help-block">despin
+						is too short.</p>
+					<p ng-show="userForm.desPin.$error.maxlength" class="help-block">despin
+						is too long.</p>
+				</div>
+				
+
+ <!-- Truck Type-->				
+<!--					<div class="form-group"
+					ng-class="{ 'has-error' : userForm.srcpin.$invalid && !userForm.srcpin.$pristine }">
+					<select name="truckType" class="form-controll" ng-model="user.truckType" required>
+					  <option value="volvo">Volvo</option>
+					  <option value="saab">Saab</option>
+					  <option value="mercedes">Mercedes</option>
+					  <option value="audi">Audi</option>
+					</select> 
+					<p ng-show="userForm.srcaddress.$invalid && !userForm.srcaddress.$pristine" class="help-block">srcaddress is required.</p>
+					</div>
+ -->				
+
+
+<!-- remarks-->				
+					<div class="form-group"
+					ng-class="{ 'has-error' : userForm.remarks.$invalid && !userForm.remarks.$pristine }">
+					<textarea placeholder="Remarks" rows="8" class="textareablk" cols="65" name="remarks" ng-model="user.remarks" required >
+						</textarea>
+					<p ng-show="userForm.remarks.$invalid && !userForm.remarks.$pristine" class="help-block">Remarks</p>
+					</div>		
+					
+							
+			</div>
+
+
+
+				<button type="submit" class="btn btn-primary btn-large">Submit</button>
+			</form>
+
+			<!-- <div class="row">
+					<div class="col-md-12">
+						<h1>Source Description</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+						<p><a href="#screenshots" class="arrow-btn">See the screenshots! <i class="fa fa-long-arrow-right"></i></a></p>
+					</div>
+				</div> -->
+
+			
+			
+		</section>
+		<section class="screenshots" id="screenshots">
+			<div class="container-fluid">
+				<div class="row">
+					<ul class="grid">
+						<li>
+							<figure>
+								<img src="assets/img/01-screenshot.jpg" alt="Screenshot 01">
+								<figcaption>
+								<div class="caption-content">
+									<a href="assets/img/large/01.jpg" class="single_image">
+										<i class="fa fa-search"></i><br>
+										<p>Optimised For Design</p>
+									</a>
+								</div>
+								</figcaption>
+							</figure>
+						</li>
+						<li>
+							<figure>
+								<img src="assets/img/02-screenshot.jpg" alt="Screenshot 01">
+								<figcaption>
+								<div class="caption-content">
+									<a href="assets/img/large/02.jpg" class="single_image">
+										<i class="fa fa-search"></i><br>
+										<p>User Centric Design</p>
+									</a>
+								</div>
+								</figcaption>
+							</figure>
+						</li>
+						<li>
+							<figure>
+								<img src="assets/img/03-screenshot.jpg" alt="Screenshot 01">
+								<figcaption>
+								<div class="caption-content">
+									<a href="assets/img/large/03.jpg" class="single_image">
+										<i class="fa fa-search"></i><br>
+										<p>Responsive and Adaptive</p>
+									</a>
+								</div>
+								</figcaption>
+							</figure>
+						</li>
+						<li>
+							<figure>
+								<img src="assets/img/04-screenshot.jpg" alt="Screenshot 01">
+								<figcaption>
+								<div class="caption-content">
+									<a href="assets/img/large/04.jpg" class="single_image">
+										<i class="fa fa-search"></i><br>
+										<p>Absolutely Free</p>
+									</a>
+								</div>
+								</figcaption>
+							</figure>
+						</li>
+					</ul>
+				</div>
+				<div class="row">
+					<ul class="grid">
+						<li>
+							<figure>
+								<img src="assets/img/05-screenshot.jpg" alt="Screenshot 01">
+								<figcaption>
+								<div class="caption-content">
+									<a href="assets/img/large/05.jpg" class="single_image">
+										<i class="fa fa-search"></i><br>
+										<p>Multi-Purpose Design</p>
+									</a>
+								</div>
+								</figcaption>
+							</figure>
+						</li>
+						<li>
+							<figure>
+								<img src="assets/img/06-screenshot.jpg" alt="Screenshot 01">
+								<figcaption>
+								<div class="caption-content">
+									<a href="assets/img/large/06.jpg" class="single_image">
+										<i class="fa fa-search"></i><br>
+										<p>Exclusive to Codrops</p>
+									</a>
+								</div>
+								</figcaption>
+							</figure>
+						</li>
+						<li>
+							<figure>
+								<img src="assets/img/07-screenshot.jpg" alt="Screenshot 01">
+								<figcaption>
+								<div class="caption-content">
+									<a href="assets/img/large/07.jpg" class="single_image">
+										<i class="fa fa-search"></i><br>
+										<p>Made with Love</p>
+									</a>
+								</div>
+								</figcaption>
+							</figure>
+						</li>
+						<li>
+							<figure>
+								<img src="assets/img/08-screenshot.jpg" alt="Screenshot 01">
+								<figcaption>
+								<div class="caption-content">
+									<a href="assets/img/large/08.jpg" class="single_image">
+										<i class="fa fa-search"></i><br>
+										<p>In Sydney, Australia</p>
+									</a>
+								</div>
+								</figcaption>
+							</figure>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="download" id="download">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center wp4">
+						<h1>Seen Enough?</h1>
+						<a href="http://tympanus.net/codrops/?p=22554" class="download-btn">Download! <i class="fa fa-download"></i></a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<h1 class="footer-logo">
+						<img src="assets/img/logo-blue.png" alt="Footer Logo Blue">
+						</h1>
+						<p>© Boxify 2015 - <a href="http://tympanus.net/codrops/licensing/">Licence</a> - Designed &amp; Developed by <a href="http://www.peterfinlan.com/">Peter Finlan</a></p>
+					</div>
+					<div class="col-md-7">
+						<ul class="footer-nav">
+							<li><a href="#about">About</a></li>
+							<li><a href="#features">Features</a></li>
+							<li><a href="#screenshots">Screenshots</a></li>
+							<li><a href="#download">Download</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<div class="overlay overlay-boxify">
+			<nav>
+				<ul>
+					<li><a href="#about"><i class="fa fa-heart"></i>About</a></li>
+					<li><a href="#features"><i class="fa fa-flash"></i>Features</a></li>
+					<li><a href="#screenshots"><i class="fa fa-desktop"></i>Screenshots</a></li>
+					<li><a href="#download"><i class="fa fa-download"></i>Download</a></li>
+				</ul>
+				<ul>
+
+					<li><a data-target="#myModal" data-toggle="modal" ><i class="fa fa-download"></i>AdminLogin</a></li>
+					<li><a href="#screenshots"><i class="fa fa-desktop"></i>Logout</a></li>
+					<li><a href="#download"><i class="fa fa-download"></i>Download</a></li>
+				</ul>
+			</nav>
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="assets/libs/others/toucheffects-min.js"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- 		<script src="https://code.angularjs.org/1.4.0-rc.1/angular.js"></script> -->
+		<script src="assets/libs/others/flickity.pkgd.min.js"></script>
+		<script src="assets/libs/others/jquery.fancybox.pack.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="assets/libs/others/retina.js"></script>
+		<script src="assets/libs/others/waypoints.min.js"></script>
+		<script src="assets/libs/others/bootstrap.min.js"></script>
+		<script src="assets/libs/others/scripts-min.js"></script>
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<script>
+		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+		e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+		e.src='//www.google-analytics.com/analytics.js';
+		r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+		ga('create','UA-XXXXX-X');ga('send','pageview');
+		</script>
+
+
+		<div id="myModal" class="modal fade" data-ng-controller="LoginController">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Login here...</h4>
+					</div>
+					<div class="modal-body">
+						<label>User Id</label><input type="text" data-ng-model="user.id">
+						<label>Password</label><input type="password" data-ng-model="user.password">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" data-ng-click="login(user)">Login</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+	</body>
 </html>

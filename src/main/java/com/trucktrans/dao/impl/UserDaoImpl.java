@@ -60,4 +60,12 @@ implements IUserDao{
         }
         update(userDTO);
     }
+    
+    
+    private Criteria buildQueryFromParams(ProfileQueryBuilder queryBuilder) {
+		return null;
+    	
+    }
+
+    
 }

@@ -426,4 +426,48 @@ public class UserService implements IUserService{
 				});
 	}
 
+	@Override
+	public Object registerUser(WUser wuser) {
+		validateNewUser(wuser);
+		UserDTO userDTO = new UserDTO();
+		userDTO.setEnabled(true);
+		userDTO.setPassword(ENCODER.encode(wuser.getPassword()));
+		userDTO.setUserName(wuser.getUserName());
+		userDTO.setEmail(wuser.getEmail());
+		userDTO.setName(wuser.getName());
+		String roleDesc = null;
+		userDao.save(userDTO);
+		// Adding roles to user
+		Set<UserRolesREF> auths = getUserRoleRefs(
+				getRolesByIds(wuser.getAuths()), userDTO);
+		
+		// TODO write the proper logic for roles handling
+		for (UserRolesREF userRolesREF : auths) {
+			if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_TRANSPORTER") {
+				roleDesc="TRANSPORTER";
+				break;
+			}
+			else if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_USER") {
+				roleDesc="USER";
+			}
+		}
+		userDTO.setUserRolesREFs(auths);
+		
+		String subject = propertyService.findByPropertyName(
+				"register.user.subject").getPropertyValue();
+		String emailBody = propertyService.findByPropertyName(
+				"register.user.content").getPropertyValue();
+		String passwordKey = String.valueOf(PwdGenerator.generatePswd(8, 15, 2, 1, 1));
+		
+		String content = StringEscapeUtils.unescapeJava(Util.formatString(emailBody, new Object[] { userDTO.getName(),roleDesc,
+				passwordKey }));
+		sendMailAfterCommit(userDTO.getEmail(), subject, content);
+		return userDao.save(userDTO);
+	}
+
+	@Override
+	public Object editProfile(WUser wuser) {
+//		ProfileQueryBuilder profileQueryBuilder=
+		return null;
+	}
 }
