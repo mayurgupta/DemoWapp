@@ -25,10 +25,8 @@ public class DashboardServiceImpl implements IDashBoardService{
 	@Autowired
 	IUserBookingReqDao userBookingDao;
 	
-	
-	
 	@Override
-	public Object planTransportation(WUserBooking userBooking) {
+	public Object planTransportation(WUserBooking userBooking, UserDTO userDTO) {
 		userBookingDao.planTransportation(userBooking,userDTO);
 		return null;
 	}

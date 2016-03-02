@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.trucktrans.dao.IStateInfoDao;
 import com.trucktrans.services.IFilterServices;
 
 
@@ -26,13 +27,15 @@ import com.trucktrans.services.IFilterServices;
 @Scope("request")
 public class Filters {
 	@Autowired
+	IStateInfoDao stateInfoDao;
+	@Autowired
     private IFilterServices filterService;
 
     @GET
+    @Path("/filters")
     @Produces({ MediaType.APPLICATION_JSON })
     public Response getFilters() {
-    	
-        return Response.ok("man").build();
+        return Response.ok(stateInfoDao.getAllStates()).build();
     }
     
     @GET

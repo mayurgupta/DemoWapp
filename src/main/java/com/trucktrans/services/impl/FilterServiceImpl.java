@@ -47,7 +47,8 @@ public class FilterServiceImpl implements IFilterServices{
 	public Map<String, Object> getAppInitialFilters(UserDTO user, boolean includeCompetitor) {
 		Map<String, Object> userDataMap=new LinkedHashMap<String, Object>();
 		userDataMap.put("userBookingHistory", userBookingReqDao.getBookingHistory(user));
-		userDataMap.put("stateList", stateInfoDao.getAllStates());
+		// provide other required info in the map here
+//		userDataMap.put("stateList", stateInfoDao.getAllStates());
 		return userDataMap;
 	}
 	
