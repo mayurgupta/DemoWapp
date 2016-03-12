@@ -19,6 +19,7 @@
     <security:http pattern="/404.html" security="none" />
      
     <security:http entry-point-ref="customAuthenticationEntryPointApi" pattern="/api/**">
+    <security:csrf disabled="true"/>
       <security:intercept-url pattern="/api/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
       <security:custom-filter ref="customLoginFilter" position="FORM_LOGIN_FILTER"/>
       <security:custom-filter ref="customLogoutFilter" position="LOGOUT_FILTER"/>

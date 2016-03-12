@@ -41,6 +41,7 @@ public class CustomUsernamePasswordAuthenticationFilter extends AbstractAuthenti
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
             HttpServletResponse response) throws AuthenticationException {
+    	 System.out.println("this is the method type"+ request.getMethod());
         if (postOnly && !"POST".equals(request.getMethod())) {
             throw new AuthenticationServiceException(
                     "Authentication method not supported: "
