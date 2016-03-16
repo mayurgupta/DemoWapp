@@ -8,7 +8,7 @@ truckTransApp.service('RegisterService', function ($http) {
             // showProcessDialog();
             console.log(userData);
             var promise = $.ajax({
-                url: Server + "/truckTrans/register",
+                url: Server + "api/users/registeruser",
                 data: JSON.stringify(userData),
                 type: "POST",
                 contentType: "application/json",
