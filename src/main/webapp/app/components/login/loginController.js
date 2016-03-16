@@ -3,6 +3,8 @@
  */
 truckTransApp.controller('LoginController', ['$scope', 'LoginService', function ($scope, LoginService) {
     $scope.login = function (loginData) {
+        $("#myModal").hide();
+        userLogin=true;
         var itemToLogin={};
         itemToLogin.userName=loginData.id;
         itemToLogin.password=loginData.password;
