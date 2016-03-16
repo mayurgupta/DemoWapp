@@ -3,6 +3,7 @@
  */
 var truckTransApp = angular.module('truckTransApp', ['ngRoute']);
 var Server="http://localhost:8081/techtrans/";
+var userLogin=false;
 
 truckTransApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.

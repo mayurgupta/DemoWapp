@@ -55,8 +55,12 @@
 		<!--Login Details-->
 		<script src="app/components/login/loginController.js"></script>
 		<script src="app/components/login/loginService.js"></script>
-		
-		
+
+
+		<!--Register User-->
+		<script src="app/components/register/registerController.js"></script>
+		<script src="app/components/register/registerService.js"></script>
+
 	</head>
 	<body ng-app="truckTransApp" ng-controller="mainController"	>
 		<!--[if lt IE 7]>
@@ -176,21 +180,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="device wp5">
-								<!-- <div class="device-content">
-									<div class="showcase-slider">
-										<ul class="slides" id="showcaseSlider">
-											<li>
-												<img src="img/screen1.jpg" alt="Device Content Image">
-											</li>
-											<li>
-												<img src="img/screen2.jpg" alt="Device Content Image">
-											</li>
-											<li>
-												<img src="img/screen3.jpg" alt="Device Content Image">
-											</li>
-										</ul>
-									</div>
-								</div> -->
+
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -254,14 +244,14 @@
 					<p ng-show="userForm.secondaryContact.$error.maxlength" class="help-block">Secondary contact
 						is too long.</p>
 				</div>
-					
+
 <!-- source state -->
 					<div class="form-group"
 					ng-class="{ 'has-error' : userForm.srcState.$invalid && !userForm.srcState.$pristine }">
 					<select name="srcState"  class="form-controll" ng-model="user.srcState" required>
 					  <option default selected disabled="disabled" value=""  > Select Your State</option>
 					  <option value="Madhyapradesh">Madhya-Pradesh</option>
-					</select> 
+					</select>
 					<p ng-show="userForm.srcState.$invalid && !userForm.srcState.$pristine" class="help-block">Source state is required.</p>
 					</div>
 
@@ -271,17 +261,17 @@
 					<select name="srcCity"  class="form-controll" ng-model="user.srcCity" required>
 					  <option default selected disabled="disabled" value=""  > Select Your City</option>
 					  <option value="Indore">Indore</option>
-					</select> 
+					</select>
 					<p ng-show="userForm.srcCity.$invalid && !userForm.srcCity.$pristine" class="help-block">Source city is required.</p>
 					</div>
-				
+
 <!-- Source address-->
 				<div class="form-group"
 					ng-class="{ 'has-error' : userForm.srcAddress.$invalid && !userForm.srcAddress.$pristine }">
 					<input type="text" placeholder="Source Address" name="srcAddress"
 						class="form-controll" ng-model="user.srcAddress" required >
 					<p ng-show="userForm.srcAddress.$invalid && !userForm.srcAddress.$pristine" class="help-block">You name is required.</p>
-				</div>				
+				</div>
 
 <!-- Pin No.-->
 				<div class="form-group"
@@ -292,9 +282,9 @@
 					<p ng-show="userForm.srcPin.$error.minlength" class="help-block">Should be 6 Digits</p>
 					<p ng-show="userForm.srcPin.$error.maxlength" class="help-block">Should be 6 Digits</p>
 				</div>
-				
 
- <!-- Truck Type-->				
+
+ <!-- Truck Type-->
 <!--					<div class="form-group"
 					ng-class="{ 'has-error' : userForm.srcpin.$invalid && !userForm.srcpin.$pristine }">
 					<select name="truckType" class="form-controll" ng-model="user.truckType" required>
@@ -302,13 +292,13 @@
 					  <option value="saab">Saab</option>
 					  <option value="mercedes">Mercedes</option>
 					  <option value="audi">Audi</option>
-					</select> 
+					</select>
 					<p ng-show="userForm.srcaddress.$invalid && !userForm.srcaddress.$pristine" class="help-block">srcaddress is required.</p>
 					</div>
- -->				
+ -->
 
 
-<!-- Gooods details and remarks-->				
+<!-- Gooods details and remarks-->
 					<div class="form-group"
 					ng-class="{ 'has-error' : userForm.goodsDescp.$invalid && !userForm.goodsDescp.$pristine }">
 					<textarea placeholder="Goods Description" rows="8" class="textareablk" cols="65" name="goodsDescp" ng-model="user.goodsDescp" required >
@@ -316,10 +306,10 @@
 					<p ng-show="userForm.goodsDescp.$invalid && !userForm.goodsDescp.$pristine" class="help-block">Goods description is required.</p>
 					</div>
 			</div>
-			
-			
-			
-			
+
+
+
+
 				<div class="div-right">
 <h1>Destination Details</h1>
 
@@ -353,14 +343,14 @@
 					<p ng-show="userForm.desSecondarycontact.$error.maxlength" class="help-block">Destination secondary contact
 						is too long.</p>
 				</div>
-					
+
 <!-- source state -->
 <!-- 					<div class="form-group"
 					ng-class="{ 'has-error' : userForm.srcstate.$invalid && !userForm.srcstate.$pristine }">
 					<select name="srcstate"  class="form-controll" ng-model="user.srcstate" required>
 					  <option default selected disabled="disabled" value=""  > Select Your State</option>
 					  <option value="Madhyapradesh">Madhyapradesh</option>
-					</select> 
+					</select>
 					<p ng-show="userForm.srcstate.$invalid && !userForm.srcstate.$pristine" class="help-block">srcstate is required.</p>
 					</div>
 
@@ -370,17 +360,17 @@ source City
 					<select name="srccity"  class="form-controll" ng-model="user.srccity" required>
 					  <option default selected disabled="disabled" value=""  > Select Your City</option>
 					  <option value="Indore">Indore</option>
-					</select> 
+					</select>
 					<p ng-show="userForm.srccity.$invalid && !userForm.srccity.$pristine" class="help-block">srccity is required.</p>
 					</div>
- -->				
+ -->
 <!--Destination address-->
 				<div class="form-group"
 					ng-class="{ 'has-error' : userForm.desAddress.$invalid && !userForm.desAddress.$pristine }">
 					<input type="text" placeholder="Destination Address" name="desAddress"
 						class="form-controll" ng-model="user.desAddress" required >
 					<p ng-show="userForm.desAddress.$invalid && !userForm.desAddress.$pristine" class="help-block">Destination Address required.</p>
-				</div>				
+				</div>
 
 <!-- Pin No.-->
 				<div class="form-group"
@@ -393,9 +383,9 @@ source City
 					<p ng-show="userForm.desPin.$error.maxlength" class="help-block">despin
 						is too long.</p>
 				</div>
-				
 
- <!-- Truck Type-->				
+
+ <!-- Truck Type-->
 <!--					<div class="form-group"
 					ng-class="{ 'has-error' : userForm.srcpin.$invalid && !userForm.srcpin.$pristine }">
 					<select name="truckType" class="form-controll" ng-model="user.truckType" required>
@@ -403,21 +393,21 @@ source City
 					  <option value="saab">Saab</option>
 					  <option value="mercedes">Mercedes</option>
 					  <option value="audi">Audi</option>
-					</select> 
+					</select>
 					<p ng-show="userForm.srcaddress.$invalid && !userForm.srcaddress.$pristine" class="help-block">srcaddress is required.</p>
 					</div>
- -->				
+ -->
 
 
-<!-- remarks-->				
+<!-- remarks-->
 					<div class="form-group"
 					ng-class="{ 'has-error' : userForm.remarks.$invalid && !userForm.remarks.$pristine }">
 					<textarea placeholder="Remarks" rows="8" class="textareablk" cols="65" name="remarks" ng-model="user.remarks" required >
 						</textarea>
 					<p ng-show="userForm.remarks.$invalid && !userForm.remarks.$pristine" class="help-block">Remarks</p>
-					</div>		
-					
-							
+					</div>
+
+
 			</div>
 
 
@@ -433,8 +423,8 @@ source City
 					</div>
 				</div> -->
 
-			
-			
+
+
 		</section>
 		<section class="screenshots" id="screenshots">
 			<div class="container-fluid">
@@ -589,12 +579,16 @@ source City
 					<li><a href="#features"><i class="fa fa-flash"></i>Features</a></li>
 					<li><a href="#screenshots"><i class="fa fa-desktop"></i>Screenshots</a></li>
 					<li><a href="#download"><i class="fa fa-download"></i>Download</a></li>
-				</ul>
-				<ul>
-
 					<li><a data-target="#myModal" data-toggle="modal" ><i class="fa fa-download"></i>AdminLogin</a></li>
+				</ul>
+				<ul ng-show="userLogin" >
+
+
 					<li><a href="#screenshots"><i class="fa fa-desktop"></i>Logout</a></li>
-					<li><a href="#download"><i class="fa fa-download"></i>Download</a></li>
+
+					<li><a data-target="#myModal" data-toggle="modal" ><i class="fa fa-download"></i>History</a></li>
+					<li><a href="#screenshots"><i class="fa fa-desktop"></i>User Profile</a></li>
+					<li><a href="#download"><i class="fa fa-download"></i>Post a quote </a></li>
 				</ul>
 			</nav>
 		</div>
@@ -635,12 +629,66 @@ source City
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-primary" data-ng-click="login(user)">Login</button>
+						<button data-target="#registerUser" data-toggle="modal" type="button" class="btn btn-primary"
+						>Register
+				</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
+<div id="registerUser" class="modal fade" data-ng-controller="RegisterController">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Register here...</h4>
+			</div>
+			<div class="modal-body">
+				<div id="registerForm" >
+					<form role = "form" ng-submit="addUser(user)">
 
+						<div class = "form-group">
+							<label for = "name">Name</label>
+							<input type = "text" class = "form-control" id = "name" placeholder = "Enter Name" data-ng-model="user.name">
+						</div>
+						<div class = "form-group">
+							<label for = "name">Email</label>
+							<input type = "text" class = "form-control" id = "email" placeholder = "Enter Email" data-ng-model="user.email">
+						</div>
+						<div class = "form-group">
+							<label for = "name">Password</label>
+							<input type = "text" class = "form-control" id = "password" placeholder = "Enter password" data-ng-model="user.password">
+						</div>
+						<div class = "form-group">
+							<label for = "name">Confirm Password</label>
+							<input type = "text" class = "form-control" id = "confirmPassword" placeholder = "Confirm password" data-ng-model="user.confirmPassword">
+						</div>
+						<div class = "form-group">
+							<label for = "name">Role</label>
+							<input type = "text" class = "form-control" id = "role" placeholder = "select one" data-ng-model="user.role">
+						</div>
+						<div class = "form-group">
+							<label for = "name">Address</label>
+							<input type ="text" class = "form-control" id = "address" placeholder = "Enter Address" data-ng-model="user.address">
+						</div>
+						<div class = "form-group">
+							<label for = "name">other</label>
+							<input type = "text" class = "form-control" id = "" placeholder = "Enter Name" data-ng-model="user.name">
+						</div>
+						<button type = "submit" class = "btn btn-default">Register</button>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
 
 
 
