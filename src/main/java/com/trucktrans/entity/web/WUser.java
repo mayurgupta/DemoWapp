@@ -20,11 +20,11 @@ import com.trucktrans.entity.dto.UserDTO;
  */
 public class WUser {
 
-	@NotNull(message = "can not be null")
+	/*@NotNull(message = "can not be null")
 	@Min(value = 6, message = "min=6")
 	@Max(value = 20, message = "max=20")
 	private String userName;
-
+*/
 //	@JsonIgnore
 	@NotNull(message = "can not be null")
 	@Min(value = 6, message = "min=6")
@@ -51,18 +51,18 @@ public class WUser {
 
 	public WUser(UserDTO user) {
 		this.name = user.getName();
-		this.userName = user.getUserName();
+//		this.userName = user.getUserName();
 		this.email = user.getEmail();
 	}
 
-	public String getUserName() {
+/*	public String getUserName() {
 		return userName;
 	}
 
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
+*/
 	public String getPassword() {
 		return password;
 	}
@@ -115,8 +115,8 @@ public class WUser {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("WUser [userId=");
-		builder.append(userName);
+//		builder.append("WUser [userId=");
+//		builder.append(userName);
 		builder.append(", password=");
 		builder.append(password);
 		builder.append(", password1=");
