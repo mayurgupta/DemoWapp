@@ -94,11 +94,11 @@ public class UserService implements IUserService{
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	@Override
 	public void update(WUser user) {
-		if (user != null && user.getUserName() != null) {
-			UserDTO userDto = userDao.getByUserName(user.getUserName());
+		if (user != null && user.getEmail() != null) {
+			UserDTO userDto = userDao.getByEmail(user.getEmail());
 			if (userDto == null) {
 				throw new BadRequestException("unknown user "
-						+ user.getUserName());
+						+ user.getEmail());
 			}
 			// TODO set params what to update??
 			userDao.update(userDto);
@@ -149,7 +149,6 @@ public class UserService implements IUserService{
 		UserDTO userDTO = new UserDTO();
 		userDTO.setEnabled(true);
 		userDTO.setPassword(ENCODER.encode(wUser.getPassword()));
-		userDTO.setUserName(wUser.getUserName());
 		userDTO.setEmail(wUser.getEmail());
 		userDTO.setName(wUser.getName());
 		userDao.save(userDTO);
@@ -226,7 +225,7 @@ public class UserService implements IUserService{
 
 		// Checking if the username provided is already in use
 		for (UserDTO userDTO : useDTOs) {
-			if (wUser.getUserName().equals(userDTO.getUserName())) {
+			if (wUser.getEmail().equals(userDTO.getUserName())) {
 				throw new ConflictException(
 						MessageConstants.ERROR_ADD_USER_DUPLICATE_USERNAME
 								.getVal());
@@ -432,7 +431,6 @@ public class UserService implements IUserService{
 		UserDTO userDTO = new UserDTO();
 		userDTO.setEnabled(true);
 		userDTO.setPassword(ENCODER.encode(wuser.getPassword()));
-		userDTO.setUserName(wuser.getUserName());
 		userDTO.setEmail(wuser.getEmail());
 		userDTO.setName(wuser.getName());
 		String roleDesc = null;
