@@ -10,6 +10,9 @@ truckTransApp.config(['$routeProvider', function ($routeProvider) {
         when('/', {
             templateUrl: 'app/index.html',
             controller: 'mainController'
+        }). when('/kkk', {
+            templateUrl: 'app/components/home/home.html',
+            controller: 'HomeController'
         });
 }]);
 

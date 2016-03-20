@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 import com.sun.jersey.api.core.InjectParam;
 import com.trucktrans.dao.IStateInfoDao;
 import com.trucktrans.entity.dto.UserDTO;
+import com.trucktrans.entity.web.WStatus;
 import com.trucktrans.entity.web.WUser;
 import com.trucktrans.entity.web.WUserBooking;
 import com.trucktrans.services.IInitialiseService;
@@ -64,10 +65,25 @@ public class InitialiseController extends AbstractRestController<UserDTO> {
     @Path("/registeruser")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response registerUser(@Valid WUser wuser) {
+    public Response registerUser(WUser wuser) {
+    	
+//    	return Response.ok("this is controller").build();
     	
     	return Response.ok(
     			userService.registerUser(wuser)).build();
+    	
+    }
+    
+    @POST
+    @Path("/registeruser2")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response register2User(WStatus wuser) {
+    	
+    	return Response.ok("this is controller").build();
+    	
+    	/*return Response.ok(
+    			userService.registerUser(wuser)).build();*/
     	
     }
     

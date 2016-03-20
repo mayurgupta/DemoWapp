@@ -154,7 +154,7 @@ public class UserService implements IUserService{
 		userDao.save(userDTO);
 		// Adding roles to user
 		Set<UserRolesREF> auths = getUserRoleRefs(
-				getRolesByIds(wUser.getAuths()), userDTO);
+				getRolesByIds(wUser.getRole()), userDTO);
 		
 		userDTO.setUserRolesREFs(auths);
 		
@@ -187,9 +187,10 @@ public class UserService implements IUserService{
 			userRolesREF.setId(userRolesId);
 			userRolesREF.setUserRoleDTO(userRoleDTO);
 			userRolesREF.setUserDTO(userDTO);
-
+//			System.out.println(userRolesREF.toString());
 			userRolesREFs.add(userRolesREF);
 		}
+		System.out.println(userRolesREFs.toString());
 		return userRolesREFs;
 	}
 
@@ -216,7 +217,7 @@ public class UserService implements IUserService{
 	private boolean validateNewUser(WUser wUser) {
 		// Both the passwords should match to make sure this is the password
 		// user intend to use
-		if (!(wUser.getPassword().equals(wUser.getPassword1()))) {
+		if (!(wUser.getPassword().equals(wUser.getConfirmPassword()))) {
 			throw new BadRequestException(
 					MessageConstants.ERROR_ADD_USER_PASSWORD_NOT_MATCHING
 							.getVal());
@@ -426,6 +427,7 @@ public class UserService implements IUserService{
 	}
 
 	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public Object registerUser(WUser wuser) {
 		validateNewUser(wuser);
 		UserDTO userDTO = new UserDTO();
@@ -433,14 +435,29 @@ public class UserService implements IUserService{
 		userDTO.setPassword(ENCODER.encode(wuser.getPassword()));
 		userDTO.setEmail(wuser.getEmail());
 		userDTO.setName(wuser.getName());
+		userDTO.setUserName(wuser.getEmail());
 		String roleDesc = null;
-		userDao.save(userDTO);
 		// Adding roles to user
-		Set<UserRolesREF> auths = getUserRoleRefs(
-				getRolesByIds(wuser.getAuths()), userDTO);
+				Set<UserRolesREF> auths = getUserRoleRefs(
+						getRolesByIds(wuser.getRole()), userDTO);
+
+				
+				for (UserRolesREF userRolesREF : auths) {
+					if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_TRANSPORTER") {
+						roleDesc="TRANSPORTER";
+						break;
+					}
+					else if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_USER") {
+						roleDesc="USER";
+					}
+				}		
+				
+				
+		userDao.save(userDTO);
+		
 		
 		// TODO write the proper logic for roles handling
-		for (UserRolesREF userRolesREF : auths) {
+		/*for (UserRolesREF userRolesREF : auths) {
 			if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_TRANSPORTER") {
 				roleDesc="TRANSPORTER";
 				break;
@@ -448,7 +465,7 @@ public class UserService implements IUserService{
 			else if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_USER") {
 				roleDesc="USER";
 			}
-		}
+		}*/
 		userDTO.setUserRolesREFs(auths);
 		
 		String subject = propertyService.findByPropertyName(

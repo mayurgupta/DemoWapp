@@ -5,6 +5,7 @@ package com.trucktrans.web.controllers;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -25,7 +26,7 @@ import com.trucktrans.services.IBnQService;
  */
 @Component
 @Scope("request")
-@Path("/bookingandquotes")
+@Path("/bookingnquotes")
 public class BnQController extends AbstractRestController<Object>{
 
 	@Autowired
@@ -36,7 +37,7 @@ public class BnQController extends AbstractRestController<Object>{
 		super(t);
 	}
 
-	@POST
+	@GET
     @Path("/searchbooking")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

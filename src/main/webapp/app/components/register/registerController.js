@@ -13,9 +13,9 @@ truckTransApp.controller('RegisterController', ['$scope', 'RegisterService', fun
         itemToSave.name = userDetails.name;
         itemToSave.password = userDetails.password;
         itemToSave.confirmPassword = userDetails.confirmPassword;
-        itemToSave.role = userDetails.role;
+        itemToSave.role = [1,3]/*userDetails.role*/;
         itemToSave.email = userDetails.email;
-        itemToSave.address=userDetails.address;
+       // itemToSave.address=userDetails.address;
 
 
 

@@ -154,7 +154,9 @@ public class UserController extends AbstractRestController<UserDTO> {
                         wPassword)).build();
 
     }
-    @POST
+    
+    
+    /*@POST
     @Path("/registeruser")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -163,7 +165,7 @@ public class UserController extends AbstractRestController<UserDTO> {
     	return Response.ok(
     			userService.registerUser(wuser)).build();
     	
-    }
+    }*/
     
     @POST
     @Path("/editprofile")

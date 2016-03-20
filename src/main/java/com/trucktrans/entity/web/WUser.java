@@ -33,9 +33,9 @@ public class WUser {
 
 //	@JsonIgnore
 	@NotNull(message = "can not be null")
-	private String password1;
+	private String confirmPassword;
 	
-	private List<Long> auths;
+	private List<Long> role;
 
 	@NotNull(message = "can not be null")
 	@Max(value = 20, message = "max=20")
@@ -71,21 +71,20 @@ public class WUser {
 		this.password = password;
 	}
 
-	public String getPassword1() {
-		return password1;
+	public String getConfirmPassword() {
+		return confirmPassword;
 	}
 
-	public void setPassword1(String password1) {
-		this.password1 = password1;
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
-
-	public List<Long> getAuths() {
-		return auths;
+	public List<Long> getRole() {
+		return role;
 	}
 
-	public void setAuths(List<Long> auths) {
-		this.auths = auths;
+	public void setRole(List<Long> role) {
+		this.role = role;
 	}
 
 	public String getName() {
@@ -120,9 +119,9 @@ public class WUser {
 		builder.append(", password=");
 		builder.append(password);
 		builder.append(", password1=");
-		builder.append(password1);
-		builder.append(", auths=");
-		builder.append(auths);
+		builder.append(confirmPassword);
+		builder.append(", roles=");
+		builder.append(role);
 		builder.append(", name=");
 		builder.append(name);
 		builder.append("]");
