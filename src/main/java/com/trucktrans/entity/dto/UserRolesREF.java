@@ -38,7 +38,8 @@ public class UserRolesREF implements java.io.Serializable {
 	}
 
 	@EmbeddedId
-	@AttributeOverrides({ @AttributeOverride(name = "roleId", column = @Column(name = "ROLE_ID", nullable = false)),
+	@AttributeOverrides({ 
+			@AttributeOverride(name = "roleId", column = @Column(name = "ROLE_ID", nullable = false)),
 			@AttributeOverride(name = "userId", column = @Column(name = "USER_ID", nullable = false)) })
 	public UserRolesId getId() {
 		return this.id;
@@ -68,10 +69,10 @@ public class UserRolesREF implements java.io.Serializable {
 		this.userDTO = userDTO;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "UserRolesREF [id=" + id + ", userRoleDTO=" + userRoleDTO + ", userDTO=" + userDTO + "]";
-	}
+	}*/
 
 	
 	

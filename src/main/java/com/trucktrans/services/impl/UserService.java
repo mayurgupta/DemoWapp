@@ -440,9 +440,9 @@ public class UserService implements IUserService{
 		// Adding roles to user
 				Set<UserRolesREF> auths = getUserRoleRefs(
 						getRolesByIds(wuser.getRole()), userDTO);
-
+				userDTO.setUserRolesREFs(auths);
 				
-				for (UserRolesREF userRolesREF : auths) {
+				/*for (UserRolesREF userRolesREF : auths) {
 					if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_TRANSPORTER") {
 						roleDesc="TRANSPORTER";
 						break;
@@ -451,22 +451,8 @@ public class UserService implements IUserService{
 						roleDesc="USER";
 					}
 				}		
-				
-				
 		userDao.save(userDTO);
-		
-		
-		// TODO write the proper logic for roles handling
-		/*for (UserRolesREF userRolesREF : auths) {
-			if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_TRANSPORTER") {
-				roleDesc="TRANSPORTER";
-				break;
-			}
-			else if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_USER") {
-				roleDesc="USER";
-			}
-		}*/
-		userDTO.setUserRolesREFs(auths);
+		userDTO.setUserRolesREFs(auths);*/
 		
 		String subject = propertyService.findByPropertyName(
 				"register.user.subject").getPropertyValue();

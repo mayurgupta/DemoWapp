@@ -218,14 +218,14 @@ public class UserDTO implements java.io.Serializable {
 		this.transComDetailsDTOs = transComDetailsDTOs;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "UserDTO [userId=" + userId + ", email=" + email + ", enabled=" + enabled + ", name=" + name
 				+ ", password=" + password + ", userName=" + userName + ", createdBy=" + createdBy + ", createdDate="
 				+ createdDate + ", updatedBy=" + updatedBy + ", updatedDate=" + updatedDate + ", passwordChanged="
 				+ passwordChanged + ", appTrackInfoDTOs=" + appTrackInfoDTOs + ", UserRolesREFs=" + UserRolesREFs
 				+ ", userBookingReqDTOs=" + userBookingReqDTOs + ", transComDetailsDTOs=" + transComDetailsDTOs + "]";
-	}
+	}*/
 
 	
 	

@@ -65,10 +65,10 @@ public class UserRolesId implements java.io.Serializable {
 		return result.intValue();
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "UserRolesId [roleId=" + roleId + ", userId=" + userId + "]";
-	}
+	}*/
 	
 	
 
