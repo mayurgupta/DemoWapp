@@ -6,6 +6,7 @@ package com.trucktrans.services.impl;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -29,6 +30,8 @@ import com.trucktrans.constants.MessageConstants;
 import com.trucktrans.constants.RoleConstants.Role;
 import com.trucktrans.dao.IUserDao;
 import com.trucktrans.dao.IUserRolesDao;
+import com.trucktrans.entity.dto.AppTrackInfoDTO;
+import com.trucktrans.entity.dto.TransComDetailsDTO;
 import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.dto.UserRoleDTO;
 import com.trucktrans.entity.dto.UserRolesId;
@@ -437,23 +440,11 @@ public class UserService implements IUserService{
 		userDTO.setName(wuser.getName());
 		userDTO.setUserName(wuser.getEmail());
 		String roleDesc = null;
+		userDao.save(userDTO);
 		// Adding roles to user
 				Set<UserRolesREF> auths = getUserRoleRefs(
 						getRolesByIds(wuser.getRole()), userDTO);
-				userDTO.setUserRolesREFs(auths);
 				
-				/*for (UserRolesREF userRolesREF : auths) {
-					if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_TRANSPORTER") {
-						roleDesc="TRANSPORTER";
-						break;
-					}
-					else if (userRolesREF.getUserRoleDTO().getAuthority()=="ROLE_USER") {
-						roleDesc="USER";
-					}
-				}		
-		userDao.save(userDTO);
-		userDTO.setUserRolesREFs(auths);*/
-		
 		String subject = propertyService.findByPropertyName(
 				"register.user.subject").getPropertyValue();
 		String emailBody = propertyService.findByPropertyName(
@@ -463,6 +454,7 @@ public class UserService implements IUserService{
 		String content = StringEscapeUtils.unescapeJava(Util.formatString(emailBody, new Object[] { userDTO.getName(),roleDesc,
 				passwordKey }));
 		sendMailAfterCommit(userDTO.getEmail(), subject, content);
+		userDTO.setUserRolesREFs(auths);
 		return userDao.save(userDTO);
 	}
 
