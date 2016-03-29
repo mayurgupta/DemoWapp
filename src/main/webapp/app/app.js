@@ -3,19 +3,43 @@
  */
 var truckTransApp = angular.module('truckTransApp', ['ngRoute']);
 var Server="http://localhost:8081/techtrans/";
-var userLogin=false;
+
 
 truckTransApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
-        when('/', {
-            templateUrl: 'app/index.html',
-            controller: 'mainController'
-        }). when('/kkk', {
+      when('/', {
             templateUrl: 'app/components/home/home.html',
             controller: 'HomeController'
+        }).when('/userDashboard', {
+            templateUrl: 'app/components/user/userDetails.html',
+            controller: 'userDetailsController'
         });
 }]);
 
+truckTransApp.run(function($rootScope) {
+	$rootScope.isLogin=false;
+	$rootScope.user="";
+    $rootScope.token = "C";
+    $rootScope.messages = {
+    		updateUser : "Your account has been updated successfully",
+    		createUser : "Your account has been created successfully.Please login for more details."
+    	};
+    
+})
+
+truckTransApp.constant('messages1',{
+	updateUser : "Your account has been updated successfully",
+	createUser : "Your account has been created successfully.Please login for more details."
+})
+
+// function to show progress bar
+    function showProcessDialog(){
+	$('#progressBar').modal('show');
+}
+    
+    function hideProcessDialog(){
+    	$('#progressBar').modal('hide');
+    }
 
 truckTransApp.controller('mainController',['$scope',function($scope) {
     $scope.openSignUpForm = function () {
@@ -26,15 +50,11 @@ truckTransApp.controller('mainController',['$scope',function($scope) {
             console.log(user);
     };
 
-// function to submit the form after all validation has occurred
-    $scope.submitForm = function(userData,isValid) {
-console.log(userData);
-        // check to make sure the form is completely valid
-        if (isValid) {
-            alert('our form is amazing');
-        }
 
-    };
-
+    
+    
+    
+    
+    
 
 }]);

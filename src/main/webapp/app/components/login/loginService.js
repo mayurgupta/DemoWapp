@@ -5,7 +5,7 @@ truckTransApp.service('LoginService', function ($http) {
     var loginService = {
 
         doLogin: function (loginData) {
-            // showProcessDialog();
+             showProcessDialog();
             console.log(loginData);
             var promise = $.ajax({
                 url: Server + "api/authenticate",
