@@ -3,10 +3,8 @@
  */
 package com.trucktrans.dao.impl;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +20,6 @@ import com.trucktrans.helpers.PwdGenerator;
 import com.trucktrans.helpers.Util;
 import com.trucktrans.services.IUserService;
 import com.trucktrans.services.PropertiesService;
-import com.trucktrans.services.impl.UserService;
 
 /**
  * @author Mayur 11:14:32 pm, 29-Oct-2015
@@ -91,13 +88,27 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 
 	@Override
 	public Object getSearchResults(String source, String destination,
-			long datefrom, long dateto) {
+			long datefrom, long dateto, int offset) {
 		
-		return (UserBookingReqDTO) getSessionFactory().getCurrentSession()
+		Criteria criteria= getSessionFactory().getCurrentSession()
 				.createCriteria(UserBookingReqDTO.class)
 				.add(Restrictions.eq("sourceState", source))
 				.add(Restrictions.eq("destinationState", destination))
 				.add(Restrictions.between("dateOfRequest", datefrom, dateto));
+		if (offset != 0) {
+            criteria.setFirstResult(offset);
+        }
+		return (UserBookingReqDTO)criteria.list();
+	}
+
+	@Override
+	public Object getAllBookings(int offset) {
+		Criteria criteria=getSessionFactory().getCurrentSession()
+				.createCriteria(UserBookingReqDTO.class);
+		if (offset != 0) {
+            criteria.setFirstResult(offset);
+        }
+		return (UserBookingReqDTO)criteria.list();
 	}
 	
 	

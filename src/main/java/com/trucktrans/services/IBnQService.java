@@ -3,6 +3,7 @@
  */
 package com.trucktrans.services;
 
+
 /**
  * @author mgupta
  *
@@ -10,6 +11,8 @@ package com.trucktrans.services;
 public interface IBnQService {
 
 	Object searchBookings(String source, String destination, long datefrom,
-			long dateto);
+			long dateto, int offset);
+
+	Object getBookings(int offset);
 
 }

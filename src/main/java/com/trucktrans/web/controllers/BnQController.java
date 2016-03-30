@@ -32,6 +32,11 @@ public class BnQController extends AbstractRestController<Object>{
 	@Autowired
 	IBnQService bnQService;
 	
+
+	public BnQController() {
+		super(Object.class);
+	}
+
 	
 	public BnQController(Class<Object> t) {
 		super(t);
@@ -44,10 +49,13 @@ public class BnQController extends AbstractRestController<Object>{
 	public Response registerUser(@QueryParam("source") String source,
 			@QueryParam("destination") String destination,
 			@QueryParam("datefrom") long datefrom,
-			@QueryParam("dateto") long dateto) {
-    	
-    	return Response.ok(bnQService.searchBookings(source, destination, datefrom, dateto)).build();
-    	
+			@QueryParam("dateto") long dateto,
+			@QueryParam("offset") int offset) {
+    	if (source != null || destination != null || datefrom != 0 || dateto != 0) {
+    		return Response.ok(bnQService.searchBookings(source, destination, datefrom, dateto,offset)).build();
+		} else {
+			return Response.ok(bnQService.getBookings(offset)).build();
+		}
     }
 	
 }
