@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -57,5 +58,18 @@ public class BnQController extends AbstractRestController<Object>{
 			return Response.ok(bnQService.getBookings(offset)).build();
 		}
     }
+	
+	@GET
+	@Path("/acceptqote/{postid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response acceptQuote(@PathParam("postid") String source,
+			@QueryParam("price") int price,
+			@QueryParam("remark") String remark,
+			@QueryParam("carriertype") String carrierType,
+			@QueryParam("mintime") int mindays,
+			@QueryParam("maxtime") int maxdays){
+		return Response.ok().build();
+	}
 	
 }

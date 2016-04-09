@@ -1,47 +1,299 @@
 <div>
-<h1>Welcome... {{user.name}} 	<button data-toggle="modal" type="submit" class="btn btn-primary" style="float: right;margin-right: 10px; " >Put a quote</button></h1>
-<section class="hero">
+	<h1>
+		Welcome... {{user.name}}
+		
+	</h1>
+	<section class="hero">
 
 		<div class="texture-overlay"></div>
 		<div class="container">
 
 			<div class="row hero-content">
-				<div class="col-md-6" >
-				<h3>Booking history</h3>
-				<ul>
-				<li>Mahindra Maxximo Load Pune to Mumbai 30 tonnes</li>
-				</ul>
-			
+				<div class="col-md-2">
+					<ul class="nav nav-pills nav-stacked">
+
+						<li class="active"><a href="" data-ng-click="showProfile()">User
+								Profile</a></li>
+						<li><a href="" data-ng-click="showHistory()">Booking
+								History</a></li>
+						<li><a href="" data-ng-click="showQuote()">Put a quote</a></li>
+					</ul>
 				</div>
-					<div class="col-md-6" style="border: solid 1px; padding: 5px;">
-					<h3>User Profile</h3>
-					<form role="form" data-ng-submit="updateUser(user)">
+				<div class="col-md-6" style="border-left: solid 1px;">
+					<div ng-if="user.profile">
+						<h3>User Profile</h3>
+						<form role="form" data-ng-submit="updateUser(user)">
 
 							<div class="form-group">
-								<label for="name">Name</label> <input type="text"
-									class="form-control" id="name" placeholder="Enter Full Name"
-									required data-ng-model="user.name" value="user.name">
+								<h4 style="font-weight: bold; color: lime;">General
+									Information</h4>
+								<div class="row">
+									<div class="form-group" style="padding-bottom: 30px;">
+										<div class=" col-md-2">
+											<label for="name">Name</label>
+										</div>
+										<div class="col-md-10">
+											<input type="text" class="form-control" id="name"
+												placeholder="Enter Full Name" required
+												data-ng-model="user.name" value="user.name">
+										</div>
+									</div>
+									<div class="form-group" style="padding-bottom: 40px;">
+										<div class="  col-md-2">
+											<label for="name">Email</label>
+										</div>
+										<div class="col-md-10">
+											<input type="email" class="form-control" id="email"
+												placeholder="Enter Email" required
+												data-ng-model="user.email" value="user.email">
+										</div>
+									</div>
+									
+									<div class="form-group" style="padding-bottom: 40px;">
+										<div class="  col-md-2">
+											<label for="name">Primary Phone No.</label>
+										</div>
+										<div class="col-md-10">
+											<input type="tel" class="form-control" id="primPhone"
+												placeholder="Enter Phone No" required
+												data-ng-model="user.primPhone" value="user.primPhone">
+										</div>
+									</div>
+									
+									<div class="form-group" style="padding-bottom: 40px;">
+										<div class="  col-md-2">
+											<label for="name">Secondary Phone No.</label>
+										</div>
+										<div class="col-md-10">
+											<input type="tel" class="form-control" id="secPhone"
+												placeholder="Enter Secondary Phone No" required
+												data-ng-model="user.secPhone" value="user.secPhone">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="  col-md-2">
+											<label for="role">Role</label>
+										</div>
+										<div class="col-md-10">{{user.role}}</div>
+									</div>
+								</div>
+								<hr>
+								<h4 style="font-weight: bold; color: lime;">Address
+									Information</h4>
+								<div class="row">
+									<div class="form-group" style="padding-bottom: 5px;">
+										<div class="col-md-2">Address</div>
+										<div class="col-md-10"><textarea rows="2" cols="30" style="color: black" >Ajdfhjc,fdhgfdg,fdhdfh,hfdhdf,hfd sDsad</textarea>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<h4 style="font-weight: bold; color: lime;">Company
+									Information</h4>
+								<div class="row">
+									<div class="form-group" style="padding-bottom: 5px;">
+										<div class="col-md-2">Name</div>
+										<div class="col-md-10">ABC India</div>
+									</div>
+									<div class="form-group" style="padding-bottom: 5px;">
+										<div class="col-md-2">Address</div>
+										<div class="col-md-10"><textarea rows="2" cols="30" style="color: black"  >Ajdfhjc,fdhgfdg,fdhdfh,hfdhdf,hfd dsadd</textarea>
+										</div>
+									</div>
+
+								</div>
+
+
+
 							</div>
-							<div class="form-group">
-								<label for="name">Email</label> <input type="email"
-									class="form-control" id="email" placeholder="Enter Email"
-									required data-ng-model="user.email" value="user.email">
-							</div>
-							
-							<div class="form-group">
-								<label for="role">Role</label> : {{user.role}}
-							</div>
-							
-							 <input type="checkbox" name="update" ng-model="checked">
-							<button data-toggle="modal" type="submit" class="btn btn-primary" ng-disabled="!checked">Update</button>
-					
+
+							<input type="checkbox" name="update" ng-model="checked">
+							<button data-toggle="modal" type="submit" class="btn btn-primary"
+								ng-disabled="!checked">Update</button>
+
 						</form>
-					
+
+					</div>
+					<div ng-if="user.history" style="padding-left: 5px;">
+
+						<h3>Booking history</h3>
+						<ul>
+							<li>Mahindra Maxximo Load Pune to Mumbai 30 tonnes</li>
+						</ul>
+
+					</div>
+
+
+					<div ng-if="user.quote" style="padding-left: 5px;">
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>User</th>
+									<th>Source</th>
+									<th>Dest.</th>
+									<th>Truck</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="quote in quotes ">
+									<td data-ng-modal="quote.user">{{quote.user}}</td>
+									<td data-ng-modal="quote.source">{{quote.source}}</td>
+									<td data-ng-modal="quote.des">{{quote.des}}</td>
+									<td data-ng-modal="quote.truck">{{quote.truck}}</td>
+									<td><button class="btn btn-primary" type="button"
+											data-ng-click="viewDetails(quote)">View Details</button></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
 				</div>
+
 			</div>
 		</div>
 	</section>
 
+	<!-- view Detail modal -->
+	<div id="viewDetailsModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content" style="padding: 15px;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h2 class="modal-title">Quote Details</h2>
+				</div>
+
+				<div class="modal-body">
+					<form role="form">
+						<div class="form-group">
+							<h4 style="font-weight: bold; color: blue;">User Information</h4>
+							<div class="row">
+
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Name:</label>
+									</div>
+									<div class="col-md-10">{{quote.user}}</div>
+								</div>
 
 
+							</div>
+							<h4 style="font-weight: bold; color: blue;">Address
+								Information</h4>
+							<div class="row">
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Source:</label>
+									</div>
+									<div class="col-md-10">
+										<span>{{quote.source}}</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group" style="padding-bottom: 45px;">
+									<div class="col-md-2">
+										<label> Address:</label>
+									</div>
+									<div class="col-md-10">
+										<textarea rows="2" cols="30" readonly>{{quote.sourceAdd}}</textarea>
+									</div>
+
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Destination:</label>
+									</div>
+									<div class="col-md-10">{{quote.des}}</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group" style="padding-bottom: 45px;">
+									<div class="col-md-2">
+										<label>Address:</label>
+									</div>
+									<div class="col-md-10">
+										<textarea rows="2" cols="30" readonly>{{quote.desAdd}}</textarea>
+									</div>
+
+								</div>
+
+							</div>
+
+							<h4 style="font-weight: bold; color: blue;">Item Information</h4>
+							<div class="row">
+
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Truck:</label>
+									</div>
+									<div class="col-md-10">{{quote.truck}}</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Item detail:</label>
+									</div>
+									<div class="col-md-10">{{quote.itemDetails}}</div>
+
+								</div>
+
+							</div>
+
+						</div>
+						
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">accept</button>
+						
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<form role="form">
+						<div class="form-group" style="text-align: justify">
+							<h4>
+								<b>Post your quote</b>
+							</h4>
+							<div class="row">
+
+								<div class="form-group" style="padding-bottom: 20px;">
+									<div class="col-md-2">
+										<label>Price:</label>
+									</div>
+									<div class="col-md-10">
+										<input type="text">
+									</div>
+
+
+								</div>
+							</div>
+
+							<div class="row">
+
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Remark:</label>
+									</div>
+									<div class="col-md-10">
+										<textarea></textarea>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Post</button>
+					</form>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
 </div>

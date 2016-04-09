@@ -1,44 +1,136 @@
-truckTransApp.controller('userDetailsController', ['$scope','$rootScope','userDetailsService' ,function ($scope,$rootScope,userDetailsService) {
-	$scope.isUpdate=false;
-	$scope.init=function(){
-		$rootScope.isLogin=true;
-		$rootScope.user="Laxmi";
-		$scope.user={
-				name:"Laxmi Deshmukh",
-				email:"laxmi.deshmukh@gmail.com",
-				update:false,
-				role:"User"
-		}		
-	}
-	$scope.isUpdate=function(update){
-		$scope.isUpdate=!update;
-	}
-	
-	$scope.updateUser=function(user){
-		console.log(user);
-		showProcessDialog();
-		 $rootScope.token = "U";
-		 $scope.isUpdate=false;
-		
-		 hideProcessDialog();
-		$("#successModal").modal("show");
-		/*
-        userDetailsService.doUpdate(itemToLogin).then(function (response) {
-            if (response) {
+truckTransApp
+		.controller(
+				'userDetailsController',
+				[
+						'$scope',
+						'$rootScope',
+						'userDetailsService',
+						function($scope, $rootScope, userDetailsService) {
+							$scope.isUpdate = false;
+							$scope.init = function() {
+								$rootScope.isLogin = true;
+								$rootScope.user = "Laxmi";
+								$scope.user = {
+									name : "Laxmi Deshmukh",
+									email : "laxmi.deshmukh@gmail.com",
+									update : false,
+									role : "User",
+									profile : true,
+									history : false,
+									quote : false
+								}
 
-            } else {
-                alert("Please try again later");
-            }
-           
-            
-            
-            
-        })*/
-		
-		
-	}
-	
-	
-$scope.init();	
-	
-}]);
+							}
+							$scope.isUpdate = function(update) {
+								$scope.isUpdate = !update;
+							}
+
+							$scope.showHistory = function() {
+								$scope.user.profile = false;
+								$scope.user.quote = false;
+								$scope.user.history = true;
+							}
+
+							$scope.showQuote = function() {
+								$scope.user.history = false;
+								$scope.user.profile = false;
+								$scope.user.quote = true;
+							}
+
+							$scope.showProfile = function() {
+								$scope.user.history = false;
+								$scope.user.quote = false;
+								$scope.user.profile = true;
+							}
+
+							$scope.viewDetails = function(quote) {
+								$scope.quote = quote;
+								$("#viewDetailsModal").modal("show");
+							}
+
+							$scope.updateUser = function(user) {
+								console.log(user);
+								showProcessDialog();
+								$rootScope.token = "U";
+								$scope.isUpdate = false;
+
+								hideProcessDialog();
+								$("#successModal").modal("show");
+								/*
+								 * userDetailsService.doUpdate(itemToLogin).then(function
+								 * (response) { if (response) { } else {
+								 * alert("Please try again later"); }
+								 * 
+								 * 
+								 *  })
+								 */
+
+							}
+
+							// some raw data here...
+							$scope.quotes = [
+									{
+										source : "Pune",
+										sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										zip : "411057",
+										des : "Bhopal",
+										desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										truck : "ABC",
+										user : "Laxmi",
+										itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+									},
+									{
+										source : "Pune",
+										sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										zip : "411057",
+										des : "Bhopal",
+										desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										truck : "ABC",
+										user : "Mayur",
+										itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+									},
+									{
+										source : "Pune",
+										sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										zip : "411057",
+										des : "Bhopal",
+										desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										truck : "ABC",
+										user : "Harshlata",
+										itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+									},
+									{
+										source : "Pune",
+										sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										zip : "411057",
+										des : "Bhopal",
+										desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										truck : "ABC",
+										user : "Kushal",
+										itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+									},
+									{
+										source : "Pune",
+										sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										zip : "411057",
+										des : "Bhopal",
+										desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										truck : "ABC",
+										user : "Ankit",
+										itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+									},
+									{
+										source : "Pune",
+										sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										zip : "411057",
+										des : "Bhopal",
+										desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+										truck : "ABC",
+										user : "Akansha",
+										itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+
+									} ]
+
+							$scope.init();
+
+						} ]);
