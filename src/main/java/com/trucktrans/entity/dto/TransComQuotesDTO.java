@@ -33,6 +33,7 @@ public class TransComQuotesDTO implements java.io.Serializable {
 	private Long minTime;
 	private String remarks;
 	private UserBookingReqDTO userBookingReqDTO;	
+//	private TransComDetailsDTO transComDetailsDTO;
 	
 	
 	

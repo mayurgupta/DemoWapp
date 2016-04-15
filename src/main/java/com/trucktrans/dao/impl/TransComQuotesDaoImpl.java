@@ -13,6 +13,7 @@ import com.trucktrans.dao.ITransComQuotesDao;
 import com.trucktrans.dao.IUserBookingReqDao;
 import com.trucktrans.entity.dto.TransComQuotesDTO;
 import com.trucktrans.entity.dto.UserBookingReqDTO;
+import com.trucktrans.entity.dto.UserDTO;
 
 /**
  * @author mgupta
@@ -47,7 +48,7 @@ public class TransComQuotesDaoImpl extends AbstractHibernateDaoImpl<TransComQuot
 	
 	
 	@Override
-	public List<TransComQuotesDTO> putMyQuoteforPost(Long postId, int price, String remark, String carrierType, Long mindays, Long maxdays) {
+	public List<TransComQuotesDTO> putMyQuoteforPost(Long postId, int price, String remark, String carrierType, Long mindays, Long maxdays,UserDTO UserDTO) {
 		UserBookingReqDTO bookingReqDTO=userBookingReqDao.getById(postId);
 		TransComQuotesDTO transComQuotesDTO = new TransComQuotesDTO();
 		transComQuotesDTO.setMaxTime(maxdays);
@@ -56,6 +57,8 @@ public class TransComQuotesDaoImpl extends AbstractHibernateDaoImpl<TransComQuot
 		transComQuotesDTO.setRemarks(remark);
 		transComQuotesDTO.setTruckType(carrierType);
 		transComQuotesDTO.setUserBookingReqDTO(bookingReqDTO);
+		transComQuotesDTO.setTransComDetailsDTO(UserDTO.getTransComDetailsDTOs());
+		
 		save(transComQuotesDTO);
 		return null;
 	}

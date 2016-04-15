@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -69,7 +70,7 @@ public class TransComDetailsDTO implements java.io.Serializable {
 		this.companyId = companyId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "transComDetailsDTO")
 	@JoinColumn(name = "USER_ID")
 	public UserDTO getUser() {
 		return this.user;

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.trucktrans.dao.ITransComQuotesDao;
 import com.trucktrans.dao.IUserBookingReqDao;
+import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.services.IBnQService;
 
 /**
@@ -39,8 +40,8 @@ public class BnQServiceImpl implements IBnQService{
 
 
 	@Override
-	public Object putQuote(Long postId, int price, String remark, String carrierType, Long mindays, Long maxdays) {
-		return iTransComQuotesDao.putMyQuoteforPost(postId, price, remark, carrierType, mindays, maxdays);
+	public Object putQuote(Long postId, int price, String remark, String carrierType, Long mindays, Long maxdays, UserDTO userDTO) {
+		return iTransComQuotesDao.putMyQuoteforPost(postId, price, remark, carrierType, mindays, maxdays, userDTO);
 	}
 
 

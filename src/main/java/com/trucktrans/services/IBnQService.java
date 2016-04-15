@@ -3,6 +3,8 @@
  */
 package com.trucktrans.services;
 
+import com.trucktrans.entity.dto.UserDTO;
+
 
 /**
  * @author mgupta
@@ -15,7 +17,7 @@ public interface IBnQService {
 
 	Object getBookings(int offset);
 
-	Object putQuote(Long postId, int price, String remark, String carrierType, Long mindays, Long maxdays);
+	Object putQuote(Long postId, int price, String remark, String carrierType, Long mindays, Long maxdays, UserDTO userDTO);
 
 	Object getAllQuotesForPost(Long postId);
 

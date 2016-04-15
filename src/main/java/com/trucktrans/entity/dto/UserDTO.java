@@ -15,6 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,7 +47,7 @@ public class UserDTO implements java.io.Serializable {
 	private Set<AppTrackInfoDTO> appTrackInfoDTOs = new HashSet<AppTrackInfoDTO>(0);
 	private Set<UserRolesREF> UserRolesREFs = new HashSet<UserRolesREF>(0);
 	private Set<UserBookingReqDTO> userBookingReqDTOs = new HashSet<UserBookingReqDTO>(0);
-	private Set<TransComDetailsDTO> transComDetailsDTOs = new HashSet<TransComDetailsDTO>(0);
+	private TransComDetailsDTO transComDetailsDTO;
 
 	public UserDTO() {
 	}
@@ -209,13 +210,14 @@ public class UserDTO implements java.io.Serializable {
 		this.userBookingReqDTOs = userBookingReqDTOs;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	public Set<TransComDetailsDTO> getTransComDetailsDTOs() {
-		return this.transComDetailsDTOs;
+
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	public TransComDetailsDTO getTransComDetailsDTO() {
+		return transComDetailsDTO;
 	}
 
-	public void setTransComDetailsDTOs(Set<TransComDetailsDTO> transComDetailsDTOs) {
-		this.transComDetailsDTOs = transComDetailsDTOs;
+	public void setTransComDetailsDTO(TransComDetailsDTO transComDetailsDTO) {
+		this.transComDetailsDTO = transComDetailsDTO;
 	}
 
 	/*@Override

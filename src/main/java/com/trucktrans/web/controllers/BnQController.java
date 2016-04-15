@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.web.WUser;
 import com.trucktrans.services.IBnQService;
 
@@ -66,7 +67,8 @@ public class BnQController extends AbstractRestController<Object>{
 			@QueryParam("carriertype") String carrierType,
 			@QueryParam("mintime") Long mindays,
 			@QueryParam("maxtime") Long maxdays){
-		return Response.ok(bnQService.putQuote(postId, price, remark, carrierType, mindays, maxdays)).build();
+		UserDTO userDTO=getUserDetails().getUserDto();
+		return Response.ok(bnQService.putQuote(postId, price, remark, carrierType, mindays, maxdays, userDTO)).build();
 	}
 	
 	@GET
