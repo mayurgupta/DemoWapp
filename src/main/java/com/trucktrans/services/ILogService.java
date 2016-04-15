@@ -3,6 +3,7 @@
  */
 package com.trucktrans.services;
 
+import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.web.WAppTrackInfo;
 
 /**
@@ -16,8 +17,9 @@ public interface ILogService {
 	/**
 	 * Logs tracking information of application to db 
 	 * @param appTrackInfo
+	 * @param userd 
 	 */
-	void logApplicationTrackInfo(WAppTrackInfo appTrackInfo);
+	void logApplicationTrackInfo(WAppTrackInfo appTrackInfo, UserDTO userd);
 
 	
 }

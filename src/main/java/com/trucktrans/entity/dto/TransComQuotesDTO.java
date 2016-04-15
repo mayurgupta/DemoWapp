@@ -26,14 +26,13 @@ public class TransComQuotesDTO implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private int quoteId;
-	private UserBookingReqDTO userBookingReqDTO;
 	private String companyName;
 	private String truckType;
-	private String priceEstimates;
-	private String timeEstimates;
+	private int priceEstimates;
+	private Long maxTime;
+	private Long minTime;
 	private String remarks;
-	private TransComDetailsDTO transComDetailsDTO;
-	
+	private UserBookingReqDTO userBookingReqDTO;	
 	
 	
 	
@@ -47,13 +46,14 @@ public class TransComQuotesDTO implements java.io.Serializable {
 	}
 
 	public TransComQuotesDTO(int quoteId, UserBookingReqDTO userBookingReqDTO, String companyName, String truckType,
-			String priceEstimates, String timeEstimates, String remarks) {
+			int priceEstimates, Long maxTime, Long minTime, String remarks) {
 		this.quoteId = quoteId;
 		this.userBookingReqDTO = userBookingReqDTO;
 		this.companyName = companyName;
 		this.truckType = truckType;
 		this.priceEstimates = priceEstimates;
-		this.timeEstimates = timeEstimates;
+		this.maxTime = maxTime;
+		this.minTime = minTime;
 		this.remarks = remarks;
 	}
 
@@ -78,15 +78,14 @@ public class TransComQuotesDTO implements java.io.Serializable {
 		this.userBookingReqDTO = userBookingReqDTO;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	/*@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "COMPANY_ID", nullable = false)
 	public TransComDetailsDTO getTransComDetailsDTO() {
 		return transComDetailsDTO;
 	}
-
 	public void setTransComDetailsDTO(TransComDetailsDTO transComDetailsDTO) {
 		this.transComDetailsDTO = transComDetailsDTO;
-	}
+	}*/
 
 	
 	
@@ -94,7 +93,6 @@ public class TransComQuotesDTO implements java.io.Serializable {
 	public String getCompanyName() {
 		return this.companyName;
 	}
-
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
@@ -103,34 +101,38 @@ public class TransComQuotesDTO implements java.io.Serializable {
 	public String getTruckType() {
 		return this.truckType;
 	}
-
 	public void setTruckType(String truckType) {
 		this.truckType = truckType;
 	}
 
 	@Column(name = "PRICE_ESTIMATES", length = 45)
-	public String getPriceEstimates() {
+	public Integer getPriceEstimates() {
 		return this.priceEstimates;
 	}
-
-	public void setPriceEstimates(String priceEstimates) {
+	public void setPriceEstimates(Integer priceEstimates) {
 		this.priceEstimates = priceEstimates;
 	}
 
-	@Column(name = "TIME_ESTIMATES", length = 45)
-	public String getTimeEstimates() {
-		return this.timeEstimates;
+	@Column(name = "MAX_TIME", length = 45)
+	public Long getMaxTime() {
+		return this.maxTime;
+	}
+	public void setMaxTime(Long maxTime) {
+		this.maxTime = maxTime;
 	}
 
-	public void setTimeEstimates(String timeEstimates) {
-		this.timeEstimates = timeEstimates;
+	@Column(name = "MIN_TIME", length = 45)
+	public Long getMinTime() {
+		return minTime;
+	}
+	public void setMinTime(Long minTime) {
+		this.minTime = minTime;
 	}
 
 	@Column(name = "REMARKS")
 	public String getRemarks() {
 		return this.remarks;
 	}
-
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}

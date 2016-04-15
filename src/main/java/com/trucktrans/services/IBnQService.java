@@ -15,4 +15,10 @@ public interface IBnQService {
 
 	Object getBookings(int offset);
 
+	Object putQuote(Long postId, int price, String remark, String carrierType, Long mindays, Long maxdays);
+
+	Object getAllQuotesForPost(Long postId);
+
+	Object getAllQuotesForTransporter(Long transporterId);
+
 }

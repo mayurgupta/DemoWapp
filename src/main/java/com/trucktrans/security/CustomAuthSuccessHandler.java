@@ -19,6 +19,7 @@ import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.util.StringUtils;
 
 import com.trucktrans.constants.ProjectConstants.AppConstants;
+import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.web.WAppTrackInfo;
 import com.trucktrans.helpers.TimeUtil;
 import com.trucktrans.services.ILogService;
@@ -50,7 +51,8 @@ public class CustomAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
         
         
         UserPrincipal user = (UserPrincipal)authentication.getPrincipal();
-        if(user.getUserDto().isPasswordChanged()){
+        UserDTO userd=user.getUserDto();
+        if(userd.isPasswordChanged()){
             response.getOutputStream().write("{\"status\":1}".getBytes());
         }
         
@@ -59,7 +61,7 @@ public class CustomAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
 		appTrackInfo.setActivity(AppConstants.LOGGEDIN.getVal());
 		appTrackInfo.setTrackTime(TimeUtil.getTimestamp());
 		appTrackInfo.setActivityDesc("User Logged in");
-		logService.logApplicationTrackInfo(appTrackInfo);
+		logService.logApplicationTrackInfo(appTrackInfo,userd);
 		
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("<<Custom Success handler Called>> "

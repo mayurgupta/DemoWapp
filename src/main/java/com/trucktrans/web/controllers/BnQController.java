@@ -47,29 +47,35 @@ public class BnQController extends AbstractRestController<Object>{
     @Path("/searchbooking")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-	public Response registerUser(@QueryParam("source") String source,
+	public Response searchBooking(@QueryParam("source") String source,
 			@QueryParam("destination") String destination,
 			@QueryParam("datefrom") long datefrom,
 			@QueryParam("dateto") long dateto,
 			@QueryParam("offset") int offset) {
-    	if (source != null || destination != null || datefrom != 0 || dateto != 0) {
-    		return Response.ok(bnQService.searchBookings(source, destination, datefrom, dateto,offset)).build();
-		} else {
-			return Response.ok(bnQService.getBookings(offset)).build();
-		}
+    	return Response.ok(bnQService.searchBookings(source, destination, datefrom, dateto,offset)).build();
     }
 	
 	@GET
-	@Path("/acceptqote/{postid}")
+	@Path("/putaqote/{postid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response acceptQuote(@PathParam("postid") String source,
+	//for manufacturer role
+	public Response putAQuote(@PathParam("postid") Long postId,
 			@QueryParam("price") int price,
 			@QueryParam("remark") String remark,
 			@QueryParam("carriertype") String carrierType,
-			@QueryParam("mintime") int mindays,
-			@QueryParam("maxtime") int maxdays){
-		return Response.ok().build();
+			@QueryParam("mintime") Long mindays,
+			@QueryParam("maxtime") Long maxdays){
+		return Response.ok(bnQService.putQuote(postId, price, remark, carrierType, mindays, maxdays)).build();
+	}
+	
+	@GET
+	@Path("/getallquotes/{postid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	//for manufacturer role
+	public Response getAllQuotes(@PathParam("postid") Long postId){
+		return Response.ok(bnQService.getAllQuotesForPost(postId)).build();
 	}
 	
 }

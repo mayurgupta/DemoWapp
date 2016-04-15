@@ -17,6 +17,7 @@
 						<li><a href="" data-ng-click="showHistory()">Booking
 								History</a></li>
 						<li><a href="" data-ng-click="showQuote()">Put a quote</a></li>
+						<li><a href="" data-ng-click="getNotification()">Inbox</a></li>
 					</ul>
 				</div>
 				<div class="col-md-6" style="border-left: solid 1px;">
@@ -38,7 +39,7 @@
 												data-ng-model="user.name" value="user.name">
 										</div>
 									</div>
-									<div class="form-group" style="padding-bottom: 40px;">
+									<div class="form-group" style="padding-bottom: 30px;">
 										<div class="  col-md-2">
 											<label for="name">Email</label>
 										</div>
@@ -48,29 +49,6 @@
 												data-ng-model="user.email" value="user.email">
 										</div>
 									</div>
-									
-									<div class="form-group" style="padding-bottom: 40px;">
-										<div class="  col-md-2">
-											<label for="name">Primary Phone No.</label>
-										</div>
-										<div class="col-md-10">
-											<input type="tel" class="form-control" id="primPhone"
-												placeholder="Enter Phone No" required
-												data-ng-model="user.primPhone" value="user.primPhone">
-										</div>
-									</div>
-									
-									<div class="form-group" style="padding-bottom: 40px;">
-										<div class="  col-md-2">
-											<label for="name">Secondary Phone No.</label>
-										</div>
-										<div class="col-md-10">
-											<input type="tel" class="form-control" id="secPhone"
-												placeholder="Enter Secondary Phone No" required
-												data-ng-model="user.secPhone" value="user.secPhone">
-										</div>
-									</div>
-									
 									<div class="form-group">
 										<div class="  col-md-2">
 											<label for="role">Role</label>
@@ -126,7 +104,7 @@
 
 
 					<div ng-if="user.quote" style="padding-left: 5px;">
-						<table class="table table-bordered table-hover">
+						<table class="table table-bordered ">
 							<thead>
 								<tr>
 									<th>User</th>
@@ -147,6 +125,38 @@
 								</tr>
 							</tbody>
 						</table>
+
+					</div>
+					
+					
+					
+					<div ng-if="user.notification" style="padding-left: 5px;">
+						<h3>Notification</h3>
+						<table class="table table-hover  " style="border: 1px solid;">
+							<tr>
+								<td>Trucktrans</td>
+								<td>Invoice for Mahindra Maxximo Load Pune to Mumbai 30
+									tonnes</td>
+							</tr>
+							<tr>
+								<td>Trucktrans</td>
+								<td>Invoice for Mahindra Maxximo Load Pune to Mumbai 30
+									tonnes</td>
+							</tr>
+							<tr>
+								<td>Trucktrans</td>
+								<td>Invoice for Mahindra Maxximo Load Pune to Mumbai 30
+									tonnes</td>
+							</tr>
+							<tr>
+								<td>Trucktrans</td>
+								<td>Invoice for Mahindra Maxximo Load Pune to Mumbai 30
+									tonnes</td>
+							</tr>
+
+
+						</table>
+
 
 					</div>
 				</div>

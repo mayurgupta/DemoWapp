@@ -36,7 +36,7 @@ public class TransComDetailsDTO implements java.io.Serializable {
 	private String companyDesc;
 	private Short truckStrength;
 	private Set<TruckServiceTypeDTO> truckServiceTypeDTOs = new HashSet<TruckServiceTypeDTO>(0);
-	private Set<TransComQuotesDTO> transComQuotesDTOs = new HashSet<TransComQuotesDTO>(0);
+//	private Set<TransComQuotesDTO> transComQuotesDTOs = new HashSet<TransComQuotesDTO>(0);
 	
 	
 	
@@ -115,14 +115,14 @@ public class TransComDetailsDTO implements java.io.Serializable {
 		this.truckServiceTypeDTOs = truckServiceTypeDTOs;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "transComDetailsDTO")
+	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "transComDetailsDTO")
 	public Set<TransComQuotesDTO> getTransComQuotesDTOs() {
 		return transComQuotesDTOs;
 	}
 
 	public void setTransComQuotesDTOs(Set<TransComQuotesDTO> transComQuotesDTOs) {
 		this.transComQuotesDTOs = transComQuotesDTOs;
-	}
+	}*/
 
 	
 

@@ -37,10 +37,9 @@ public class LogService implements ILogService {
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
-	public void logApplicationTrackInfo(WAppTrackInfo wAppTrackInfo) {
-		UserDTO user= userDao.getById(wAppTrackInfo.getUserID());
+	public void logApplicationTrackInfo(WAppTrackInfo wAppTrackInfo, UserDTO userd) {
 		AppTrackInfoDTO appTrackDto=new AppTrackInfoDTO();
-		appTrackDto.setUserDTO(user);
+		appTrackDto.setUserDTO(userd);
 		appTrackDto.setTrackedDate(wAppTrackInfo.getTrackTime());
 		appTrackDto.setActivity(wAppTrackInfo.getActivity());
 		appTrackDto.setActivityDescription(wAppTrackInfo.getActivityDesc());

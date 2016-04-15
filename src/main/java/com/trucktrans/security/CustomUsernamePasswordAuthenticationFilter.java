@@ -23,7 +23,7 @@ import org.springframework.util.Assert;
 public class CustomUsernamePasswordAuthenticationFilter extends AbstractAuthenticationProcessingFilter{
 
 
-    public static final String SPRING_SECURITY_FORM_USERNAME_KEY = "username";
+    public static final String SPRING_SECURITY_FORM_USERNAME_KEY = "userName";
     public static final String SPRING_SECURITY_FORM_PASSWORD_KEY = "password";
     public static final String SPRING_SECURITY_LAST_USERNAME_KEY = "SPRING_SECURITY_LAST_USERNAME";
 

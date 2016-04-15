@@ -1,11 +1,4 @@
-truckTransApp
-		.controller(
-				'userDetailsController',
-				[
-						'$scope',
-						'$rootScope',
-						'userDetailsService',
-						function($scope, $rootScope, userDetailsService) {
+truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDetailsService','notificationService',function($scope, $rootScope, userDetailsService,notificationService) {
 							$scope.isUpdate = false;
 							$scope.init = function() {
 								$rootScope.isLogin = true;
@@ -17,7 +10,8 @@ truckTransApp
 									role : "User",
 									profile : true,
 									history : false,
-									quote : false
+									quote : false,
+									notification : false
 								}
 
 							}
@@ -28,19 +22,42 @@ truckTransApp
 							$scope.showHistory = function() {
 								$scope.user.profile = false;
 								$scope.user.quote = false;
+								$scope.user.notification = false;
 								$scope.user.history = true;
+
 							}
 
 							$scope.showQuote = function() {
 								$scope.user.history = false;
 								$scope.user.profile = false;
+								$scope.user.notification = false;
 								$scope.user.quote = true;
 							}
 
+							$scope.getNotification = function() {
+								$scope.user.history = false;
+								$scope.user.quote = false;
+								$scope.user.profile = false;
+								$scope.user.notification = true;
+								
+								notificationService.getNotifications(userData).then(function(response){
+									if(response){
+										
+									}else{
+										
+									}
+								});
+								
+							}
+
 							$scope.showProfile = function() {
+								$scope.user.notification = false;
 								$scope.user.history = false;
 								$scope.user.quote = false;
 								$scope.user.profile = true;
+														
+								
+								
 							}
 
 							$scope.viewDetails = function(quote) {

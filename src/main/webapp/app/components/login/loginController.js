@@ -7,10 +7,10 @@ truckTransApp.controller('LoginController', ['$scope','$rootScope','$location', 
        
         
         var itemToLogin={};
-        itemToLogin.userName=loginData.id;
+        itemToLogin.username=loginData.id;
         itemToLogin.password=loginData.password;
         showProcessDialog();
-/*
+ 
         LoginService.doLogin(itemToLogin).then(function (response) {
             if (response) {
 
@@ -21,7 +21,7 @@ truckTransApp.controller('LoginController', ['$scope','$rootScope','$location', 
             
             
             
-        })*/
+        })
         
         hideProcessDialog();
         
