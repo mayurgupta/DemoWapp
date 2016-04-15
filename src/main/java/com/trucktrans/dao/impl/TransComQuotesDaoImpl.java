@@ -57,8 +57,6 @@ public class TransComQuotesDaoImpl extends AbstractHibernateDaoImpl<TransComQuot
 		transComQuotesDTO.setRemarks(remark);
 		transComQuotesDTO.setTruckType(carrierType);
 		transComQuotesDTO.setUserBookingReqDTO(bookingReqDTO);
-		transComQuotesDTO.setTransComDetailsDTO(UserDTO.getTransComDetailsDTOs());
-		
 		save(transComQuotesDTO);
 		return null;
 	}

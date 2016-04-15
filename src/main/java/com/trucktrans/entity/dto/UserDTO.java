@@ -62,7 +62,7 @@ public class UserDTO implements java.io.Serializable {
 
 	public UserDTO(long userId, String email, Boolean enabled, String name, String password, String userName,
 			String createdBy, Date createdDate, String updatedBy, Date updatedDate, Boolean passwordChanged,
-			Set<AppTrackInfoDTO> appTrackInfoDTOs, Set<UserRolesREF> userRoleseREFs, Set<UserBookingReqDTO> userBookingReqDTOs, Set<TransComDetailsDTO> transComDetailsDTOs) {
+			Set<AppTrackInfoDTO> appTrackInfoDTOs, Set<UserRolesREF> userRoleseREFs, Set<UserBookingReqDTO> userBookingReqDTOs, TransComDetailsDTO transComDetailsDTO) {
 		this.userId = userId;
 		this.email = email;
 		this.enabled = enabled;
@@ -77,7 +77,7 @@ public class UserDTO implements java.io.Serializable {
 		this.appTrackInfoDTOs = appTrackInfoDTOs;
 		this.UserRolesREFs = userRoleseREFs;
 		this.userBookingReqDTOs = userBookingReqDTOs;
-		this.transComDetailsDTOs = transComDetailsDTOs;
+		this.transComDetailsDTO = transComDetailsDTO;
 	}
 
 	@Id
