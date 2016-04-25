@@ -60,6 +60,18 @@ public class BnQServiceImpl implements IBnQService{
 	public Object getAllQuotesForTransporter(Long transporterId) {
 		return iTransComQuotesDao.getAllQuotesForTransporter(transporterId);
 	}
+
+
+	@Override
+	public Object toggleAccDeclQuote(Long quoteId, Boolean accDeclFlag, Long postId) {
+		return iTransComQuotesDao.toggleAccDeclQuote(quoteId,accDeclFlag,postId);
+	}
+
+
+	@Override
+	public Object toggleReadUnreadQuote(Long quoteId, Boolean ruFlag) {
+		return iTransComQuotesDao.toggleReadUnreadQuote(quoteId,ruFlag);
+	}
 	
 	
 }

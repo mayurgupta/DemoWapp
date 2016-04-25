@@ -3,10 +3,8 @@
  */
 package com.trucktrans.web.controllers;
 
-import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -19,7 +17,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.trucktrans.entity.dto.UserDTO;
-import com.trucktrans.entity.web.WUser;
 import com.trucktrans.services.IBnQService;
 
 /**
@@ -71,13 +68,50 @@ public class BnQController extends AbstractRestController<Object>{
 		return Response.ok(bnQService.putQuote(postId, price, remark, carrierType, mindays, maxdays, userDTO)).build();
 	}
 	
+	/*@GET
+	@Path("/acceptquote/{quoteid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response acceptQuote(@PathParam("quoteid") Long quoteId){
+		return Response.ok(bnQService.getAllQuotesForPost(quoteId)).build();
+	}*/
+
+	@GET
+	@Path("/ruflag/{quoteid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response readUnreadFlag(@PathParam("quoteid") Long quoteId, @QueryParam("ruflag") Boolean ruFlag){
+		return Response.ok(bnQService.toggleReadUnreadQuote(quoteId,ruFlag)).build();
+	}
+	
+	@GET
+	@Path("/accdeclquote/{quoteid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response accDeclQuote(@PathParam("quoteid") Long quoteId,
+			@QueryParam("accdeclflag") Boolean accDeclFlag,
+			@QueryParam("postid") Long postId){
+//		Response.serverError();
+		return Response.ok(bnQService.toggleAccDeclQuote(quoteId,accDeclFlag,postId)).build();
+	}
+	
 	@GET
 	@Path("/getallquotes/{postid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	//for manufacturer role
 	public Response getAllQuotes(@PathParam("postid") Long postId){
 		return Response.ok(bnQService.getAllQuotesForPost(postId)).build();
 	}
 	
+	
+	//TODO think of downloading the invoice for both the perspective from transporter and manufacturer.
+	@GET
+	@Path("/invoice/{quoteid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response downloadInvoice(@PathParam("quoteid") Long quoteId,
+			@QueryParam("accdeclflag") Boolean accDeclFlag,
+			@QueryParam("postid") Long postId){
+		return Response.ok(bnQService.toggleAccDeclQuote(quoteId,accDeclFlag,postId)).build();
+	}
 }

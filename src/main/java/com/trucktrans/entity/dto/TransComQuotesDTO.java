@@ -32,9 +32,11 @@ public class TransComQuotesDTO implements java.io.Serializable {
 	private Long maxTime;
 	private Long minTime;
 	private String remarks;
-	private UserBookingReqDTO userBookingReqDTO;	
-//	private TransComDetailsDTO transComDetailsDTO;
+	private UserBookingReqDTO userBookingReqDTO;
+	private Boolean readUnreadFlag;
+	private Boolean acceptDeclineFlag;
 	
+//	private TransComDetailsDTO transComDetailsDTO;
 	
 	
 	public TransComQuotesDTO() {
@@ -110,7 +112,8 @@ public class TransComQuotesDTO implements java.io.Serializable {
 	public Integer getPriceEstimates() {
 		return this.priceEstimates;
 	}
-	public void setPriceEstimates(Integer priceEstimates) {
+
+	public void setPriceEstimates(int priceEstimates) {
 		this.priceEstimates = priceEstimates;
 	}
 
@@ -137,5 +140,23 @@ public class TransComQuotesDTO implements java.io.Serializable {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
+	
+	@Column(name = "READ_UNREAD_FLAG", nullable = false, length = 1)	
+	public Boolean getReadUnreadFlag() {
+		return readUnreadFlag;
+	}
 
+	public void setReadUnreadFlag(Boolean readUnreadFlag) {
+		this.readUnreadFlag = readUnreadFlag;
+	}
+	
+	@Column(name = "ACCEPT_DECLINE_FLAG", nullable = false, length = 1)
+	public Boolean getAcceptDeclineFlag() {
+		return acceptDeclineFlag;
+	}
+
+	public void setAcceptDeclineFlag(Boolean acceptDeclineFlag) {
+		this.acceptDeclineFlag = acceptDeclineFlag;
+	}
+	
 }

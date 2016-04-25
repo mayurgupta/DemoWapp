@@ -3,8 +3,12 @@
  */
 package com.trucktrans.dao.impl;
 
+import java.util.Iterator;
 import java.util.List;
 
+import javax.ws.rs.core.Response;
+
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -65,6 +69,30 @@ public class TransComQuotesDaoImpl extends AbstractHibernateDaoImpl<TransComQuot
 	public Object getAllQuotesForTransporter(Long transporterId) {
 		return (List<TransComQuotesDTO>)getSessionFactory().getCurrentSession().createCriteria(TransComQuotesDTO.class)
 				.add(Restrictions.eq("userBookingReqDTO.bookingId", transporterId)).list();
+	}
+
+	@Override
+	public Object toggleAccDeclQuote(Long quoteId, Boolean accDeclFlag, Long postId) {
+		TransComQuotesDTO transComQuotesDTO=getById(quoteId);
+		Criteria criteria = getSessionFactory().getCurrentSession().createCriteria(TransComQuotesDTO.class);
+		criteria.add(Restrictions.eq("userBookingReqDTO.bookingId", postId));
+		List<TransComQuotesDTO> tcQuotesList=criteria.list();
+		for (TransComQuotesDTO tCQuotesDTO : tcQuotesList) {
+			if (tCQuotesDTO.getAcceptDeclineFlag()==true) {
+				return "already exist";
+			}
+		}
+		transComQuotesDTO.setAcceptDeclineFlag(accDeclFlag);
+		
+		return save(transComQuotesDTO);
+	}
+
+	@Override
+	public Object toggleReadUnreadQuote(Long quoteId, Boolean ruFlag) {
+		TransComQuotesDTO transComQuotesDTO=getById(quoteId);
+		transComQuotesDTO.setAcceptDeclineFlag(ruFlag);
+		
+		return save(transComQuotesDTO);
 	}
 	
 }

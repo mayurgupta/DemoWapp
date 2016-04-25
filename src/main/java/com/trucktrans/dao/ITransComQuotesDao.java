@@ -24,6 +24,10 @@ public interface ITransComQuotesDao extends IEntityDao<TransComQuotesDTO, Long>{
 
 	Object getAllQuotesForTransporter(Long transporterId);
 
+	Object toggleAccDeclQuote(Long quoteId, Boolean accDeclFlag, Long postId);
+
+	Object toggleReadUnreadQuote(Long quoteId, Boolean ruFlag);
+
 	
 	
 }

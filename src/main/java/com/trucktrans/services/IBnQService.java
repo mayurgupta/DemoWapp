@@ -23,4 +23,8 @@ public interface IBnQService {
 
 	Object getAllQuotesForTransporter(Long transporterId);
 
+	Object toggleAccDeclQuote(Long quoteId, Boolean accDeclFlag, Long postId);
+
+	Object toggleReadUnreadQuote(Long quoteId, Boolean ruFlag);
+
 }
