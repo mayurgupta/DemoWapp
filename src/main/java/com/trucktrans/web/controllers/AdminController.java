@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.services.IAdminService;
-import com.trucktrans.services.IDashBoardService;
 
 /**
  * @author Mayur

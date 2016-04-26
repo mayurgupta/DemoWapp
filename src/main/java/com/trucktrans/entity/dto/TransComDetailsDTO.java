@@ -70,7 +70,7 @@ public class TransComDetailsDTO implements java.io.Serializable {
 		this.companyId = companyId;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "transComDetailsDTO")
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID")
 	public UserDTO getUser() {
 		return this.user;
