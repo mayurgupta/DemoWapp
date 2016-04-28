@@ -28,6 +28,8 @@ public interface ITransComQuotesDao extends IEntityDao<TransComQuotesDTO, Long>{
 
 	Object toggleReadUnreadQuote(Long quoteId, Boolean ruFlag);
 
+	TransComQuotesDTO generateInvoice(Long quoteId);
+
 	
 	
 }

@@ -50,3 +50,8 @@ Temporary Items
 
 target/**
 target/techtrans/**
+*.class
+*.class
+target/classes/com/trucktrans/entity/dto/TransComDetailsDTO.class
+target/classes/com/trucktrans/entity/dto/UserDTO.class
+target/classes/com/trucktrans/services/ILogService.class

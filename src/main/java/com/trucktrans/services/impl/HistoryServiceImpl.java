@@ -26,8 +26,7 @@ public class HistoryServiceImpl implements IHistoryService{
 	
 	@Override
 	public TransComQuotesDTO generateInvoice(Long quoteId) {
-		return transComQuotes.getById(quoteId);
-//		return null;
+		return transComQuotes.generateInvoice(quoteId);
 	}
 	
 

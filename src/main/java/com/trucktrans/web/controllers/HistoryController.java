@@ -41,14 +41,14 @@ public class HistoryController extends AbstractRestController<TransComQuotesDTO>
     @Path("/acceptedquotes")					   //
     @Produces({ MediaType.APPLICATION_JSON })	   //
 	public Response myAccptQuotes(){			   //	
-		return Response.ok().build();			   //
-	}											   //
-	                                               //
-	                                               //we can combine these two methods into one method
-	@GET                                           //
+		return Response.ok().build();			   //  we can combine these two methods into one method  
+	}											   //                                                    
+	                                               //                                                    
+	                                               //                                                    
+	@GET                                           //  Load these methods when history page opens        
     @Path("/declinedquotes")                       //
     @Produces({ MediaType.APPLICATION_JSON })      //
-	public Response myDeclndQuotes(){              //Load these methods when history page opens
+	public Response myDeclndQuotes(){              //
 		return Response.ok().build();              //
 	}                                              //
 	                                                            

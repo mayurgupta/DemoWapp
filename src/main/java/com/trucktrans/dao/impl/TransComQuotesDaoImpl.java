@@ -70,13 +70,14 @@ public class TransComQuotesDaoImpl extends AbstractHibernateDaoImpl<TransComQuot
 		return (List<TransComQuotesDTO>)getSessionFactory().getCurrentSession().createCriteria(TransComQuotesDTO.class)
 				.add(Restrictions.eq("userBookingReqDTO.bookingId", transporterId)).list();
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Object toggleAccDeclQuote(Long quoteId, Boolean accDeclFlag, Long postId) {
 		TransComQuotesDTO transComQuotesDTO=getById(quoteId);
 		Criteria criteria = getSessionFactory().getCurrentSession().createCriteria(TransComQuotesDTO.class);
 		criteria.add(Restrictions.eq("userBookingReqDTO.bookingId", postId));
-		List<TransComQuotesDTO> tcQuotesList=criteria.list();
+		List<TransComQuotesDTO> tcQuotesList=(List<TransComQuotesDTO>)criteria.list();
 		for (TransComQuotesDTO tCQuotesDTO : tcQuotesList) {
 			if (tCQuotesDTO.getAcceptDeclineFlag()==true) {
 				return "already exist";
@@ -91,8 +92,13 @@ public class TransComQuotesDaoImpl extends AbstractHibernateDaoImpl<TransComQuot
 	public Object toggleReadUnreadQuote(Long quoteId, Boolean ruFlag) {
 		TransComQuotesDTO transComQuotesDTO=getById(quoteId);
 		transComQuotesDTO.setAcceptDeclineFlag(ruFlag);
-		
 		return save(transComQuotesDTO);
+	}
+
+	@Override
+	public TransComQuotesDTO generateInvoice(Long quoteId) {
+		TransComQuotesDTO transcomquote= getById(quoteId);
+		return null;
 	}
 	
 }
