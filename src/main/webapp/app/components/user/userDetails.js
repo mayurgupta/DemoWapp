@@ -1,8 +1,10 @@
-truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDetailsService','notificationService',function($scope, $rootScope, userDetailsService,notificationService) {
+truckTransApp
+		.controller(
+				'userDetailsController',['$scope','$rootScope','userDetailsService','HistoryService',function($scope, $rootScope, userDetailsService,HistoryService) {
 							$scope.isUpdate = false;
 							$scope.init = function() {
 								$rootScope.isLogin = true;
-								$rootScope.user = "Laxmi";
+								$rootScope.loggedInUser = "Laxmi";
 								$scope.user = {
 									name : "Laxmi Deshmukh",
 									email : "laxmi.deshmukh@gmail.com",
@@ -13,6 +15,16 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 									quote : false,
 									notification : false
 								}
+								var userId = 25;
+								userDetailsService.getUserDetails(userId).then(
+										function(response) {
+
+											if (response) {
+
+											} else {
+
+											}
+										});
 
 							}
 							$scope.isUpdate = function(update) {
@@ -24,6 +36,40 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 								$scope.user.quote = false;
 								$scope.user.notification = false;
 								$scope.user.history = true;
+								
+								$scope.acceptedQuote =[{id:"ABC001",details:"bgjdffgdjhjnghgfhmnfgh"},
+									                      {id:"ABC002",details:"bgjdffgdjhjnghgfhmnfgh"},
+									                      {id:"ABC006",details:"bgjdffgdjhjnghgfhmnfgh"},
+									                      {id:"ABC010",details:"bgjdffgdjhjnghgfhmnfgh"}];
+									
+									
+								$scope.declinedQuote =[{id:"ABC003",details:"bgjdffgdjhjnghgfhmnfgh"},
+									                      {id:"ABC012",details:"bgjdffgdjhjnghgfhmnfgh"},
+									                      {id:"ABC005",details:"bgjdffgdjhjnghgfhmnfgh"},
+									                      {id:"ABC011",details:"bgjdffgdjhjnghgfhmnfgh"}];
+
+								
+								
+								
+								/*HistoryService.getAcceptedQuotes(userId).then(
+										function(response) {
+											
+											if (response) {
+												$scope.acceptedQuote=response;
+											} else {
+
+											}
+										});*/
+					
+								/*HistoryService.getDeclinedQuotes(userId).then(
+										function(response) {
+
+											if (response) {
+												$scope.declinedQuote=response;
+											} else {
+
+											}
+										});*/
 
 							}
 
@@ -39,15 +85,16 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 								$scope.user.quote = false;
 								$scope.user.profile = false;
 								$scope.user.notification = true;
-								
-								notificationService.getNotifications(userData).then(function(response){
-									if(response){
-										
-									}else{
-										
-									}
-								});
-								
+
+								/*notificationService.getNotifications(userData)
+										.then(function(response) {
+											if (response) {
+
+											} else {
+
+											}
+										});*/
+
 							}
 
 							$scope.showProfile = function() {
@@ -55,9 +102,7 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 								$scope.user.history = false;
 								$scope.user.quote = false;
 								$scope.user.profile = true;
-														
-								
-								
+
 							}
 
 							$scope.viewDetails = function(quote) {
@@ -73,18 +118,94 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 
 								hideProcessDialog();
 								$("#successModal").modal("show");
-								/*
-								 * userDetailsService.doUpdate(itemToLogin).then(function
-								 * (response) { if (response) { } else {
-								 * alert("Please try again later"); }
-								 * 
-								 * 
-								 *  })
-								 */
+								
+							userDetailsService.doUpdate(itemToLogin).then(function(response) { 
+								
+								if (response) {
+									
+								} else {
+								 alert("Please try again later"); }
+								  
+								  })
+								 
 
 							}
 
+							
+							$scope.getInvoice=function(orderId){
+								/*HistoryService.getInvoice(userId).then(function(response){
+									if(response){
+										
+									}else{
+										
+									}
+								});*/
+								$rootScope.token = "D";
+								
+								$("#successModal").modal("show");
+							}
+							
+							
+							$scope.ChangePassword=function(passData){
+								
+								if(passData.newPassword === passData.confirmPassword){
+									userDetailsService.authenticatePassword(passData.oldPassword).then(function(response){
+										if(response){
+											
+											
+											var itemToSend={};
+											itemToSend.oldPassword=passData.oldPassword;
+											itemToSend.newPassword=passData.newPassword;
+											itemToSend.confirmPassword=passData.confirmPassword;
+											itemToSend.userName=passData.name;
+											itemToSend.email=passData.email;
+											console.log(itemToSend);
+											/*userDetailsService.updatePassword(itemToSend).then(function(response){
+											if(response){
+												
+											}else{
+												
+											}
+										});*/
+										}else{
+											
+										}
+									
+									
+									});
+								}else{
+									$scope.user.newPassword="";
+									$scope.user.confirmPassword="";
+									alert("New password and confirm password should be same.")
+									
+									
+								}
+								
+								
+							}
+							
+							
+							
+							
 							// some raw data here...
+							
+							
+							$scope.acceptedQuote =[{id:"ABC001",details:"bgjdffgdjhjnghgfhmnfgh"},
+								                      {id:"ABC002",details:"bgjdffgdjhjnghgfhmnfgh"},
+								                      {id:"ABC006",details:"bgjdffgdjhjnghgfhmnfgh"},
+								                      {id:"ABC010",details:"bgjdffgdjhjnghgfhmnfgh"}];
+								
+								
+							$scope.declinedQuote =[{id:"ABC003",details:"bgjdffgdjhjnghgfhmnfgh"},
+								                      {id:"ABC012",details:"bgjdffgdjhjnghgfhmnfgh"},
+								                      {id:"ABC005",details:"bgjdffgdjhjnghgfhmnfgh"},
+								                      {id:"ABC011",details:"bgjdffgdjhjnghgfhmnfgh"}];
+
+							
+							
+							
+							
+							
 							$scope.quotes = [
 									{
 										source : "Pune",
@@ -146,8 +267,11 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 										user : "Akansha",
 										itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
 
-									} ]
-
+									} ];
+							
+							
+							
+							
 							$scope.init();
 
 						} ]);

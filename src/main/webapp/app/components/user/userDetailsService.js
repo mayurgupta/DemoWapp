@@ -8,9 +8,9 @@ truckTransApp.service('userDetailsService', function ($http) {
             // showProcessDialog();
             console.log(userData);
             var promise = $.ajax({
-                url: Server + "api/updateUser",
-                data: JSON.stringify(userData),
-                type: "POST",
+                url: Server + "api/users/",
+                data:"userId="+encodeURIComponent(userId),
+                type: "PUT",
                 contentType: "application/json",
                 dataType: "json"
             }).then(function (response) {
@@ -20,7 +20,46 @@ truckTransApp.service('userDetailsService', function ($http) {
             });
             // Return the promise to the controller
             return promise;
-        }
+        }, getUserDetails: function (userId) {
+            // showProcessDialog();
+          //  console.log(userData);
+            var promise = $.ajax({
+                url: Server + "api/users/",
+               data:"userId="+encodeURIComponent(userId) ,
+                type: "GET",
+                contentType: "application/json",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                  },
+               dataType: "json"
+            }).then(function (response) {
+                // The then function here is an opportunity to modify the response
+
+                return response;
+            });
+            // Return the promise to the controller
+            return promise;
+        }, updatePassword: function (userData) {
+            // showProcessDialog();
+            //  console.log(userData);
+              var promise = $.ajax({
+                  url: Server + "api/users/changePassword",
+                 data:JSON.stringify(userData) ,
+                  type: "POST",
+                  contentType: "application/json",
+                  headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                 dataType: "json"
+              }).then(function (response) {
+                  // The then function here is an opportunity to modify the response
+
+                  return response;
+              });
+              // Return the promise to the controller
+              return promise;
+          }
+        
 
     };
 

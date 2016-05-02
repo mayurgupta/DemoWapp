@@ -18,18 +18,20 @@ truckTransApp.config(['$routeProvider', function ($routeProvider) {
 
 truckTransApp.run(function($rootScope) {
 	$rootScope.isLogin=false;
-	$rootScope.user="";
+	$rootScope.loggedInUser = "";
     $rootScope.token = "C";
     $rootScope.messages = {
     		updateUser : "Your account has been updated successfully",
-    		createUser : "Your account has been created successfully.Please login for more details."
+    		createUser : "Your account has been created successfully.Please login for more details.",
+    		downloadInvoice :"Invoice downloaded successfully"
     	};
     
 })
 
 truckTransApp.constant('messages1',{
 	updateUser : "Your account has been updated successfully",
-	createUser : "Your account has been created successfully.Please login for more details."
+	createUser : "Your account has been created successfully.Please login for more details.",
+	downloadInvoice :"Invoice downloaded successfully"
 })
 
 // function to show progress bar

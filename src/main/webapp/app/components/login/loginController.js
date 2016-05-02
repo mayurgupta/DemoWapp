@@ -12,12 +12,14 @@ truckTransApp.controller('LoginController', ['$scope','$rootScope','$location', 
         showProcessDialog();
  
         LoginService.doLogin(itemToLogin).then(function (response) {
+        	console.log("-----");
+        	console.log(response);
             if (response) {
-
+            	 location.path("/userDashboard");
             } else {
                 alert("Username/Password is wrong please login again");
             }
-            location.path("/userDashboard");
+           
             
             
             
@@ -25,7 +27,7 @@ truckTransApp.controller('LoginController', ['$scope','$rootScope','$location', 
         
         hideProcessDialog();
         
-        $location.path("/userDashboard");
+       $location.path("/userDashboard");
     }
 $scope.loginClose=function(){
 	$("#myModal").hide();

@@ -97,7 +97,9 @@ public class TransComQuotesDaoImpl extends AbstractHibernateDaoImpl<TransComQuot
 
 	@Override
 	public TransComQuotesDTO generateInvoice(Long quoteId) {
-		TransComQuotesDTO transcomquote= getById(quoteId);
+		TransComQuotesDTO transcomquote = getById(quoteId);
+		
+		
 		return null;
 	}
 	

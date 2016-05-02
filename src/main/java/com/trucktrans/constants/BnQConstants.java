@@ -12,16 +12,18 @@ public enum BnQConstants {
 	READ("read"),
 	UNREAD("unread"),
 	ACCEPT("accept"),
-	DECLINE("decline");
-	
-	private final String val;
+	DECLINE("decline"),
+	QUOTEID("quoteid"),
+	ADDRESS_EXPORT("#/pdfexport"),
+	AND_SIGN("&");
+	private final String value;
 	
 	private BnQConstants(String type) {
-		this.val = type;
+		this.value = type;
 	}
 
-	public String getVal() {
-		return val;
+	public String getValue() {
+		return value;
 	}
 	
 	

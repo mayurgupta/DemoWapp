@@ -65,7 +65,8 @@ public class UserController extends AbstractRestController<UserDTO> {
      */
     @GET
     @Path("/{userId}")
-    @Produces({ MediaType.APPLICATION_JSON })
+   // @Produces({ MediaType.APPLICATION_JSON })
+    @Produces("text/plain")
 //    @Secured(value = { "ROLE_ADMIN" })
     public Response getUser(@PathParam("userId") String userId) {
         WUserDetails user = userService.getUserByUserName(userId);

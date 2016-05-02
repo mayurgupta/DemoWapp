@@ -1,8 +1,5 @@
 <div>
-	<h1>
-		Welcome... {{user.name}}
-		
-	</h1>
+	<h1>Welcome... {{user.name}}</h1>
 	<section class="hero">
 
 		<div class="texture-overlay"></div>
@@ -14,8 +11,7 @@
 
 						<li class="active"><a href="" data-ng-click="showProfile()">User
 								Profile</a></li>
-						<li><a href="" data-ng-click="showHistory()">Booking
-								History</a></li>
+						<li><a href="" data-ng-click="showHistory()">History</a></li>
 						<li><a href="" data-ng-click="showQuote()">Put a quote</a></li>
 						<li><a href="" data-ng-click="getNotification()">Inbox</a></li>
 					</ul>
@@ -29,76 +25,244 @@
 								<h4 style="font-weight: bold; color: lime;">General
 									Information</h4>
 								<div class="row">
-									<div class="form-group" style="padding-bottom: 30px;">
-										<div class=" col-md-2">
+									<div class="form-group paddingBtm30px">
+										<div class=" col-md-4">
 											<label for="name">Name</label>
 										</div>
-										<div class="col-md-10">
+										<div class="col-md-8">
 											<input type="text" class="form-control" id="name"
 												placeholder="Enter Full Name" required
 												data-ng-model="user.name" value="user.name">
 										</div>
 									</div>
-									<div class="form-group" style="padding-bottom: 30px;">
-										<div class="  col-md-2">
+									<div class="form-group paddingBtm30px">
+										<div class="  col-md-4">
 											<label for="name">Email</label>
 										</div>
-										<div class="col-md-10">
+										<div class="col-md-8">
 											<input type="email" class="form-control" id="email"
 												placeholder="Enter Email" required
 												data-ng-model="user.email" value="user.email">
 										</div>
 									</div>
 									<div class="form-group">
-										<div class="  col-md-2">
+										<div class="  col-md-4">
 											<label for="role">Role</label>
 										</div>
-										<div class="col-md-10">{{user.role}}</div>
+										<div class="col-md-8">{{user.role}}</div>
 									</div>
 								</div>
 								<hr>
 								<h4 style="font-weight: bold; color: lime;">Address
 									Information</h4>
-								<div class="row">
-									<div class="form-group" style="padding-bottom: 5px;">
-										<div class="col-md-2">Address</div>
-										<div class="col-md-10"><textarea rows="2" cols="30" style="color: black" >Ajdfhjc,fdhgfdg,fdhdfh,hfdhdf,hfd sDsad</textarea>
+								<div class="row" style="padding-bottom: 5px;">
+
+									<div class="form-group paddingBtm30px">
+										<div class="col-md-4 ">Pin Code</div>
+										<div class="col-md-8 ">
+											<input type="text" maxlength="6"
+												pattern="([0-9]|[0-9]|[0-9])" class="form-control">
 										</div>
+									</div>
+									<div class="form-group paddingBtm30px">
+										<div class="col-md-4 ">Address</div>
+										<div class="col-md-8 ">
+											<textarea class="form-control" rows="2" cols="30"
+												style="color: black">Ajdfhjc,fdhgfdg,fdhdfh,hfdhdf,hfd sDsad</textarea>
+										</div>
+									</div>
+									<div class="form-group paddingBtm30px"
+										style="padding-top: 17px;">
+										<div class="col-md-4">City</div>
+										<div class="col-md-8">
+											<input class="form-control" type="text">
+										</div>
+									</div>
+									<div class="form-group paddingBtm30px">
+										<div class="col-md-4">State</div>
+										<div class="col-md-8">
+											<input class="form-control" type="text">
+										</div>
+									</div>
+									<div class="form-group paddingBtm30px">
+										<div class="col-md-4">Landmark</div>
+										<div class="col-md-8">
+											<input class="form-control" type="text">
+										</div>
+									</div>
+									<div class="form-group paddingBtm30px">
+										<div class="col-md-4">Phone Number</div>
+										<div class="col-md-8">
+											<input type="text" maxlength="10"
+												pattern="([0-9]|[0-9]|[0-9])" class="form-control">
+										</div>
+
+
 									</div>
 								</div>
 								<hr>
 								<h4 style="font-weight: bold; color: lime;">Company
 									Information</h4>
-								<div class="row">
-									<div class="form-group" style="padding-bottom: 5px;">
-										<div class="col-md-2">Name</div>
-										<div class="col-md-10">ABC India</div>
-									</div>
-									<div class="form-group" style="padding-bottom: 5px;">
-										<div class="col-md-2">Address</div>
-										<div class="col-md-10"><textarea rows="2" cols="30" style="color: black"  >Ajdfhjc,fdhgfdg,fdhdfh,hfdhdf,hfd dsadd</textarea>
+								<div class="row" style="padding-bottom: 5px;">
+
+									<div class="form-group">
+
+										<div class="form-group paddingBtm30px">
+											<div class="col-md-4">Name</div>
+											<div class="col-md-8">
+												<input type="text" class="form-control" id="Cname"
+													placeholder="Enter Company name" required
+													data-ng-model="user.companyName" value="user.companyName">
+											</div>
 										</div>
+
+
+										<div class="form-group paddingBtm30px ">
+											<div class="col-md-4 ">Pin Code</div>
+											<div class="col-md-8 ">
+												<input type="text" maxlength="6"
+													pattern="([0-9]|[0-9]|[0-9])" class="form-control">
+											</div>
+										</div>
+										<div class="form-group paddingBtm30px">
+											<div class="col-md-4 ">Address</div>
+											<div class="col-md-8 ">
+												<textarea class="form-control" rows="2" cols="30"
+													style="color: black">Ajdfhjc,fdhgfdg,fdhdfh,hfdhdf,hfd sDsad</textarea>
+											</div>
+										</div>
+										<div class="form-group paddingBtm30px"
+											style="padding-top: 17px;">
+											<div class="col-md-4">City</div>
+											<div class="col-md-8">
+												<input class="form-control" type="text">
+											</div>
+										</div>
+										<div class="form-group paddingBtm30px">
+											<div class="col-md-4">State</div>
+											<div class="col-md-8">
+												<input class="form-control" type="text">
+											</div>
+										</div>
+										<div class="form-group paddingBtm30px">
+											<div class="col-md-4">Landmark</div>
+											<div class="col-md-8">
+												<input class="form-control" type="text">
+											</div>
+										</div>
+										<div class="form-group paddingBtm30px">
+											<div class="col-md-4">Phone Number</div>
+											<div class="col-md-8">
+												<input type="text" maxlength="10"
+													pattern="([0-9]|[0-9]|[0-9])" class="form-control">
+											</div>
+										</div>
+
 									</div>
+
+
 
 								</div>
-
-
-
-							</div>
-
-							<input type="checkbox" name="update" ng-model="checked">
-							<button data-toggle="modal" type="submit" class="btn btn-primary"
-								ng-disabled="!checked">Update</button>
-
+								
+								<input type="checkbox" name="update" ng-model="checked">
+								<button data-toggle="modal" type="submit"
+									class="btn btn-primary" ng-disabled="!checked">Update
+									Profile</button>
+						
 						</form>
+						<hr>
+			
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a  href="" data-toggle="collapse" data-target="#showChangePassword" style="text-decoration: underline;">
+											Password Management</a>
+									</h4>
+								</div>
+								<div id="showChangePassword" class="panel-collapse collapse" >
+								<form role="form" data-ng-submit="ChangePassword(user)">
+									<div class="panel-body">
+										<div class="form-group ">
+											<label for="name" style="color: blue">Old Password</label> <input
+												class="form-control" id="password" type="password" min="6"
+												placeholder="Enter Old password" required
+												data-ng-model="user.oldPassword">
+										</div>
+										<div class="form-group">
+											<label for="name" style="color: blue">New Password</label> <input
+												class="form-control" id="password" type="password" min="6"
+												placeholder="Enter New password" required
+												data-ng-model="user.newPassword">
+										</div>
+										<div class="form-group">
+											<label for="name" style="color: blue">Confirm Password</label> <input
+												class="form-control" id="confirmPassword" type="password"
+												min="6" placeholder="Confirm password" required
+												data-ng-model="user.confirmPassword">
+										</div>
+									</div>
+									<div class="panel-footer" ><button  type="submit"  class="btn btn-primary">Change Password</button>  </div>
+								</form>
+								</div>
+							</div>
+						</div>
 
+
+
+
+
+
+
+
+
+						<!-- </div>  -->
+					
 					</div>
+				</div>
 					<div ng-if="user.history" style="padding-left: 5px;">
 
-						<h3>Booking history</h3>
-						<ul>
-							<li>Mahindra Maxximo Load Pune to Mumbai 30 tonnes</li>
-						</ul>
+						<h3>History</h3>
+
+
+						<label>Accepted Quotes</label>
+						<table class="table   " style="border: 1px solid;">
+							<thead>
+								<tr>
+									<th>Quote Id</th>
+									<th>Details</th>
+									<th></th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="quote in acceptedQuote">
+									<td><a href="" data-target="#viewQuoteDetails"
+										data-toggle="modal" style="text-decoration: underline;">{{quote.id}}</a></td>
+									<td>{{quote.details}}</td>
+									<td data-ng-click="getInvoice(quote.id)"><button
+											class="btn btn-primary">Invoice</button></td>
+								</tr>
+							</tbody>
+						</table>
+						<label>Declined Quotes</label>
+						<table class="table   " style="border: 1px solid;">
+							<thead>
+								<tr>
+									<th>Quote Id</th>
+									<th>Details</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="quote in declinedQuote">
+									<td><a href="" data-target="#viewQuoteDetails"
+										data-toggle="modal" style="text-decoration: underline;">{{quote.id}}</a></td>
+									<td>{{quote.details}}</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
 
 					</div>
 
@@ -127,9 +291,9 @@
 						</table>
 
 					</div>
-					
-					
-					
+
+
+
 					<div ng-if="user.notification" style="padding-left: 5px;">
 						<h3>Notification</h3>
 						<table class="table table-hover  " style="border: 1px solid;">
@@ -256,11 +420,10 @@
 							</div>
 
 						</div>
-						
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">accept</button>
-						
+
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">accept</button>
+
 					</form>
 
 				</div>
@@ -306,4 +469,110 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- view Detail modal -->
+	<div id="viewQuoteDetails" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content" style="padding: 15px;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h2 class="modal-title">Quote Details</h2>
+				</div>
+
+				<div class="modal-body">
+					<form role="form">
+						<div class="form-group">
+							<h4 style="font-weight: bold; color: blue;">User Information</h4>
+							<div class="row">
+
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Name:</label>
+									</div>
+									<div class="col-md-10">{{quote.user}}</div>
+								</div>
+
+
+							</div>
+							<h4 style="font-weight: bold; color: blue;">Address
+								Information</h4>
+							<div class="row">
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Source:</label>
+									</div>
+									<div class="col-md-10">
+										<span>{{quote.source}}</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group" style="padding-bottom: 45px;">
+									<div class="col-md-2">
+										<label> Address:</label>
+									</div>
+									<div class="col-md-10">
+										<textarea rows="2" cols="30" readonly>{{quote.sourceAdd}}</textarea>
+									</div>
+
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Destination:</label>
+									</div>
+									<div class="col-md-10">{{quote.des}}</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group" style="padding-bottom: 45px;">
+									<div class="col-md-2">
+										<label>Address:</label>
+									</div>
+									<div class="col-md-10">
+										<textarea rows="2" cols="30" readonly>{{quote.desAdd}}</textarea>
+									</div>
+
+								</div>
+
+							</div>
+
+							<h4 style="font-weight: bold; color: blue;">Item Information</h4>
+							<div class="row">
+
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Truck:</label>
+									</div>
+									<div class="col-md-10">{{quote.truck}}</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group" style="padding-bottom: 5px;">
+									<div class="col-md-2">
+										<label>Item detail:</label>
+									</div>
+									<div class="col-md-10">{{quote.itemDetails}}</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+					</form>
+
+				</div>
+			
+
+			</div>
+		</div>
+	</div>
+
+
+
+
 </div>

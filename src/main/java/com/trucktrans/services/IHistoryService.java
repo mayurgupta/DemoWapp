@@ -3,6 +3,11 @@
  */
 package com.trucktrans.services;
 
+import java.io.OutputStream;
+
+import javax.servlet.ServletContext;
+import javax.ws.rs.core.UriInfo;
+
 import com.trucktrans.entity.dto.TransComQuotesDTO;
 
 /**
@@ -12,6 +17,6 @@ import com.trucktrans.entity.dto.TransComQuotesDTO;
  */
 public interface IHistoryService {
 
-	TransComQuotesDTO generateInvoice(Long quoteId);
+	TransComQuotesDTO generateInvoice(Long quoteId, UriInfo paramUriInfo, ServletContext context, OutputStream paramAnonymousOutputStream);
 
 }

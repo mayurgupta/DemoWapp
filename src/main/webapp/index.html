@@ -27,6 +27,8 @@
 <link href='app/assets/css/custom/css.css'	rel='stylesheet' type='text/css'>
 <link href="app/assets/css/custom/styles.css" rel="stylesheet">
 <link href="app/assets/css/custom/queries.css" rel="stylesheet">
+<link href="app/assets/css/custom/myStyle.css" rel="stylesheet">
+
 <!-- Facebook and Twitter integration -->
 <meta property="og:title" content="" />
 <meta property="og:image" content="" />
@@ -70,6 +72,7 @@
 <!-- user details -->
 <script src="app/components/user/userDetails.js"></script>
 <script src="app/components/user/userDetailsService.js"></script>
+<script src="app/components/user/historyService.js"></script>
 
 <script src="app/constants.js"></script>
 
@@ -117,7 +120,7 @@
 						href="" data-ng-click="doLogout()"><i class="fa fa-power-off"></i>Logout</a></li>
 					
 					<li ng-if="isLogin" style="float: right"><a
-						href="#/userDashboard">Welcome.. {{user}}</a></li>
+						href="#/userDashboard">Welcome.. {{loggedInUser}}</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -765,6 +768,7 @@ source City
 					<b style="color: green"> Congratulation... </b></br>
 					<p ng-if="token=='C'">{{messages.createUser}}</p>
 					<p ng-if="token=='U'">{{messages.updateUser}}</p>
+					<p ng-if="token=='D'">{{messages.downloadInvoice}}</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
