@@ -439,6 +439,7 @@ public class UserService implements IUserService{
 		userDTO.setEmail(wuser.getEmail());
 		userDTO.setName(wuser.getName());
 		userDTO.setUserName(wuser.getEmail());
+		userDTO.setPasswordChanged(false);
 		String roleDesc = null;
 		userDao.save(userDTO);
 		// Adding roles to user
@@ -449,7 +450,9 @@ public class UserService implements IUserService{
 				"register.user.subject").getPropertyValue();
 		String emailBody = propertyService.findByPropertyName(
 				"register.user.content").getPropertyValue();
-		String passwordKey = String.valueOf(PwdGenerator.generatePswd(8, 15, 2, 1, 1));
+//		String passwordKey = String.valueOf(PwdGenerator.generatePswd(8, 15, 2, 1, 1));
+		
+		String passwordKey = "Password already set";
 		
 		String content = StringEscapeUtils.unescapeJava(Util.formatString(emailBody, new Object[] { userDTO.getName(),roleDesc,
 				passwordKey }));

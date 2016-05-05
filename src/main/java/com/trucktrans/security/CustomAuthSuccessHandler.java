@@ -82,7 +82,7 @@ public class CustomAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
                         .getParameter(targetUrlParameter)))) {
 
             super.onAuthenticationSuccess(request, response, authentication);
-            return;
+            return ;
         }
     }
 
