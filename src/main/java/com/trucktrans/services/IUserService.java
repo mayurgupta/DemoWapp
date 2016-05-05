@@ -28,6 +28,15 @@ public interface IUserService {
 	WUserDetails getUserByUserName(String userName);
 
 	/**
+	 * access user by login id name
+	 * 
+	 * @param userName
+	 * @return
+	 */
+	WUserDetails getUserByUserID(Long userId);
+
+	
+	/**
 	 * 
 	 * @param user
 	 */

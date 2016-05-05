@@ -146,6 +146,9 @@ public interface IUserDao extends IEntityDao<UserDTO, Long> {
 		}
 		
     }
+
+
+	UserDTO getByUserId(Long userId);
     
     
     

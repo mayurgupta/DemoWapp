@@ -35,6 +35,17 @@ implements IUserDao{
         return (UserDTO) criteria.uniqueResult();
 
     }
+    
+    @Override
+    public UserDTO getByUserId(Long userId) {
+        Session session = getSessionFactory().getCurrentSession();
+        Criteria criteria = session.createCriteria(UserDTO.class).add(
+                Restrictions.eq("userId", userId));
+
+        criteria.setCacheable(true);
+        return (UserDTO) criteria.uniqueResult();
+
+    }
 
     @Override
     public UserDTO getByEmail(String email) {

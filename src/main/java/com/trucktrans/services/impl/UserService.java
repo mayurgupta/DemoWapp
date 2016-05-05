@@ -18,6 +18,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -93,6 +94,23 @@ public class UserService implements IUserService{
 		userDetail.setEmail(user.getEmail());
 		return userDetail;
 	}
+	
+	
+	@Override
+	public WUserDetails getUserByUserID(Long userId) {
+		UserDTO user = userDao.getByUserId(userId);
+		if (user == null) {
+			throw new ResourceNotFoundException(userId);
+		}
+
+		WUserDetails userDetail = new WUserDetails();
+		userDetail.setLogin(user.getUserName());
+		userDetail.setScreenName(user.getName());
+		userDetail.setEmail(user.getEmail());
+		userDetail.setUserId(userId);
+		return userDetail;
+	}
+
 
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	@Override
@@ -466,4 +484,6 @@ public class UserService implements IUserService{
 //		ProfileQueryBuilder profileQueryBuilder=
 		return null;
 	}
+
+	
 }

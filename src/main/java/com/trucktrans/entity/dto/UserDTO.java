@@ -33,7 +33,7 @@ public class UserDTO implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private long userId;
+	private Long userId;
 	private String email;
 	private Boolean enabled;
 	private String name;
@@ -52,7 +52,7 @@ public class UserDTO implements java.io.Serializable {
 	public UserDTO() {
 	}
 
-	public UserDTO(long userId, String email, String name, String password, String userName) {
+	public UserDTO(Long userId, String email, String name, String password, String userName) {
 		this.userId = userId;
 		this.email = email;
 		this.name = name;
@@ -60,7 +60,7 @@ public class UserDTO implements java.io.Serializable {
 		this.userName = userName;
 	}
 
-	public UserDTO(long userId, String email, Boolean enabled, String name, String password, String userName,
+	public UserDTO(Long userId, String email, Boolean enabled, String name, String password, String userName,
 			String createdBy, Date createdDate, String updatedBy, Date updatedDate, Boolean passwordChanged,
 			Set<AppTrackInfoDTO> appTrackInfoDTOs, Set<UserRolesREF> userRoleseREFs, Set<UserBookingReqDTO> userBookingReqDTOs, TransComDetailsDTO transComDetailsDTO) {
 		this.userId = userId;
@@ -83,11 +83,11 @@ public class UserDTO implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "USER_ID", unique = true, nullable = false)
-	public long getUserId() {
+	public Long getUserId() {
 		return this.userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
