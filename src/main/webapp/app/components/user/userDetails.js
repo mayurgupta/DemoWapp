@@ -32,6 +32,8 @@ truckTransApp
 							}
 
 							$scope.showHistory = function() {
+								$('ul li').removeClass('active');
+								$('#history').addClass('active');
 								$scope.user.profile = false;
 								$scope.user.quote = false;
 								$scope.user.notification = false;
@@ -74,6 +76,9 @@ truckTransApp
 							}
 
 							$scope.showQuote = function() {
+								$('ul li').removeClass('active');
+								$('#putAQuote').addClass('active');
+								
 								$scope.user.history = false;
 								$scope.user.profile = false;
 								$scope.user.notification = false;
@@ -81,13 +86,28 @@ truckTransApp
 							}
 
 							$scope.getNotification = function() {
+								$('ul li').removeClass('active');
+								$('#notification').addClass('active');
 								$scope.user.history = false;
 								$scope.user.quote = false;
 								$scope.user.profile = false;
 								$scope.user.notification = true;
 
-								/*notificationService.getNotifications(userData)
-										.then(function(response) {
+								$scope.notifications = [ {
+									subject : "Invoice for Mahindra Maxximo Load Pune to Mumbai 30 tonnes",
+									sender : "Trucktrans"
+								}, {
+									subject : "Invoice for Mahindra Maxximo Load Pune to Mumbai 30 tonnes",
+									sender : "Trucktrans"
+								}, {
+									subject : "Invoice for Mahindra Maxximo Load Pune to Mumbai 30 tonnes",
+									sender : "Trucktrans"
+								}, {
+									subject : "Invoice for Mahindra Maxximo Load Pune to Mumbai 30 tonnes",
+									sender : "Trucktrans"
+								} ];
+								
+								/*userDetailsService.getNotifications(userData).then(function(response) {
 											if (response) {
 
 											} else {
@@ -98,10 +118,26 @@ truckTransApp
 							}
 
 							$scope.showProfile = function() {
+								
+								$('ul li').removeClass('active');
+								$('#profile').addClass('active');
+								
 								$scope.user.notification = false;
 								$scope.user.history = false;
 								$scope.user.quote = false;
 								$scope.user.profile = true;
+								
+								
+								userDetailsService.getUserDetails(userId).then(
+										function(response) {
+
+											if (response) {
+
+											} else {
+
+											}
+										});
+								
 
 							}
 
@@ -160,13 +196,13 @@ truckTransApp
 											itemToSend.userName=passData.name;
 											itemToSend.email=passData.email;
 											console.log(itemToSend);
-											/*userDetailsService.updatePassword(itemToSend).then(function(response){
+										userDetailsService.updatePassword(itemToSend).then(function(response){
 											if(response){
 												
 											}else{
 												
 											}
-										});*/
+										});
 										}else{
 											
 										}

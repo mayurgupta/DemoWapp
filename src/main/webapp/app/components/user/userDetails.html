@@ -7,13 +7,14 @@
 
 			<div class="row hero-content">
 				<div class="col-md-2">
-					<ul class="nav nav-pills nav-stacked">
+					<ul id="sideMenu" class="nav nav-pills nav-stacked">
 
-						<li class="active"><a href="" data-ng-click="showProfile()">User
+						<li id="profile" class="active"><a href="" data-ng-click="showProfile()">User
 								Profile</a></li>
-						<li><a href="" data-ng-click="showHistory()">History</a></li>
-						<li><a href="" data-ng-click="showQuote()">Put a quote</a></li>
-						<li><a href="" data-ng-click="getNotification()">Inbox</a></li>
+						<li id="history"><a href="" data-ng-click="showHistory()">History</a></li>
+						<li id="putAQuote"><a href="" data-ng-click="showQuote()">Put a quote</a></li>
+						<li id="notification"><a href="" data-ng-click="getNotification()" >
+						<span  class="badge1" data-badge="6">Inbox</span></a></li>
 					</ul>
 				</div>
 				<div class="col-md-6" style="border-left: solid 1px;">
@@ -296,33 +297,17 @@
 
 					<div ng-if="user.notification" style="padding-left: 5px;">
 						<h3>Notification</h3>
-						<table class="table table-hover  " style="border: 1px solid;">
-							<tr>
-								<td>Trucktrans</td>
-								<td>Invoice for Mahindra Maxximo Load Pune to Mumbai 30
-									tonnes</td>
-							</tr>
-							<tr>
-								<td>Trucktrans</td>
-								<td>Invoice for Mahindra Maxximo Load Pune to Mumbai 30
-									tonnes</td>
-							</tr>
-							<tr>
-								<td>Trucktrans</td>
-								<td>Invoice for Mahindra Maxximo Load Pune to Mumbai 30
-									tonnes</td>
-							</tr>
-							<tr>
-								<td>Trucktrans</td>
-								<td>Invoice for Mahindra Maxximo Load Pune to Mumbai 30
-									tonnes</td>
-							</tr>
+					<table class="table table-hover  " style="border: 1px solid;">
+						<tr data-ng-repeat="notifications in notification" data-ng-click="viewNotification();">
+							<td>{{notification.sender}}</td>
+							<td>{{notification.subject}}</td>
+
+						</tr>
+
+					</table>
 
 
-						</table>
-
-
-					</div>
+				</div>
 				</div>
 
 			</div>
