@@ -3,6 +3,8 @@
  */
 package com.trucktrans.services;
 
+import java.util.Date;
+
 import com.trucktrans.entity.dto.UserDTO;
 
 
@@ -12,8 +14,8 @@ import com.trucktrans.entity.dto.UserDTO;
  */
 public interface IBnQService {
 
-	Object searchBookings(String source, String destination, long datefrom,
-			long dateto, int offset);
+	Object searchBookings(String source, String destination, Date datefrom,
+			Date dateto, int offset);
 
 	Object getBookings(int offset);
 

@@ -3,6 +3,8 @@
  */
 package com.trucktrans.services.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +29,7 @@ public class BnQServiceImpl implements IBnQService{
 	
 	@Override
 	public Object searchBookings(String source, String destination,
-			long datefrom, long dateto,int offset) {
+			Date datefrom, Date dateto,int offset) {
 		return userBookingReqDao.getSearchResults(source, destination, datefrom, dateto, offset);
 		
 	}

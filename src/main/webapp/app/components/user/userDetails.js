@@ -5,9 +5,10 @@ truckTransApp
 							$scope.init = function() {
 								$rootScope.isLogin = true;
 								$rootScope.loggedInUser = "Laxmi";
+								//$scope.user={};
 								$scope.user = {
-									name : "Laxmi Deshmukh",
-									email : "laxmi.deshmukh@gmail.com",
+									name : "",
+									email : "",
 									update : false,
 									role : "User",
 									profile : true,
@@ -15,12 +16,13 @@ truckTransApp
 									quote : false,
 									notification : false
 								}
-								var userId = 25;
-								userDetailsService.getUserDetails(userId).then(
+								
+								userDetailsService.getUserDetails($rootScope.userName).then(
 										function(response) {
-
+console.log(response);
 											if (response) {
-
+												$scope.user.email= response.email;
+												$scope.user.userId= response.userId;
 											} else {
 
 											}
@@ -53,7 +55,7 @@ truckTransApp
 								
 								
 								
-								/*HistoryService.getAcceptedQuotes(userId).then(
+								HistoryService.getAcceptedQuotes($scope.user.userId).then(
 										function(response) {
 											
 											if (response) {
@@ -61,9 +63,9 @@ truckTransApp
 											} else {
 
 											}
-										});*/
+										});
 					
-								/*HistoryService.getDeclinedQuotes(userId).then(
+								HistoryService.getDeclinedQuotes($scope.user.userId).then(
 										function(response) {
 
 											if (response) {
@@ -71,7 +73,7 @@ truckTransApp
 											} else {
 
 											}
-										});*/
+										});
 
 							}
 
@@ -83,6 +85,15 @@ truckTransApp
 								$scope.user.profile = false;
 								$scope.user.notification = false;
 								$scope.user.quote = true;
+								HistoryService.showQuote().then(
+										function(response) {
+
+											if (response) {
+												$scope.quotes=response;
+											} else {
+
+											}
+										});
 							}
 
 							$scope.getNotification = function() {
@@ -154,6 +165,9 @@ truckTransApp
 
 								hideProcessDialog();
 								$("#successModal").modal("show");
+								var itemToLogin={};
+								itemToLogin.name=user.name;
+								itemToLogin.role=user.role;
 								
 							userDetailsService.doUpdate(itemToLogin).then(function(response) { 
 								

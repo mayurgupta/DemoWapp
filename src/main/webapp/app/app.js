@@ -17,6 +17,7 @@ truckTransApp.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 truckTransApp.run(function($rootScope) {
+	$rootScope.userName='';
 	$rootScope.isLogin=false;
 	$rootScope.loggedInUser = "";
     $rootScope.token = "C";

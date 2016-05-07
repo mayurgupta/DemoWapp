@@ -8,9 +8,9 @@ truckTransApp.service('userDetailsService', function ($http) {
             // showProcessDialog();
             console.log(userData);
             var promise = $.ajax({
-                url: Server + "api/users/",
-                data:"userId="+encodeURIComponent(userId),
-                type: "PUT",
+                url: Server + "api/users/editProfile",
+                data:JSON.stringify(userData),
+                type: "POST",
                 contentType: "application/json",
                 dataType: "json"
             }).then(function (response) {
@@ -22,9 +22,9 @@ truckTransApp.service('userDetailsService', function ($http) {
             return promise;
         }, getUserDetails: function (userId) {
             // showProcessDialog();
-          //  console.log(userData);
+     
             var promise = $.ajax({
-                url: Server + "api/users/25",
+                url: Server + "api/users/"+userId,
               // data:"userId="+encodeURIComponent(userId) ,
                 type: "GET",
                 contentType: "application/json",

@@ -3,6 +3,8 @@
  */
 package com.trucktrans.dao.impl;
 
+import java.util.Date;
+
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -88,7 +90,7 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 
 	@Override
 	public Object getSearchResults(String source, String destination,
-			long datefrom, long dateto, int offset) {
+			Date datefrom, Date dateto, int offset) {
 		
 		Criteria criteria= getSessionFactory().getCurrentSession()
 				.createCriteria(UserBookingReqDTO.class)
@@ -98,7 +100,7 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 		if (offset != 0) {
             criteria.setFirstResult(offset);
         }
-		return (UserBookingReqDTO)criteria.list();
+		return criteria.list();
 	}
 
 	@Override

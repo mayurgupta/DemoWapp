@@ -11,6 +11,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -52,7 +53,7 @@ public class HistoryController extends AbstractRestController<TransComQuotesDTO>
 	@GET
     @Path("/acceptedquotes")					   //
     @Produces({ MediaType.APPLICATION_JSON })	   //
-	public Response myAccptQuotes(){			   //	
+	public Response myAccptQuotes(@QueryParam("userId") Long userId){			   //	
 		return Response.ok().build();			   //  we can combine these two methods into one method  
 	}											   //                                                    
 	                                               //                                                    

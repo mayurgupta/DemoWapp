@@ -23,11 +23,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 
-import com.sun.jersey.api.core.InjectParam;
 import com.trucktrans.entity.dto.UserDTO;
 import com.trucktrans.entity.web.WPassword;
 import com.trucktrans.entity.web.WUser;
-import com.trucktrans.entity.web.WUserBooking;
 import com.trucktrans.entity.web.WUserDetails;
 import com.trucktrans.exceptions.services.ResourceNotFoundException;
 import com.trucktrans.services.IUserService;
@@ -64,11 +62,11 @@ public class UserController extends AbstractRestController<UserDTO> {
      * @return
      */
     @GET
-    @Path("/getuser")
+    @Path("/{userid}")
    // @Produces({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
 //    @Secured(value = { "ROLE_ADMIN" })
-    public Response getUser(@QueryParam("email") String userId) {
+    public Response getUser(@PathParam("userid") String userId) {
         WUserDetails user = userService.getUserByUserName(userId);
         if (user == null) {
             throw new ResourceNotFoundException(userId);
@@ -172,10 +170,13 @@ public class UserController extends AbstractRestController<UserDTO> {
     @Path("/editprofile")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response editProfile(@Valid WUser wuser) {
+    public Response editProfile(WUser wuser) {
     	
-    	return Response.ok(
-    			userService.editProfile(wuser)).build();
+    	System.out.println(wuser.getEmail());
+    	return Response.ok("asdasd").build();
+    	
+    	/*return Response.ok(
+    			userService.editProfile(wuser)).build();*/
     	
     }
     

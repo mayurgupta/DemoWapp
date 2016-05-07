@@ -74,6 +74,22 @@ public class InitialiseController extends AbstractRestController<UserDTO> {
     	
     }
     
+    
+    @POST
+    @Path("/editprofile")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editProfile(WUser wuser) {
+    	
+    	System.out.println(wuser.getEmail());
+    	return Response.ok("asdasd").build();
+    	
+    	/*return Response.ok(
+    			userService.editProfile(wuser)).build();*/
+    	
+    }
+    
+    
     @POST
     @Path("/registeruser2")
     @Produces(MediaType.APPLICATION_JSON)

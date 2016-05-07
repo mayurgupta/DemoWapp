@@ -3,6 +3,8 @@
  */
 package com.trucktrans.web.controllers;
 
+import java.util.Date;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -47,8 +49,8 @@ public class BnQController extends AbstractRestController<Object>{
     @Consumes(MediaType.APPLICATION_JSON)
 	public Response searchBooking(@QueryParam("source") String source,
 			@QueryParam("destination") String destination,
-			@QueryParam("datefrom") long datefrom,
-			@QueryParam("dateto") long dateto,
+			@QueryParam("datefrom") Date datefrom,
+			@QueryParam("dateto") Date dateto,
 			@QueryParam("offset") int offset) {
     	return Response.ok(bnQService.searchBookings(source, destination, datefrom, dateto,offset)).build();
     }

@@ -91,6 +91,7 @@ public class UserService implements IUserService{
 		WUserDetails userDetail = new WUserDetails();
 		userDetail.setLogin(user.getUserName());
 		userDetail.setScreenName(user.getName());
+		userDetail.setUserId(user.getUserId());
 		userDetail.setEmail(user.getEmail());
 		return userDetail;
 	}

@@ -3,6 +3,8 @@
  */
 package com.trucktrans.dao;
 
+import java.util.Date;
+
 import javax.ws.rs.core.Response;
 
 import com.trucktrans.entity.dto.UserBookingReqDTO;
@@ -20,8 +22,8 @@ public interface IUserBookingReqDao extends IEntityDao<UserBookingReqDTO, Long>{
 
 	Object getBookingHistory(UserDTO user);
 
-	Object getSearchResults(String source, String destination, long datefrom,
-			long dateto, int offset);
+	Object getSearchResults(String source, String destination, Date datefrom,
+			Date dateto, int offset);
 
 	Object getAllBookings(int offset);
 	
