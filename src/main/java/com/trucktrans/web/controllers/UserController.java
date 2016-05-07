@@ -64,12 +64,12 @@ public class UserController extends AbstractRestController<UserDTO> {
      * @return
      */
     @GET
-    @Path("/{userId}")
+    @Path("/getuser")
    // @Produces({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
 //    @Secured(value = { "ROLE_ADMIN" })
-    public Response getUser(@PathParam("userId") Long userId) {
-        WUserDetails user = userService.getUserByUserID(userId);
+    public Response getUser(@QueryParam("email") String userId) {
+        WUserDetails user = userService.getUserByUserName(userId);
         if (user == null) {
             throw new ResourceNotFoundException(userId);
         }
