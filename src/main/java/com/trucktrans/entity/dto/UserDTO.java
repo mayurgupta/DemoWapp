@@ -48,6 +48,8 @@ public class UserDTO implements java.io.Serializable {
 	private Set<UserRolesREF> UserRolesREFs = new HashSet<UserRolesREF>(0);
 	private Set<UserBookingReqDTO> userBookingReqDTOs = new HashSet<UserBookingReqDTO>(0);
 	private TransComDetailsDTO transComDetailsDTO;
+	private UserDetailsInfoDTO detailsInfoDTO;
+	
 
 	public UserDTO() {
 	}
@@ -62,7 +64,7 @@ public class UserDTO implements java.io.Serializable {
 
 	public UserDTO(Long userId, String email, Boolean enabled, String name, String password, String userName,
 			String createdBy, Date createdDate, String updatedBy, Date updatedDate, Boolean passwordChanged,
-			Set<AppTrackInfoDTO> appTrackInfoDTOs, Set<UserRolesREF> userRoleseREFs, Set<UserBookingReqDTO> userBookingReqDTOs, TransComDetailsDTO transComDetailsDTO) {
+			Set<AppTrackInfoDTO> appTrackInfoDTOs, Set<UserRolesREF> userRoleseREFs, Set<UserBookingReqDTO> userBookingReqDTOs, TransComDetailsDTO transComDetailsDTO, UserDetailsInfoDTO detailsInfoDTO) {
 		this.userId = userId;
 		this.email = email;
 		this.enabled = enabled;
@@ -78,6 +80,7 @@ public class UserDTO implements java.io.Serializable {
 		this.UserRolesREFs = userRoleseREFs;
 		this.userBookingReqDTOs = userBookingReqDTOs;
 		this.transComDetailsDTO = transComDetailsDTO;
+		this.detailsInfoDTO=detailsInfoDTO;		
 	}
 
 	@Id
@@ -220,6 +223,16 @@ public class UserDTO implements java.io.Serializable {
 		this.transComDetailsDTO = transComDetailsDTO;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	public UserDetailsInfoDTO getDetailsInfoDTO() {
+		return detailsInfoDTO;
+	}
+
+	public void setDetailsInfoDTO(UserDetailsInfoDTO detailsInfoDTO) {
+		this.detailsInfoDTO = detailsInfoDTO;
+	}
+	
+	
 	/*@Override
 	public String toString() {
 		return "UserDTO [userId=" + userId + ", email=" + email + ", enabled=" + enabled + ", name=" + name
