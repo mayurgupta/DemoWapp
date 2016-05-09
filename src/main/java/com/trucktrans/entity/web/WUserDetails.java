@@ -3,6 +3,8 @@
  */
 package com.trucktrans.entity.web;
 
+import com.trucktrans.entity.dto.UserDTO;
+
 /**
  * @author Mayur
  * 5:01:28 pm, 20-Sep-2015
@@ -10,12 +12,70 @@ package com.trucktrans.entity.web;
  */
 public class WUserDetails {
 
+	Long id;
+	Integer pincode;
+	String state;
+	String city;
+	String landMark;
+	Integer primaryPhone;
+	Integer secondaryPhone;
+	
 	private String login;
 	private String screenName;
 	private String email;
 	private String screenImage;
 	private Long userId;
 	
+	
+	
+	public Integer getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(Integer pincode) {
+		this.pincode = pincode;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getLandMark() {
+		return landMark;
+	}
+
+	public void setLandMark(String landMark) {
+		this.landMark = landMark;
+	}
+
+	public Integer getPrimaryPhone() {
+		return primaryPhone;
+	}
+
+	public void setPrimaryPhone(Integer primaryPhone) {
+		this.primaryPhone = primaryPhone;
+	}
+
+	public Integer getSecondaryPhone() {
+		return secondaryPhone;
+	}
+
+	public void setSecondaryPhone(Integer secondaryPhone) {
+		this.secondaryPhone = secondaryPhone;
+	}
+
 	public Long getUserId() {
 		return userId;
 	}
