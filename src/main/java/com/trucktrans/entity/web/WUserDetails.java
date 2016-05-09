@@ -17,8 +17,8 @@ public class WUserDetails {
 	String state;
 	String city;
 	String landMark;
-	Integer primaryPhone;
-	Integer secondaryPhone;
+	Long primaryPhone;
+	Long secondaryPhone;
 	
 	private String login;
 	private String screenName;
@@ -60,19 +60,19 @@ public class WUserDetails {
 		this.landMark = landMark;
 	}
 
-	public Integer getPrimaryPhone() {
+	public Long getPrimaryPhone() {
 		return primaryPhone;
 	}
 
-	public void setPrimaryPhone(Integer primaryPhone) {
+	public void setPrimaryPhone(Long primaryPhone) {
 		this.primaryPhone = primaryPhone;
 	}
 
-	public Integer getSecondaryPhone() {
+	public Long getSecondaryPhone() {
 		return secondaryPhone;
 	}
 
-	public void setSecondaryPhone(Integer secondaryPhone) {
+	public void setSecondaryPhone(Long secondaryPhone) {
 		this.secondaryPhone = secondaryPhone;
 	}
 

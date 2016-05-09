@@ -35,8 +35,8 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 	String state;
 	String city;
 	String landMark;
-	Integer primaryPhone;
-	Integer secondaryPhone;
+	Long primaryPhone;
+	Long secondaryPhone;
 	UserDTO user;
 	
 	
@@ -49,7 +49,7 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 	
 	
 	public UserDetailsInfoDTO(Long id, Integer pincode, String state, String city, String landMark,
-			Integer primaryPhone, Integer secondaryPhone, UserDTO user) {
+			Long primaryPhone, Long secondaryPhone, UserDTO user) {
 		super();
 		this.id = id;
 		this.pincode = pincode;
@@ -104,18 +104,18 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 	}
 	
 	@Column(name = "PRIMARY_PHONE_NO", unique = true, nullable = false, length = 6)
-	public Integer getPrimaryPhone() {
+	public Long getPrimaryPhone() {
 		return primaryPhone;
 	}
-	public void setPrimaryPhone(Integer primaryPhone) {
+	public void setPrimaryPhone(Long primaryPhone) {
 		this.primaryPhone = primaryPhone;
 	}
 	
 	@Column(name = "SECONDARY_PHONE_NO", unique = true, nullable = false, length = 6)
-	public Integer getSecondaryPhone() {
+	public Long getSecondaryPhone() {
 		return secondaryPhone;
 	}
-	public void setSecondaryPhone(Integer secondaryPhone) {
+	public void setSecondaryPhone(Long secondaryPhone) {
 		this.secondaryPhone = secondaryPhone;
 	}
 	

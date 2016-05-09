@@ -98,6 +98,12 @@ public class UserService implements IUserService{
 		userDetail.setScreenName(user.getName());
 		userDetail.setUserId(user.getUserId());
 		userDetail.setEmail(user.getEmail());
+		userDetail.setLandMark(user.getDetailsInfoDTO().getLandMark());
+		userDetail.setCity(user.getDetailsInfoDTO().getCity());
+		userDetail.setState(user.getDetailsInfoDTO().getState());
+		userDetail.setPincode(user.getDetailsInfoDTO().getPincode());
+		userDetail.setPrimaryPhone(user.getDetailsInfoDTO().getPrimaryPhone());
+		userDetail.setSecondaryPhone(user.getDetailsInfoDTO().getSecondaryPhone());
 		return userDetail;
 	}
 	
@@ -488,7 +494,7 @@ public class UserService implements IUserService{
 	@Override
 	public Object editProfile(WUserDetails wuser) {
 
-		infoDetailsDao.editProfile(wuser);
+		userDao.editProfile(wuser);
 		return null;
 	}
 

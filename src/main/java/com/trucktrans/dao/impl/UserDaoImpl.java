@@ -80,4 +80,38 @@ implements IUserDao{
 		return null;
     	
     }
+
+	@Override
+	public UserDTO editProfile(WUserDetails wuser) {
+
+		UserDTO userdto=getByEmail(wuser.getEmail());
+		UserDetailsInfoDTO userDetailsInfo=new UserDetailsInfoDTO();
+		
+		if (wuser.getCity() != null) {
+			userDetailsInfo.setCity(wuser.getCity());
+		}
+		if (wuser.getLandMark() != null) {
+			userDetailsInfo.setLandMark(wuser.getLandMark());			
+		}
+		if (wuser.getLandMark() != null) {
+			userDetailsInfo.setLandMark(wuser.getLandMark());			
+		}
+		if (wuser.getPincode() != null) {
+			userDetailsInfo.setPincode(wuser.getPincode());	
+		}
+		if (wuser.getPrimaryPhone() != null) {
+			userDetailsInfo.setPrimaryPhone(wuser.getPrimaryPhone());	
+		}
+		if (wuser.getSecondaryPhone() != null) {
+			userDetailsInfo.setSecondaryPhone(wuser.getSecondaryPhone());
+		}
+		if (wuser.getState() != null) {
+			userDetailsInfo.setState(wuser.getState());	
+		}
+		userDetailsInfo.setUser(userdto);
+		userdto.setDetailsInfoDTO(userDetailsInfo);
+		update(userdto);
+
+		return null;
+	}
 }
