@@ -44,6 +44,7 @@ public class HistoryServiceImpl implements IHistoryService{
 
 	private static final Logger LOGGER = Logger.getLogger(LogService.class);
 
+	
 	@Autowired
 	ITransComQuotesDao transComQuotes;
 	
@@ -159,6 +160,12 @@ public class HistoryServiceImpl implements IHistoryService{
 		} catch (Exception e) {
 			LOGGER.error("Error occurred while downloading PDF file", e);
 		}
+	}
+
+
+	@Override
+	public Object getQuotes(Long userId) {
+		return transComQuotes.getCategorisedQuotes(userId);
 	}
 	
 	

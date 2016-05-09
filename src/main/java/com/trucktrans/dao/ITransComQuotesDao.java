@@ -30,6 +30,8 @@ public interface ITransComQuotesDao extends IEntityDao<TransComQuotesDTO, Long>{
 
 	TransComQuotesDTO generateInvoice(Long quoteId);
 
+	Object getCategorisedQuotes(Long userId);
+
 	
 	
 }

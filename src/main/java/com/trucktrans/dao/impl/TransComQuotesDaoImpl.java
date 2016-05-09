@@ -4,7 +4,9 @@
 package com.trucktrans.dao.impl;
 
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.core.Response;
 
@@ -101,6 +103,27 @@ public class TransComQuotesDaoImpl extends AbstractHibernateDaoImpl<TransComQuot
 		
 		
 		return null;
+	}
+
+	@Override
+	public Object getCategorisedQuotes(Long userId) {
+
+		
+		
+		Map<String, List<TransComQuotesDTO>> responseMap=new LinkedHashMap<String, List<TransComQuotesDTO>>();
+		
+		List<TransComQuotesDTO> transComListAccepted=(List<TransComQuotesDTO>)getSessionFactory().getCurrentSession().createCriteria(TransComQuotesDTO.class)
+				.add(Restrictions.eq("userBookingReqDTO.user.userId", userId)).add(Restrictions.eq("acceptDeclineFlag", true)).list();
+
+		 
+		 List<TransComQuotesDTO> transComListrejected=(List<TransComQuotesDTO>)getSessionFactory().getCurrentSession().createCriteria(TransComQuotesDTO.class)
+				.add(Restrictions.eq("userBookingReqDTO.user.userId", userId)).add(Restrictions.eq("acceptDeclineFlag", false)).list();
+
+		 responseMap.put("acceped", transComListAccepted);
+		 responseMap.put("acceped", transComListrejected);
+		
+		 return responseMap;
+		
 	}
 	
 }

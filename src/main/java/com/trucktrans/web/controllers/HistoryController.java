@@ -51,20 +51,12 @@ public class HistoryController extends AbstractRestController<TransComQuotesDTO>
 	}
 	
 	@GET
-    @Path("/acceptedquotes")					   //
-    @Produces({ MediaType.APPLICATION_JSON })	   //
-	public Response myAccptQuotes(@QueryParam("userId") Long userId){			   //	
-		return Response.ok().build();			   //  we can combine these two methods into one method  
-	}											   //                                                    
-	                                               //                                                    
-	                                               //                                                    
-	@GET                                           //  Load these methods when history page opens        
-    @Path("/declinedquotes")                       //
-    @Produces({ MediaType.APPLICATION_JSON })      //
-	public Response myDeclndQuotes(){              //
-		return Response.ok().build();              //
-	}                                              //
-	                                                            
+    @Path("/myquotes")					   
+    @Produces({ MediaType.APPLICATION_JSON })
+	public Response myAccptQuotes(@QueryParam("userId") Long userId){			   
+		return Response.ok(getHistoryService().getQuotes(userId)).build();		
+	}											  
+	                                              
 	@GET                                                        
     @Path("/orderfrmquote/{quoteid}")
     @Produces({ MediaType.APPLICATION_JSON })
@@ -80,11 +72,7 @@ public class HistoryController extends AbstractRestController<TransComQuotesDTO>
 	public Response downloadInvoice(@PathParam("quoteid") Long quoteId,
 			@Context final UriInfo paramUriInfo,
 			@Context final ServletContext context){
-
-		
-		
 		StreamingOutput local2 = new StreamingOutput() {
-
 			@Override
 			public void write(OutputStream paramAnonymousOutputStream) throws IOException, WebApplicationException {
 				try {
@@ -96,6 +84,5 @@ public class HistoryController extends AbstractRestController<TransComQuotesDTO>
 		};
 		
 		return null;
-		//		return Response.ok(getHistoryService().generateInvoice(quoteId,paramUriInfo,context,paramAnonymousOutputStream)).build();
 	}	
 }

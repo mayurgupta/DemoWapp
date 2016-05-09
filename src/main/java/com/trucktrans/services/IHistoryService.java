@@ -19,4 +19,6 @@ public interface IHistoryService {
 
 	TransComQuotesDTO generateInvoice(Long quoteId, UriInfo paramUriInfo, ServletContext context, OutputStream paramAnonymousOutputStream);
 
+	Object getQuotes(Long userId);
+
 }
