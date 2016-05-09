@@ -6,6 +6,7 @@ package com.trucktrans.dao;
 import java.util.Date;
 
 import com.trucktrans.entity.dto.UserDTO;
+import com.trucktrans.entity.web.WUserDetails;
 
 /**
  * @author Mayur
@@ -149,8 +150,4 @@ public interface IUserDao extends IEntityDao<UserDTO, Long> {
 
 
 	UserDTO getByUserId(Long userId);
-    
-    
-    
-
 }

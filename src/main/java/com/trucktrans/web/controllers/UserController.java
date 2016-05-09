@@ -158,24 +158,13 @@ public class UserController extends AbstractRestController<UserDTO> {
     }
     
     
-    /*@POST
-    @Path("/registeruser")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response registerUser(@Valid WUser wuser) {
-    	
-    	return Response.ok(
-    			userService.registerUser(wuser)).build();
-    	
-    }*/
-    
     @POST
     @Path("/editprofile")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response editProfile(WStatus wuser) {
+    public Response editProfile(WUserDetails wuserDetails) {
     	
-    	return Response.ok("asdasdasd").build();
+    	return Response.ok(userService.editProfile(wuserDetails)).build();
     	
     }
     

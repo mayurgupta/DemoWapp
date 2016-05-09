@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.io.filefilter.FalseFileFilter;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ import com.sun.jersey.api.ConflictException;
 import com.trucktrans.constants.MessageConstants;
 import com.trucktrans.constants.RoleConstants.Role;
 import com.trucktrans.dao.IUserDao;
+import com.trucktrans.dao.IUserDetailsInfoDao;
 import com.trucktrans.dao.IUserRolesDao;
 import com.trucktrans.entity.dto.AppTrackInfoDTO;
 import com.trucktrans.entity.dto.TransComDetailsDTO;
@@ -57,7 +59,7 @@ import com.trucktrans.web.WUserHistory;
  *
  */
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 public class UserService implements IUserService{
 
 	private static final Logger LOGGER = Logger
@@ -77,6 +79,9 @@ public class UserService implements IUserService{
 	
 	@Autowired
 	private PropertiesService propertyService;
+	
+	@Autowired
+	IUserDetailsInfoDao infoDetailsDao;
 
 	private static final StandardPasswordEncoder ENCODER = new StandardPasswordEncoder();
 	
@@ -481,8 +486,9 @@ public class UserService implements IUserService{
 	}
 
 	@Override
-	public Object editProfile(WUser wuser) {
-//		ProfileQueryBuilder profileQueryBuilder=
+	public Object editProfile(WUserDetails wuser) {
+
+		infoDetailsDao.editProfile(wuser);
 		return null;
 	}
 

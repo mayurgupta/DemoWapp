@@ -112,5 +112,6 @@ public interface IUserService {
 
 	Object registerUser(WUser wuser);
 
-	Object editProfile(WUser wuser);
+	Object editProfile(WUserDetails wuser);
+
 }

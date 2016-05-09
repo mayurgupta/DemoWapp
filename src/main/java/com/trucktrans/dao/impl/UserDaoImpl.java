@@ -5,12 +5,15 @@ package com.trucktrans.dao.impl;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.trucktrans.dao.IUserDao;
 import com.trucktrans.dao.impl.AbstractHibernateDaoImpl;
 import com.trucktrans.entity.dto.UserDTO;
+import com.trucktrans.entity.dto.UserDetailsInfoDTO;
+import com.trucktrans.entity.web.WUserDetails;
 
 /**
  * @author Mayur
@@ -77,6 +80,4 @@ implements IUserDao{
 		return null;
     	
     }
-
-    
 }
