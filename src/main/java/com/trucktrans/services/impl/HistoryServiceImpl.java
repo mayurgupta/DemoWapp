@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.core.UriInfo;
@@ -70,16 +72,16 @@ public class HistoryServiceImpl implements IHistoryService{
 			String applicationPath = context.getRealPath("/");
 
 			StringBuilder addressHTMLFile = new StringBuilder();
-			addressHTMLFile.append(url.replace("api/", "")).append("index.html?");
+			addressHTMLFile.append(url.replace("api/", "")).append("pdfexp.html?");
 
 			StringBuilder addressParameters = new StringBuilder();
-			if (quoteId != 0L) {
+			/*if (quoteId != 0L) {
 				addressParameters
 						.append(BnQConstants.AND_SIGN.getValue())
 						.append(BnQConstants.QUOTEID.getValue())
 						.append(quoteId.toString());
 
-			}
+			}*/
 			
 			// To Generate multiple PDFs
 			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
@@ -97,13 +99,21 @@ public class HistoryServiceImpl implements IHistoryService{
 			if (cPath.equalsIgnoreCase("") || cPath.isEmpty()) {
 				cPath = "/";
 			}
+			Map<String, Object> mymap=new LinkedHashMap<String, Object>();
+			mymap.put("njk", 2);
+			mymap.put("jhgj", 3);
+			mymap.put("werw", 4);
+			mymap.put("hyju", 5);
+			mymap.put("ryr", 6);
+			mymap.put("wser", "gfxsdf");
+			mymap.put("sd", "fsdf");
 			ProcessBuilder builder = new ProcessBuilder(
 					applicationPath
 							.concat("WEB-INF\\classes\\resources\\phantomjs.exe"),
 					applicationPath
 							.concat("WEB-INF\\classes\\resources\\pdfexport.js"),
 					address.toString(), outputFile.getAbsolutePath(),
-					sessionID, paramUriInfo.getBaseUri().getHost(), cPath);
+					sessionID, paramUriInfo.getBaseUri().getHost(), cPath,mymap.toString());// send the parameters here ....... inside mymap
 
 			builder.redirectErrorStream(true);
 			Process p = builder.start();

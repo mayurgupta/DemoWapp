@@ -26,6 +26,12 @@ phantom.addCookie({
     'path':system.args[system.args.length-1]
 });
 
+for (var intvar = 0; intvar < system.args.length; intvar++) {
+	console.log("-------------"+intvar+"----------------")
+	console.log(system.args[intvar])
+}
+	
+
 if (system.args.length < 3) {
     console.log('Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat] [zoom]');
     console.log('paper (pdf output) examples: "5in*7.5in", "10cm*20cm", "A4", "Letter"');
@@ -64,10 +70,6 @@ if (system.args.length < 3) {
             window.setTimeout(function () {
 			
           page.evaluate(function(backColor) {   	
-		 // page.evaluate(function() { 	
-
-		 	//  console.log("Eval color=========",backColor);
-
 			document.body.style.backgroundColor = backColor;
 			 
 			 

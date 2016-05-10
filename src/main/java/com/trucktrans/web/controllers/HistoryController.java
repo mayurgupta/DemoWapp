@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import javax.servlet.ServletContext;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -66,16 +68,24 @@ public class HistoryController extends AbstractRestController<TransComQuotesDTO>
 		return Response.ok().build();
 	}
 	
-	@GET
+	@POST
     @Path("/invoice/{quoteid}")
-    @Produces({ MediaType.APPLICATION_JSON })
+//    @Produces({ MediaType.APPLICATION_JSON })
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces({ "application/pdf" })
 	public Response downloadInvoice(@PathParam("quoteid") Long quoteId,
 			@Context final UriInfo paramUriInfo,
 			@Context final ServletContext context){
+
+		System.out.println("inside print pdf method");
+		
 		StreamingOutput local2 = new StreamingOutput() {
+			
+			
 			@Override
 			public void write(OutputStream paramAnonymousOutputStream) throws IOException, WebApplicationException {
 				try {
+					System.out.println("inside annonymus");
 					getHistoryService().generateInvoice(quoteId, paramUriInfo, context, paramAnonymousOutputStream);
 				} catch (Exception e) {
 					LOGGER.error("unable to generate pdf", e);
@@ -83,6 +93,10 @@ public class HistoryController extends AbstractRestController<TransComQuotesDTO>
 			}
 		};
 		
-		return null;
-	}	
+		return Response
+                .ok(local2)
+                .header("content-disposition",
+                        "attachment; filename =" + "myname").build();
+		//		return Response.ok(getHistoryService().generateInvoice(quoteId,paramUriInfo,context,paramAnonymousOutputStream)).build();
+	}
 }

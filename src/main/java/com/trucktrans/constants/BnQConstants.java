@@ -13,7 +13,7 @@ public enum BnQConstants {
 	UNREAD("unread"),
 	ACCEPT("accept"),
 	DECLINE("decline"),
-	QUOTEID("quoteid"),
+	QUOTEID("quoteid="),
 	ADDRESS_EXPORT("#/pdfexport"),
 	AND_SIGN("&");
 	private final String value;
