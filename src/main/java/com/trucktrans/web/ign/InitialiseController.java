@@ -67,8 +67,6 @@ public class InitialiseController extends AbstractRestController<UserDTO> {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response registerUser(WUser wuser) {
     	
-//    	return Response.ok("this is controller").build();
-    	
     	return Response.ok(
     			userService.registerUser(wuser)).build();
     	

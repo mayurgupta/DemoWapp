@@ -36,6 +36,7 @@ import com.trucktrans.dao.IUserRolesDao;
 import com.trucktrans.entity.dto.AppTrackInfoDTO;
 import com.trucktrans.entity.dto.TransComDetailsDTO;
 import com.trucktrans.entity.dto.UserDTO;
+import com.trucktrans.entity.dto.UserDetailsInfoDTO;
 import com.trucktrans.entity.dto.UserRoleDTO;
 import com.trucktrans.entity.dto.UserRolesId;
 import com.trucktrans.entity.dto.UserRolesREF;
@@ -463,6 +464,7 @@ public class UserService implements IUserService{
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public Object registerUser(WUser wuser) {
 		validateNewUser(wuser);
+		UserDetailsInfoDTO userDetailsInfoDTO=new UserDetailsInfoDTO();
 		UserDTO userDTO = new UserDTO();
 		userDTO.setEnabled(true);
 		userDTO.setPassword(ENCODER.encode(wuser.getPassword()));
@@ -470,6 +472,8 @@ public class UserService implements IUserService{
 		userDTO.setName(wuser.getName());
 		userDTO.setUserName(wuser.getEmail());
 		userDTO.setPasswordChanged(false);
+		userDetailsInfoDTO.setUser(userDTO);
+		userDTO.setDetailsInfoDTO(userDetailsInfoDTO);
 		String roleDesc = null;
 		userDao.save(userDTO);
 		// Adding roles to user
