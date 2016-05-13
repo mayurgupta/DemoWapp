@@ -17,6 +17,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 /**
  * @author Mayur 
  * Time:2:13:30 am,  08-May-2016
@@ -121,6 +123,7 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID")	
+	@JsonBackReference
 	public UserDTO getUser() {
 		return user;
 	}
