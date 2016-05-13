@@ -70,7 +70,7 @@ public class UserController extends AbstractRestController<UserDTO> {
     @Produces(MediaType.APPLICATION_JSON)
 //    @Secured(value = { "ROLE_ADMIN" })
     public Response getUser(@PathParam("userid") String userId) {
-        WUserDetails user = userService.getUserByUserName(userId);
+        UserDTO user = userService.getUserByUserName(userId);
         if (user == null) {
             throw new ResourceNotFoundException(userId);
         }

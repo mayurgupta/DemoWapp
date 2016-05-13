@@ -71,7 +71,7 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 		this.id = id;
 	}
 	
-	@Column(name = "PINCODE", unique = true, nullable = false, length = 6)
+	@Column(name = "PINCODE", length = 6)
 	public Integer getPincode() {
 		return pincode;
 	}
@@ -79,7 +79,7 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 		this.pincode = pincode;
 	}
 	
-	@Column(name = "STATE", unique = true, nullable = false, length = 6)
+	@Column(name = "STATE", length = 6)
 	public String getState() {
 		return state;
 	}
@@ -87,7 +87,7 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 		this.state = state;
 	}
 	
-	@Column(name = "CITY", unique = true, nullable = false, length = 6)
+	@Column(name = "CITY", length = 6)
 	public String getCity() {
 		return city;
 	}
@@ -95,7 +95,7 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 		this.city = city;
 	}
 	
-	@Column(name = "LANDMARK", unique = true, nullable = false, length = 6)
+	@Column(name = "LANDMARK", length = 6)
 	public String getLandMark() {
 		return landMark;
 	}
@@ -103,7 +103,7 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 		this.landMark = landMark;
 	}
 	
-	@Column(name = "PRIMARY_PHONE_NO", unique = true, nullable = false, length = 6)
+	@Column(name = "PRIMARY_PHONE_NO", length = 6)
 	public Long getPrimaryPhone() {
 		return primaryPhone;
 	}
@@ -111,7 +111,7 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 		this.primaryPhone = primaryPhone;
 	}
 	
-	@Column(name = "SECONDARY_PHONE_NO", unique = true, nullable = false, length = 6)
+	@Column(name = "SECONDARY_PHONE_NO", length = 6)
 	public Long getSecondaryPhone() {
 		return secondaryPhone;
 	}

@@ -19,7 +19,7 @@ public interface ILogService {
 	 * @param appTrackInfo
 	 * @param userd 
 	 */
-	void logApplicationTrackInfo(WAppTrackInfo appTrackInfo, UserDTO userd);
+	void logApplicationTrackInfo(WAppTrackInfo appTrackInfo, Long userd);
 
 	
 }

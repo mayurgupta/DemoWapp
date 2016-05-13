@@ -30,7 +30,7 @@ public class AppTrackInfoDTO implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private long trackId;
-	private UserDTO userDTO;
+	private Long userID;
 	private String activity;
 	private Date trackedDate;
 	private String activityDescription;
@@ -38,16 +38,16 @@ public class AppTrackInfoDTO implements java.io.Serializable {
 	public AppTrackInfoDTO() {
 	}
 
-	public AppTrackInfoDTO(long trackId, UserDTO ttUser, String activity, Date trackedDate) {
+	public AppTrackInfoDTO(long trackId, Long ttUser, String activity, Date trackedDate) {
 		this.trackId = trackId;
-		this.userDTO = ttUser;
+		this.userID = ttUser;
 		this.activity = activity;
 		this.trackedDate = trackedDate;
 	}
 
-	public AppTrackInfoDTO(long trackId, UserDTO ttUser, String activity, Date trackedDate, String activityDescription) {
+	public AppTrackInfoDTO(long trackId, Long ttUser, String activity, Date trackedDate, String activityDescription) {
 		this.trackId = trackId;
-		this.userDTO = ttUser;
+		this.userID = ttUser;
 		this.activity = activity;
 		this.trackedDate = trackedDate;
 		this.activityDescription = activityDescription;
@@ -64,14 +64,13 @@ public class AppTrackInfoDTO implements java.io.Serializable {
 		this.trackId = trackId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_ID", nullable = false)
-	public UserDTO getUserDTO() {
-		return this.userDTO;
+	@Column(name = "USER_ID", nullable = false)
+	public Long getUserID() {
+		return this.userID;
 	}
 
-	public void setUserDTO(UserDTO userDTO) {
-		this.userDTO = userDTO;
+	public void setUserID(Long userDTO) {
+		this.userID = userDTO;
 	}
 
 	@Column(name = "ACTIVITY", nullable = false, length = 45)

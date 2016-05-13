@@ -44,7 +44,6 @@ public class UserDTO implements java.io.Serializable {
 	private String updatedBy;
 	private Date updatedDate;
 	private Boolean passwordChanged;
-	private Set<AppTrackInfoDTO> appTrackInfoDTOs = new HashSet<AppTrackInfoDTO>(0);
 	private Set<UserRolesREF> UserRolesREFs = new HashSet<UserRolesREF>(0);
 	private Set<UserBookingReqDTO> userBookingReqDTOs = new HashSet<UserBookingReqDTO>(0);
 	private TransComDetailsDTO transComDetailsDTO;
@@ -64,7 +63,7 @@ public class UserDTO implements java.io.Serializable {
 
 	public UserDTO(Long userId, String email, Boolean enabled, String name, String password, String userName,
 			String createdBy, Date createdDate, String updatedBy, Date updatedDate, Boolean passwordChanged,
-			Set<AppTrackInfoDTO> appTrackInfoDTOs, Set<UserRolesREF> userRoleseREFs, Set<UserBookingReqDTO> userBookingReqDTOs, TransComDetailsDTO transComDetailsDTO, UserDetailsInfoDTO detailsInfoDTO) {
+			Set<UserRolesREF> userRoleseREFs, Set<UserBookingReqDTO> userBookingReqDTOs, TransComDetailsDTO transComDetailsDTO, UserDetailsInfoDTO detailsInfoDTO) {
 		this.userId = userId;
 		this.email = email;
 		this.enabled = enabled;
@@ -76,7 +75,6 @@ public class UserDTO implements java.io.Serializable {
 		this.updatedBy = updatedBy;
 		this.updatedDate = updatedDate;
 		this.passwordChanged = passwordChanged;
-		this.appTrackInfoDTOs = appTrackInfoDTOs;
 		this.UserRolesREFs = userRoleseREFs;
 		this.userBookingReqDTOs = userBookingReqDTOs;
 		this.transComDetailsDTO = transComDetailsDTO;
@@ -186,14 +184,6 @@ public class UserDTO implements java.io.Serializable {
 		this.passwordChanged = passwordChanged;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userDTO", cascade = CascadeType.ALL, orphanRemoval = true)
-	public Set<AppTrackInfoDTO> getAppTrackInfoDTOs() {
-		return this.appTrackInfoDTOs;
-	}
-
-	public void setAppTrackInfoDTOs(Set<AppTrackInfoDTO> appTrackInfoDTOs) {
-		this.appTrackInfoDTOs = appTrackInfoDTOs;
-	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "userDTO", cascade = CascadeType.ALL, orphanRemoval = true)
 	public Set<UserRolesREF> getUserRolesREFs() {
@@ -204,7 +194,7 @@ public class UserDTO implements java.io.Serializable {
 		this.UserRolesREFs = UserRolesREFs;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
 	public Set<UserBookingReqDTO> getUserBookingReqDTOs() {
 		return this.userBookingReqDTOs;
 	}
@@ -214,7 +204,7 @@ public class UserDTO implements java.io.Serializable {
 	}
 
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	public TransComDetailsDTO getTransComDetailsDTO() {
 		return transComDetailsDTO;
 	}
@@ -223,7 +213,7 @@ public class UserDTO implements java.io.Serializable {
 		this.transComDetailsDTO = transComDetailsDTO;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	public UserDetailsInfoDTO getDetailsInfoDTO() {
 		return detailsInfoDTO;
 	}

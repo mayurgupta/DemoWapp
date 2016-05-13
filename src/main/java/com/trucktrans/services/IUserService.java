@@ -25,7 +25,7 @@ public interface IUserService {
 	 * @param userName
 	 * @return
 	 */
-	WUserDetails getUserByUserName(String userName);
+	UserDTO getUserByUserName(String userName);
 
 	/**
 	 * access user by login id name

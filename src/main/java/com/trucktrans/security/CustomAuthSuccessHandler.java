@@ -61,7 +61,7 @@ public class CustomAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHand
 		appTrackInfo.setActivity(AppConstants.LOGGEDIN.getVal());
 		appTrackInfo.setTrackTime(TimeUtil.getTimestamp());
 		appTrackInfo.setActivityDesc("User Logged in");
-		logService.logApplicationTrackInfo(appTrackInfo,userd);
+		logService.logApplicationTrackInfo(appTrackInfo,userd.getUserId());
 		
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("<<Custom Success handler Called>> "

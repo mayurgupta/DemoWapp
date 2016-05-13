@@ -87,7 +87,7 @@ public class UserService implements IUserService{
 	private static final StandardPasswordEncoder ENCODER = new StandardPasswordEncoder();
 	
 	@Override
-	public WUserDetails getUserByUserName(String userName) {
+	public UserDTO getUserByUserName(String userName) {
 
 		UserDTO user = userDao.getByUserName(userName);
 		if (user == null) {
@@ -105,7 +105,7 @@ public class UserService implements IUserService{
 		userDetail.setPincode(user.getDetailsInfoDTO().getPincode());
 		userDetail.setPrimaryPhone(user.getDetailsInfoDTO().getPrimaryPhone());
 		userDetail.setSecondaryPhone(user.getDetailsInfoDTO().getSecondaryPhone());
-		return userDetail;
+		return user;
 	}
 	
 	
@@ -465,6 +465,7 @@ public class UserService implements IUserService{
 	public Object registerUser(WUser wuser) {
 		validateNewUser(wuser);
 		UserDetailsInfoDTO userDetailsInfoDTO=new UserDetailsInfoDTO();
+		TransComDetailsDTO transComDetailsDTO=new TransComDetailsDTO();
 		UserDTO userDTO = new UserDTO();
 		userDTO.setEnabled(true);
 		userDTO.setPassword(ENCODER.encode(wuser.getPassword()));
@@ -474,6 +475,8 @@ public class UserService implements IUserService{
 		userDTO.setPasswordChanged(false);
 		userDetailsInfoDTO.setUser(userDTO);
 		userDTO.setDetailsInfoDTO(userDetailsInfoDTO);
+		userDTO.setTransComDetailsDTO(transComDetailsDTO);
+		transComDetailsDTO.setUser(userDTO);
 		String roleDesc = null;
 		userDao.save(userDTO);
 		// Adding roles to user
