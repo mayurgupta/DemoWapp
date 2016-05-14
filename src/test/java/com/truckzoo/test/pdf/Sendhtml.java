@@ -1,6 +1,11 @@
 
 package com.truckzoo.test.pdf;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,8 +16,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.io.IOUtils;
+
 public class Sendhtml {
-   public static void main(String[] args) {
+   public static void main(String[] args) throws FileNotFoundException, IOException {
       // Recipient's email ID needs to be mentioned.
       String to = "mayur.gupta@saama.com";
 
@@ -50,13 +57,18 @@ public class Sendhtml {
               InternetAddress.parse(to));
 
 	   // Set Subject: header field
-	   message.setSubject("Testing Subject");
+	   message.setSubject("Testingggjhg Subject");
 
 	   // Send the actual HTML message, as big as you like
-	   message.setContent(
+	   /*message.setContent(
               "<h1>This is actual message embedded in HTML tags</h1>",
-             "text/html");
+             "text/html");*/
 
+	   StringWriter writer = new StringWriter();
+	   IOUtils.copy(new FileInputStream(new File("pdfexp.html")), writer);
+	    
+	   message.setContent(writer.toString(), "text/html; charset=utf-8");
+	   
 	   // Send message
 	   Transport.send(message);
 

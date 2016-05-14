@@ -1,7 +1,7 @@
 /**
  * Created by Laxmi on 2/25/2016.
  */
-truckTransApp.service('LoginService', function ($http) {
+truckTransApp.service('LoginService',['$location', function ($http,$location) {
 	
     var loginService = {
         doLogin: function (loginData) {
@@ -26,10 +26,14 @@ truckTransApp.service('LoginService', function ($http) {
                     'Content-Type': 'application/x-www-form-urlencoded'
                   },
                 dataType: "json"
-            }).then(function (response) {
-                // The then function here is an opportunity to modify the response
-
-                return response;
+            }).error(function(data) {
+         //  return data;
+           $location.path="/userDashboard";
+            	//location.path("/userDashboard");
+            }).success(function(data) {
+            	 return data;
+            	// console.log(data);
+            	//location.path("/userDashboard");
             });
             // Return the promise to the controller
             return promise;
@@ -40,4 +44,4 @@ truckTransApp.service('LoginService', function ($http) {
 
     return loginService;
 
-});
+}]);

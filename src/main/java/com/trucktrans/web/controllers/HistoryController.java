@@ -70,7 +70,6 @@ public class HistoryController extends AbstractRestController<TransComQuotesDTO>
 	
 	@POST
     @Path("/invoice/{quoteid}")
-//    @Produces({ MediaType.APPLICATION_JSON })
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces({ "application/pdf" })
 	public Response downloadInvoice(@PathParam("quoteid") Long quoteId,
@@ -97,6 +96,5 @@ public class HistoryController extends AbstractRestController<TransComQuotesDTO>
                 .ok(local2)
                 .header("content-disposition",
                         "attachment; filename =" + "myname").build();
-		//		return Response.ok(getHistoryService().generateInvoice(quoteId,paramUriInfo,context,paramAnonymousOutputStream)).build();
 	}
 }

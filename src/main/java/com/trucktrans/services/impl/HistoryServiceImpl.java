@@ -63,6 +63,9 @@ public class HistoryServiceImpl implements IHistoryService{
 			if (null == sessionID || sessionID.isEmpty()) {
 				throw new IllegalStateException("sessionId not found");
 			}
+			
+			TransComQuotesDTO transComQuotesDTO=transComQuotes.getById(quoteId);
+			
 			String line;
 			StringBuilder sb = new StringBuilder();
 			String url = 	paramUriInfo.getBaseUri().toString();
@@ -100,8 +103,8 @@ public class HistoryServiceImpl implements IHistoryService{
 				cPath = "/";
 			}
 			Map<String, Object> mymap=new LinkedHashMap<String, Object>();
-			mymap.put("njk", 2);
-			mymap.put("jhgj", 3);
+			mymap.put("AccDecFlag", transComQuotesDTO.getAcceptDeclineFlag());
+			mymap.put("companyName", transComQuotesDTO.getCompanyName());
 			mymap.put("werw", 4);
 			mymap.put("hyju", 5);
 			mymap.put("ryr", 6);
@@ -113,7 +116,7 @@ public class HistoryServiceImpl implements IHistoryService{
 					applicationPath
 							.concat("WEB-INF\\classes\\resources\\pdfexport.js"),
 					address.toString(), outputFile.getAbsolutePath(),
-					sessionID, paramUriInfo.getBaseUri().getHost(), cPath,mymap.toString());// send the parameters here ....... inside mymap
+					sessionID, paramUriInfo.getBaseUri().getHost(), cPath,transComQuotesDTO.toString());// send the parameters here ....... inside mymap
 
 			builder.redirectErrorStream(true);
 			Process p = builder.start();

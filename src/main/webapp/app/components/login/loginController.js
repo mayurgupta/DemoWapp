@@ -10,18 +10,18 @@ truckTransApp.controller('LoginController', ['$scope','$rootScope','$location', 
         itemToLogin.username=loginData.id;
         itemToLogin.password=loginData.password;
         showProcessDialog();
- 
-        LoginService.doLogin(itemToLogin,function(){
-        	$rootScope.userName= itemToLogin.username;
-       	 location.path("/userDashboard");
+        $rootScope.userName= itemToLogin.username;
+        LoginService.doLogin(itemToLogin).then(function (response) {
+        	console.log("ddsfsdfsdf");
+       	// location.path("/userDashboard");
         })
         
-        $rootScope.userName= itemToLogin.username;
-       	 $location.path("/userDashboard");
-        hideProcessDialog();
+       // $rootScope.userName= itemToLogin.username;
+       	// $location.path("/userDashboard");
+        
         
       // $location.path("/userDashboard");
-    }
+    };
 $scope.loginClose=function(){
 	$("#myModal").hide();
 	

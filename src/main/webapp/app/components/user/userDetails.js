@@ -1,12 +1,7 @@
-truckTransApp
-		.controller(
-				'userDetailsController',['$scope','$rootScope','userDetailsService','HistoryService',function($scope, $rootScope, userDetailsService,HistoryService) {
+truckTransApp.controller(
+				'userDetailsController',['$scope','$rootScope','userDetailsService','HistoryService','TruckService',function($scope, $rootScope, userDetailsService,HistoryService,TruckService) {
 							$scope.isUpdate = false;
-							$scope.init = function() {
-								$rootScope.isLogin = true;
-								$rootScope.loggedInUser = "Laxmi";
-								//$scope.user={};
-								$scope.user = {
+							$scope.user = {
 									name : "",
 									email : "",
 									update : false,
@@ -17,16 +12,24 @@ truckTransApp
 									notification : false
 								}
 								
-								userDetailsService.getUserDetails($rootScope.userName).then(
-										function(response) {
-console.log(response);
-											if (response) {
-												$scope.user.email= response.email;
-												$scope.user.userId= response.userId;
-											} else {
-
-											}
-										});
+							
+							
+							$scope.init = function() {
+								hideProcessDialog();
+								$rootScope.isLogin = true;
+								//$rootScope.userName
+								
+								if(TruckService.getUser()!= null){
+									$scope.getUserProfile(TruckService.getUser().email);
+								}else{
+									$scope.getUserProfile($rootScope.userName);
+								}
+								
+								
+								
+								//$scope.user={};
+								
+								
 
 							}
 							$scope.isUpdate = function(update) {
@@ -166,6 +169,21 @@ console.log(response);
 								hideProcessDialog();
 								$("#successModal").modal("show");
 								var itemToLogin={};
+								itemToLogin.id=user.userId;
+								itemToLogin.pincode=user.pincode;
+								itemToLogin.state=user.state;
+								itemToLogin.city=user.companyCity;
+								itemToLogin.landMark=user.landmark;
+								itemToLogin.primaryPhone=user.primaryPhone1;
+								itemToLogin.secondaryPhone=user.primaryPhone2;
+								
+								itemToLogin.login=user.email;
+								itemToLogin.screenName=user.name;
+								itemToLogin.email=user.email;
+								
+								itemToLogin.userId=user.userId;
+								
+								
 								itemToLogin.name=user.name;
 								itemToLogin.role=user.role;
 								
@@ -194,6 +212,37 @@ console.log(response);
 								
 								$("#successModal").modal("show");
 							}
+							
+							
+							$scope.getUserProfile=function(userName){
+								userDetailsService.getUserDetails(userName).then(
+										function(response) {
+
+											if (response) {
+												
+												$rootScope.loggedInUser = response.screenName;
+												$scope.user.name= response.name;
+												$scope.user.email= response.email;
+												$scope.user.landMark= response.detailsInfoDTO.landMark;
+												$scope.user.pincode= response.detailsInfoDTO.pincode;
+												$scope.user.primaryPhone1= response.primaryPhone;
+												$scope.user.primaryPhone2= response.secondaryPhone;
+												$scope.user.companyPinCode=response.secondaryPhone;
+												$scope.user.state= response.state;
+												$scope.user.userId= response.userId;
+												$scope.user.profile = true;
+												TruckService.setUser($scope.user);
+												$scope.$apply();
+												
+												
+											} else {
+
+											}
+											hideProcessDialog();
+										});
+							}
+							
+							
 							
 							
 							$scope.ChangePassword=function(passData){

@@ -53,6 +53,7 @@
 
 <!--Controllers & other JS files-->
 <script src="app/app.js" type="text/javascript"></script>
+<script src="app/components/truckService.js"></script>
 
 <!--Booking Details-->
 <script src="app/components/booking/bookingController.js"></script>
@@ -70,9 +71,10 @@
 <script src="app/components/home/homeController.js"></script>
 
 <!-- user details -->
-<script src="app/components/user/userDetails.js"></script>
+
 <script src="app/components/user/userDetailsService.js"></script>
 <script src="app/components/user/historyService.js"></script>
+<script src="app/components/user/userDetails.js"></script>
 
 <script src="app/constants.js"></script>
 
@@ -834,10 +836,10 @@ source City
 							<div class="form-group">
 								<label for="role">Role</label> 
 								<select class="form-control" id="role" data-ng-model="user.role">
-									<option value="0" > Select one</option>
-									<option>Transporter</option>
-									<option>Manufacturer</option>
-									<option>Admin</option>
+									<option  > Select one</option>
+									<option value="2">Transporter</option>
+									<option value="3">Manufacturer</option>
+									<option value="4">Admin</option>
 
 								</select>
 							</div>
