@@ -26,14 +26,10 @@ truckTransApp.service('LoginService',['$location', function ($http,$location) {
                     'Content-Type': 'application/x-www-form-urlencoded'
                   },
                 dataType: "json"
-            }).error(function(data) {
-         //  return data;
-           $location.path="/userDashboard";
-            	//location.path("/userDashboard");
-            }).success(function(data) {
-            	 return data;
-            	// console.log(data);
-            	//location.path("/userDashboard");
+            }).then(function (response) {
+                // The then function here is an opportunity to modify the response
+
+                return response;
             });
             // Return the promise to the controller
             return promise;

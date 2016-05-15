@@ -1,7 +1,7 @@
 /**
  * Created by Laxmi on 2/25/2016.
  */
-truckTransApp.controller('LoginController', ['$scope','$rootScope','$location', 'LoginService', function ($scope,$rootScope,$location, LoginService) {
+truckTransApp.controller('LoginController', ['$scope','$rootScope','$location','$timeout', 'LoginService', function ($scope,$rootScope,$location,$timeout, LoginService) {
     $scope.login = function (loginData) {
         $("#myModal").modal("hide");
        
@@ -13,14 +13,17 @@ truckTransApp.controller('LoginController', ['$scope','$rootScope','$location', 
         $rootScope.userName= itemToLogin.username;
         LoginService.doLogin(itemToLogin).then(function (response) {
         	console.log("ddsfsdfsdf");
-       	// location.path("/userDashboard");
         })
         
-       // $rootScope.userName= itemToLogin.username;
-       	// $location.path("/userDashboard");
+       $timeout( function(){ 
+    	      	   
+    	   $location.path("/userDashboard"); 
+       
+       }, 3000);
+       	 
         
         
-      // $location.path("/userDashboard");
+      
     };
 $scope.loginClose=function(){
 	$("#myModal").hide();
