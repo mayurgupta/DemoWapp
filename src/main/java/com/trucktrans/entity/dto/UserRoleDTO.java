@@ -87,10 +87,4 @@ public class UserRoleDTO implements java.io.Serializable {
 		this.userRolesRefDTOs = userRolesRefDTOs;
 	}
 
-	/*@Override
-	public String toString() {
-		return "UserRoleDTO [roleId=" + roleId + ", authority=" + authority + ", roleDescription=" + roleDescription
-				+ ", userRolesRefDTOs=" + userRolesRefDTOs + "]";
-	}*/
-
 }
