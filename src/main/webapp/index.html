@@ -18,6 +18,8 @@
 <meta name="author" content="Mayur Gupta" />
 <!-- Bootstrap -->
 <script src="app/assets/libs/others/modernizr.custom.js"></script>
+
+
 <link href="app/assets/css/common.css" rel="stylesheet" type="text/css" />
 <link href="app/assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="app/assets/css/jquery/jquery.fancybox.css" rel="stylesheet">
@@ -50,6 +52,7 @@
 <script src="app/assets/libs/angularJs/angular.min.js"></script>
 <script src="app/assets/libs/angularJs/angular-ui-router.js"></script>
 <script src="app/assets/libs/angularJs/angular-route.min.js"></script>
+<script type="app/assets/libs/angularJs/angular-cookies.min.js"></script>
 
 <!--Controllers & other JS files-->
 <script src="app/app.js" type="text/javascript"></script>
@@ -780,6 +783,32 @@ source City
 			</div>
 		</div>
 	</div>
+	
+	<!-- Failure modal -->
+	<div id="failureModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Error</h4>
+				</div>
+				<div class="modal-body">
+					<b style="color:red"> {{messages.error}}, </b></br>
+					<p >{{messages.errorMessage}}</p>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
 <!-- progress bar -->
 
 <div id="progressBar" class="modal fade">

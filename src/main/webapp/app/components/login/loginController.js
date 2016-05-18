@@ -12,18 +12,14 @@ truckTransApp.controller('LoginController', ['$scope','$rootScope','$location','
         showProcessDialog();
         $rootScope.userName= itemToLogin.username;
         LoginService.doLogin(itemToLogin).then(function (response) {
-        	console.log("ddsfsdfsdf");
         })
-        
-       $timeout( function(){ 
-    	      	   
-    	   $location.path("/userDashboard"); 
-       
-       }, 3000);
+
+    	   $timeout(function() {
+					if (getLogin()) {
+						$location.path("/userDashboard");
+					}
+				}, 300);
        	 
-        
-        
-      
     };
 $scope.loginClose=function(){
 	$("#myModal").hide();
@@ -33,6 +29,7 @@ $scope.loginClose=function(){
 
 $scope.doLogout=function(){
 	$rootScope.isLogin=false;
+	localStorage.setItem('userEmail',null);
 	$location.path("/");
 }
 

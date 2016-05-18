@@ -1,5 +1,4 @@
-truckTransApp.controller(
-				'userDetailsController',['$scope','$rootScope','userDetailsService','HistoryService','TruckService',function($scope, $rootScope, userDetailsService,HistoryService,TruckService) {
+truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDetailsService','HistoryService','TruckService',function($scope, $rootScope, userDetailsService,HistoryService,TruckService) {
 							$scope.isUpdate = false;
 							$scope.user = {
 									name : "",
@@ -15,19 +14,17 @@ truckTransApp.controller(
 							
 							
 							$scope.init = function() {
+								var email =null;
+								email=localStorage.getItem('userEmail');
+								
 								hideProcessDialog();
 								$rootScope.isLogin = true;
-								//$rootScope.userName
 								
-								if(TruckService.getUser()!= null){
-									$scope.getUserProfile(TruckService.getUser().email);
-								}else{
+								if($rootScope.userName!= null && $rootScope.userName!=undefined && $rootScope.userName!=""){
 									$scope.getUserProfile($rootScope.userName);
+								}else{
+									$scope.getUserProfile(email);
 								}
-								
-								
-								
-								//$scope.user={};
 								
 								
 
@@ -43,8 +40,10 @@ truckTransApp.controller(
 								$scope.user.quote = false;
 								$scope.user.notification = false;
 								$scope.user.history = true;
+								$scope.acceptedQuote=[];
+								$scope.declinedQuote =[];
 								
-								$scope.acceptedQuote =[{id:"ABC001",details:"bgjdffgdjhjnghgfhmnfgh"},
+								/*$scope.acceptedQuote =[{id:"ABC001",details:"bgjdffgdjhjnghgfhmnfgh"},
 									                      {id:"ABC002",details:"bgjdffgdjhjnghgfhmnfgh"},
 									                      {id:"ABC006",details:"bgjdffgdjhjnghgfhmnfgh"},
 									                      {id:"ABC010",details:"bgjdffgdjhjnghgfhmnfgh"}];
@@ -53,31 +52,33 @@ truckTransApp.controller(
 								$scope.declinedQuote =[{id:"ABC003",details:"bgjdffgdjhjnghgfhmnfgh"},
 									                      {id:"ABC012",details:"bgjdffgdjhjnghgfhmnfgh"},
 									                      {id:"ABC005",details:"bgjdffgdjhjnghgfhmnfgh"},
-									                      {id:"ABC011",details:"bgjdffgdjhjnghgfhmnfgh"}];
+									                      {id:"ABC011",details:"bgjdffgdjhjnghgfhmnfgh"}];*/
 
 								
 								
-								
-								HistoryService.getAcceptedQuotes($scope.user.userId).then(
+								var userId=localStorage.getItem("userId");
+								HistoryService.getAcceptedQuotes(userId).then(
 										function(response) {
 											
 											if (response) {
 												$scope.acceptedQuote=response;
+												$scope.$apply();
 											} else {
 
 											}
 										});
 					
-								HistoryService.getDeclinedQuotes($scope.user.userId).then(
+								/*HistoryService.getDeclinedQuotes(userId).then(
 										function(response) {
 
 											if (response) {
 												$scope.declinedQuote=response;
+												$scope.$apply();
 											} else {
 
 											}
 										});
-
+*/
 							}
 
 							$scope.showQuote = function() {
@@ -140,17 +141,13 @@ truckTransApp.controller(
 								$scope.user.history = false;
 								$scope.user.quote = false;
 								$scope.user.profile = true;
+								var email=localStorage.getItem("userEmail");
 								
-								
-								userDetailsService.getUserDetails(userId).then(
-										function(response) {
-
-											if (response) {
-
-											} else {
-
-											}
-										});
+								if($rootScope.userName!= null && $rootScope.userName!=undefined && $rootScope.userName!=""){
+									$scope.getUserProfile($rootScope.userName);
+								}else{
+									$scope.getUserProfile(email);
+								}
 								
 
 							}
@@ -219,8 +216,8 @@ truckTransApp.controller(
 										function(response) {
 
 											if (response) {
-												
-												$rootScope.loggedInUser = response.screenName;
+												console.log(response);
+												$rootScope.loggedInUser = response.name;
 												$scope.user.name= response.name;
 												$scope.user.email= response.email;
 												$scope.user.landMark= response.detailsInfoDTO.landMark;
@@ -232,6 +229,9 @@ truckTransApp.controller(
 												$scope.user.userId= response.userId;
 												$scope.user.profile = true;
 												TruckService.setUser($scope.user);
+												console.log($scope.user);
+												localStorage.setItem('userEmail',$scope.user.email);
+												localStorage.setItem('userId',$scope.user.userId);
 												$scope.$apply();
 												
 												

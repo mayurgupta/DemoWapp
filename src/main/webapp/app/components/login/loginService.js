@@ -26,14 +26,27 @@ truckTransApp.service('LoginService',['$location', function ($http,$location) {
                     'Content-Type': 'application/x-www-form-urlencoded'
                   },
                 dataType: "json"
-            }).then(function (response) {
+            }).error(function (response) {
                 // The then function here is an opportunity to modify the response
+            	if(response.status==200){
+            		setLogin(true);
+         	      	   
+            	    	 //  $location.path("/userDashboard"); 
+            	       
+            	      
+            	}else{
+            		hideProcessDialog();
+            		setLogin(false);
+            		//alert("Invalid Credentials, please try again later.")
+            		$("#failureModal").modal("show");
+            	}
 
                 return response;
             });
             // Return the promise to the controller
             return promise;
         }
+       
 
     };
 

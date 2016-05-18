@@ -24,7 +24,9 @@ truckTransApp.run(function($rootScope) {
     $rootScope.messages = {
     		updateUser : "Your account has been updated successfully",
     		createUser : "Your account has been created successfully.Please login for more details.",
-    		downloadInvoice :"Invoice downloaded successfully"
+    		downloadInvoice :"Invoice downloaded successfully",
+    		error:"Invalid credentials",
+    		errorMessage:"Please try again later."
     	};
     
 })
@@ -43,6 +45,17 @@ truckTransApp.constant('messages1',{
     function hideProcessDialog(){
     	$('#progressBar').modal('hide');
     }
+    
+    var loginStatus=false;
+    function setLogin(status){
+    	loginStatus=status;
+    }
+    function getLogin(){
+    	return loginStatus;
+    }
+    
+    
+    
 
 truckTransApp.controller('mainController',['$scope',function($scope) {
     $scope.openSignUpForm = function () {
@@ -53,8 +66,7 @@ truckTransApp.controller('mainController',['$scope',function($scope) {
             console.log(user);
     };
 
-
-    
+   
     
     
     
