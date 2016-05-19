@@ -8,7 +8,7 @@ truckTransApp.service('HistoryService', function($http) {
 
 			var promise = $.ajax({
 				url : Server + "api/history/myquotes",
-				data:"userId="+encodeURIComponent(userData),
+				data:"userId="+userData,
 				//data: JSON.stringify(userData),
 				type : "GET",
 				contentType : "application/json",
@@ -70,11 +70,24 @@ truckTransApp.service('HistoryService', function($http) {
 		showQuote:function(){
 			var promise = $.ajax({
 				url : Server + "api/bookingnquotes/searchbooking",
-
-				// data:"quoteid="+encodeURIComponent(quoteid) ,
 				type : "GET",
-				contentType : "application/json",
-				
+				contentType : "application/json",				
+				dataType : "json"
+			}).then(function(response) {
+				// The then function here is an opportunity to modify the
+				// response
+
+				return response;
+			});
+			// Return the promise to the controller
+			return promise;
+		},
+		showSearchedQuote:function(search){
+			var promise = $.ajax({
+				url : Server + "api/bookingnquotes/searchbooking",
+				data:"source="+search.source+",destination="+search.destination+",datefrom="+search.datefrom+",dateto="+search.dateto+",offset=20" ,
+				type : "GET",
+				contentType : "application/json",				
 				dataType : "json"
 			}).then(function(response) {
 				// The then function here is an opportunity to modify the

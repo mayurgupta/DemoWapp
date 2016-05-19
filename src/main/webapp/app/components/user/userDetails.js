@@ -9,8 +9,15 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 									history : false,
 									quote : false,
 									notification : false
-								}
+								};
 								
+							  $scope.datepickerOptions ={
+								    format: 'yyyy-mm-dd',
+								    language: 'en',
+								    autoclose: false,
+								    weekStart: 0
+								    };
+								    
 							
 							
 							$scope.init = function() {
@@ -68,22 +75,23 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 											}
 										});
 					
-								/*HistoryService.getDeclinedQuotes(userId).then(
-										function(response) {
 
-											if (response) {
-												$scope.declinedQuote=response;
-												$scope.$apply();
-											} else {
-
-											}
-										});
-*/
 							}
 
+							$scope.getSearchedQuotes=function(search){
+								HistoryService.showSearchedQuote(search).then(
+										function(response) {
+										});
+								
+							}
+							
+							
 							$scope.showQuote = function() {
 								$('ul li').removeClass('active');
 								$('#putAQuote').addClass('active');
+								
+								
+								
 								
 								$scope.user.history = false;
 								$scope.user.profile = false;
@@ -94,6 +102,72 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 
 											if (response) {
 												$scope.quotes=response;
+												
+												$scope.quotes = [
+																	{
+																		source : "Pune",
+																		sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		zip : "411057",
+																		des : "Bhopal",
+																		desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		truck : "ABC",
+																		user : "Laxmi",
+																		itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+																	},
+																	{
+																		source : "Pune",
+																		sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		zip : "411057",
+																		des : "Bhopal",
+																		desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		truck : "ABC",
+																		user : "Mayur",
+																		itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+																	},
+																	{
+																		source : "Pune",
+																		sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		zip : "411057",
+																		des : "Bhopal",
+																		desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		truck : "ABC",
+																		user : "Harshlata",
+																		itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+																	},
+																	{
+																		source : "Pune",
+																		sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		zip : "411057",
+																		des : "Bhopal",
+																		desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		truck : "ABC",
+																		user : "Kushal",
+																		itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+																	},
+																	{
+																		source : "Pune",
+																		sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		zip : "411057",
+																		des : "Bhopal",
+																		desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		truck : "ABC",
+																		user : "Ankit",
+																		itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+																	},
+																	{
+																		source : "Pune",
+																		sourceAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		zip : "411057",
+																		des : "Bhopal",
+																		desAdd : "B-7,2nd floor, Delta Melodies, Kaspate wasti, wakad, Pune",
+																		truck : "ABC",
+																		user : "Akansha",
+																		itemDetails : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."
+
+																	} ];
+															
+												
+												
 											} else {
 
 											}
