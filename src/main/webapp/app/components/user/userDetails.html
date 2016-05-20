@@ -80,21 +80,21 @@
 										<div class="col-md-4">City</div>
 										<div class="col-md-8">
 											<input class="form-control" type="text" id="city"
-												value="{{user.city}}" data-ng-modal="user.city">
+												value="{{user.city}}" data-ng-model="user.city">
 										</div>
 									</div>
 									<div class="form-group paddingBtm30px">
 										<div class="col-md-4">State</div>
 										<div class="col-md-8">
 											<input class="form-control" type="text" id="state"
-												value="{{user.state}}" data-ng-modal="user.state">
+												value="{{user.state}}" data-ng-model="user.state">
 										</div>
 									</div>
 									<div class="form-group paddingBtm30px">
 										<div class="col-md-4">Landmark</div>
 										<div class="col-md-8">
 											<input class="form-control" type="text" id="landmark"
-												value="{{user.landmark}}" data-ng-modal="user.landmark">
+												value="{{user.landmark}}" data-ng-model="user.landmark">
 										</div>
 									</div>
 									<div class="form-group paddingBtm30px">
@@ -102,7 +102,7 @@
 										<div class="col-md-8">
 											<input type="text" maxlength="10" class="form-control"
 												id="phoneNumber1" value="{{user.phoneNumber1}}"
-												data-ng-modal="user.phoneNumber1">
+												data-ng-model="user.phoneNumber1">
 										</div>
 
 
@@ -274,7 +274,7 @@
 
 
 				<div ng-if="user.quote" style="padding-left: 5px;">
-					<div class="row">
+					<div class="row-fluid">
 
 						<form class="form-inline" role="form"
 							data-ng-submit="getSearchedQuotes(search)">
@@ -288,17 +288,15 @@
 									id="destination" style="color: black;"
 									data-ng-model="search.destination">
 							</div>
-							<br>
+							<br><br>
 							<div class="form-group">
-								<label>From:</label> <input id="datepicker" class="form-control"
-									type="text" style="color: black;" data-ng-datepicker
-									data-ng-options="datepickerOptions"
+								<label>From:</label> <input id="dateFrom" class="form-control"
+									type="date" style="color: black;" 
 									data-ng-model="search.datefrom">
 							</div>
 							<div class="form-group">
-								<label>To:</label> <input class="form-control" id="datepicker"
-									type="text" style="color: black;" data-ng-datepicker
-									data-ng-options="datepickerOptions"
+								<label>To:</label> <input class="form-control" id="dateTo"
+									type="date" style="color: black;" 
 									data-ng-model="search.dateto">
 
 							</div>
@@ -322,10 +320,10 @@
 							</thead>
 							<tbody>
 								<tr data-ng-repeat="quote in quotes | filter : searchData">
-									<td data-ng-modal="quote.user">{{quote.user}}</td>
-									<td data-ng-modal="quote.source">{{quote.source}}</td>
-									<td data-ng-modal="quote.des">{{quote.des}}</td>
-									<td data-ng-modal="quote.truck">{{quote.truck}}</td>
+									<td data-ng-model="quote.user">{{quote.user}}</td>
+									<td data-ng-model="quote.source">{{quote.source}}</td>
+									<td data-ng-model="quote.des">{{quote.des}}</td>
+									<td data-ng-model="quote.truck">{{quote.truck}}</td>
 									<td><button class="btn btn-primary" type="button"
 											data-ng-click="viewDetails(quote)">View Details</button></td>
 								</tr>
@@ -447,14 +445,11 @@
 
 						</div>
 
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">accept</button>
-
 					</form>
 
 				</div>
 				<div class="modal-footer">
-					<form role="form">
+					<form role="form" data-ng-submit="postYourQuote(postQuote)">
 						<div class="form-group" style="text-align: justify">
 							<h4>
 								<b>Post your quote</b>
@@ -466,7 +461,7 @@
 										<label>Price:</label>
 									</div>
 									<div class="col-md-10">
-										<input type="text">
+										<input class="form-control" type="number" data-ng-model="postQuote.price">
 									</div>
 
 
@@ -480,14 +475,15 @@
 										<label>Remark:</label>
 									</div>
 									<div class="col-md-10">
-										<textarea></textarea>
+										<textarea class="form-control" data-ng-model="postQuote.remark"></textarea>
 									</div>
 
 
 								</div>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary">Post</button>
+						<button type="submit" class="btn btn-primary"  >Post</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</form>
 
 				</div>

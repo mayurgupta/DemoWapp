@@ -24,13 +24,13 @@ truckTransApp.service('HistoryService', function($http) {
 			});
 			// Return the promise to the controller
 			return promise;
-		}/*,
-		getDeclinedQuotes : function(userData) {
+		},
+		postYourQuote : function(quote) {
 
 			var promise = $.ajax({
-				url : Server + "api/history/declinedquotes",
+				url : Server + "api/history/postyourquote",
 
-				data: JSON.stringify(userData),
+				data: JSON.stringify(quote),
 				type : "GET",
 				contentType : "application/json",
 				headers : {
@@ -45,7 +45,7 @@ truckTransApp.service('HistoryService', function($http) {
 			});
 			// Return the promise to the controller
 			return promise;
-		}*/,
+		},
 		getInvoice : function(quoteid) {
 
 			var promise = $.ajax({

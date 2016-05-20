@@ -11,14 +11,7 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 									notification : false
 								};
 								
-							  $scope.datepickerOptions ={
-								    format: 'yyyy-mm-dd',
-								    language: 'en',
-								    autoclose: false,
-								    weekStart: 0
-								    };
-								    
-							
+							 $scope.postQuote={};
 							
 							$scope.init = function() {
 								var email =null;
@@ -85,7 +78,17 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 								
 							}
 							
+							$scope.postYourQuote=function(postQuote){
+								console.log(postQuote);
 							
+								var quote={};
+								quote.price=postQuote.price;
+								quote.remark=postQuote.remark;
+								HistoryService.postYourQuote(quote).then(
+										function(response) {
+										});
+								
+							}
 							$scope.showQuote = function() {
 								$('ul li').removeClass('active');
 								$('#putAQuote').addClass('active');
