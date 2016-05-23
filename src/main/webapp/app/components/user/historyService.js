@@ -30,12 +30,9 @@ truckTransApp.service('HistoryService', function($http) {
 			var promise = $.ajax({
 				url : Server + "api/history/postyourquote",
 
-				data: JSON.stringify(quote),
+				data: "price="+encodeURIComponent(quote.price)+",remark="+encodeURIComponent(quote.remark),
 				type : "GET",
 				contentType : "application/json",
-				headers : {
-					'Content-Type' : 'application/x-www-form-urlencoded'
-				},
 				dataType : "json"
 			}).then(function(response) {
 				// The then function here is an opportunity to modify the

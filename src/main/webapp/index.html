@@ -775,10 +775,9 @@ source City
 					<h4 class="modal-title">Success</h4>
 				</div>
 				<div class="modal-body">
-					<b style="color: green"> Congratulation... </b></br>
-					<p ng-if="token=='C'">{{messages.createUser}}</p>
-					<p ng-if="token=='U'">{{messages.updateUser}}</p>
-					<p ng-if="token=='D'">{{messages.downloadInvoice}}</p>
+						
+					<b style="color:green" id="successTitle">  </b></br>
+					<p id="successBody"></p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
@@ -799,8 +798,8 @@ source City
 					<h4 class="modal-title">Error</h4>
 				</div>
 				<div class="modal-body">
-					<b style="color:red"> {{messages.error}}, </b></br>
-					<p >{{messages.errorMessage}}</p>
+					<b style="color:red" id="errorTitle">  </b></br>
+					<p id="errorBody"></p>
 					
 				</div>
 				<div class="modal-footer">
@@ -870,20 +869,24 @@ source City
 							<div class="form-group">
 								<label for="role">Role</label> 
 								<select class="form-control" id="role" data-ng-model="user.role">
-									<option  > Select one</option>
+									<option value="0" > Select one</option>
+									<option value="1" disabled="disabled">User (not supporting now)</option>
 									<option value="2">Transporter</option>
 									<option value="3">Manufacturer</option>
 									<option value="4">Admin</option>
 
 								</select>
 							</div>
+							<div class="modal-footer">
+							<p id="error" style="color:red ;text-align: left;"></p>
 							<button data-toggle="modal" type="submit" class="btn btn-primary">Register</button>
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
+							</div>
 						</form>
 					</div>
 				</div>
-				<div class="modal-footer"></div>
+				
 			</div>
 		</div>
 

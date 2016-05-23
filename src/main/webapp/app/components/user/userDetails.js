@@ -237,11 +237,16 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 							$scope.updateUser = function(user) {
 								console.log(user);
 								showProcessDialog();
-								$rootScope.token = "U";
+								
 								$scope.isUpdate = false;
 
 								hideProcessDialog();
-								$("#successModal").modal("show");
+								var data={};
+								data.title="Congratulations!!!";
+								data.text="Your account has been updated successfully";
+								
+								showSuccesMessage(data);
+								
 								var itemToLogin={};
 								itemToLogin.id=user.userId;
 								itemToLogin.pincode=user.pincode;
@@ -282,9 +287,13 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 										
 									}
 								});*/
-								$rootScope.token = "D";
 								
-								$("#successModal").modal("show");
+								var data={};
+								data.title="Congratulations!!!";
+								data.text="Invoice downloaded successfully";
+								
+								showSuccesMessage(data);
+								
 							}
 							
 							
@@ -325,9 +334,7 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 							$scope.ChangePassword=function(passData){
 								
 								if(passData.newPassword === passData.confirmPassword){
-									userDetailsService.authenticatePassword(passData.oldPassword).then(function(response){
-										if(response){
-											
+									
 											
 											var itemToSend={};
 											itemToSend.oldPassword=passData.oldPassword;
@@ -337,22 +344,36 @@ truckTransApp.controller('userDetailsController',['$scope','$rootScope','userDet
 											itemToSend.email=passData.email;
 											console.log(itemToSend);
 										userDetailsService.updatePassword(itemToSend).then(function(response){
-											if(response){
+											if(response.changed){
+												console.log(response);
+												$scope.user.oldPassword="";
+												$scope.user.newPassword="";
+												$scope.user.confirmPassword="";
+												var data={};
+												data.title="Congratulations!!!";
+												data.text="Password updated successfully";
+												
+												showSuccesMessage(data);
+												
+												
 												
 											}else{
+												var data={};
+												data.title="Authentication Fail";
+												data.text=response.message;
+												showErrorMessage(data);
 												
 											}
 										});
-										}else{
-											
-										}
-									
-									
-									});
+										
 								}else{
 									$scope.user.newPassword="";
 									$scope.user.confirmPassword="";
-									alert("New password and confirm password should be same.")
+									var data={};
+									data.title="Validation Fail";
+									data.text="New password and confirm password should be same.";
+									showErrorMessage(data);
+									//alert("New password and confirm password should be same.")
 									
 									
 								}

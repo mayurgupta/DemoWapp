@@ -26,7 +26,9 @@ truckTransApp.run(function($rootScope) {
     		createUser : "Your account has been created successfully.Please login for more details.",
     		downloadInvoice :"Invoice downloaded successfully",
     		error:"Invalid credentials",
-    		errorMessage:"Please try again later."
+    		errorMessage:"Please try again later.",
+    		title:"",
+    		text:""
     	};
     
 })
@@ -53,22 +55,20 @@ truckTransApp.constant('messages1',{
     function getLogin(){
     	return loginStatus;
     }
-    /*$(document).ready(
-    		  
-    		   This is the function that will get executed after the DOM is fully loaded 
-    		  function () {
-    		    $( "#datepicker" ).datepicker({
-    		      changeMonth: true,//this option for allowing user to select month
-    		      changeYear: true //this option for allowing user to select from year range
-    		    });
-    		    $( "#datepicker1" ).datepicker({
-      		      changeMonth: true,//this option for allowing user to select month
-      		      changeYear: true //this option for allowing user to select from year range
-      		    });
-    		  }
-
-    		);
-    */
+  function showSuccesMessage(data){
+	 $("#successTitle").html(data.title);
+	 $("#successBody").text(data.text);
+	  $("#successModal").modal("show");
+  }
+  
+  function showErrorMessage(data){
+	  $("#errorTitle").html(data.title);
+	  $("#errorBody").text(data.text);
+	  $("#failureModal").modal("show");
+		 
+	  
+  }
+  
     
 
 truckTransApp.controller('mainController',['$scope',function($scope) {

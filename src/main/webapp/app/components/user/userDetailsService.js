@@ -47,9 +47,9 @@ truckTransApp.service('userDetailsService', function ($http) {
                  data:JSON.stringify(userData) ,
                   type: "POST",
                   contentType: "application/json",
-                  headers: {
+                /*  headers: {
                       'Content-Type': 'application/x-www-form-urlencoded'
-                    },
+                    },*/
                  dataType: "json"
               }).then(function (response) {
                   // The then function here is an opportunity to modify the response

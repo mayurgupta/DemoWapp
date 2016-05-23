@@ -10,11 +10,19 @@ $scope.user={
 };
 $scope.validatePassword=function(user){
 	if(user.password!==user.confirmPassword){
+
 		user.confirmPassword="";
-		alert("Please enter same password");
+	
+		$("#error").html("Password and confirm password should be same.");
+		
+		return false;
+	}else{
+		return true;
 	}
 }
     $scope.addUser = function (userDetails) {
+    	
+    	if($scope.validatePassword(userDetails)){
     	 $("#registerUser").modal("hide");
         var itemToSave = {};
         itemToSave.name = userDetails.name;
@@ -29,10 +37,16 @@ $scope.validatePassword=function(user){
             if(response){
             	hideProcessDialog();
             	$scope.user=itemToSave.name;
-            	 $rootScope.token = "C";
-            	$("#successModal").modal("show");
+            	 
+            	 var data={};
+					data.title="Congratulations!!!";
+					data.text="Your account has been created successfully.Please login for more details.";
+					
+					showSuccesMessage(data);
+            	
             }
         })
+        }
     };
 
 
