@@ -19,11 +19,14 @@ truckTransApp.service('BookingService', function ($http) {
                 return promise;
             },
             confirmBooking: function (bookingData) {
-                    
+                    var url="api/dashboards/plantransportation";
+                    if(localStorage.getItem('userEmail')!=null && localStorage.getItem('userEmail') != undefined && localStorage.getItem('userEmail') && ""){
+                            url="ign/init/planguesttransportation";
+                    }
                // showProcessDialog();
                 console.log(bookingData);
                 var promise = $.ajax({
-                    url: Server + "api/dashboards/plantransportation",
+                    url: Server + url,
                     data: JSON.stringify(bookingData),
                     type: "POST",
                     contentType: "application/json",
