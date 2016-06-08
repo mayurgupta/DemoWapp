@@ -26,5 +26,7 @@ public interface IUserBookingReqDao extends IEntityDao<UserBookingReqDTO, Long>{
 			Date dateto, int offset);
 
 	Object getAllBookings(int offset);
-	
+
+	void planGuestTransportation(WUserBooking wUserBooking);
+
 }

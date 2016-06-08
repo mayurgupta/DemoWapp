@@ -25,8 +25,8 @@ public class InitialiseServiceImpl implements IInitialiseService{
 	IUserBookingReqDao userBookingDao;
 	
 	@Override
-	public Object planGuestTransportation(WUserBooking userBooking, UserDTO userDTO) {
-		userBookingDao.planTransportation(userBooking,userDTO);
+	public Object planGuestTransportation(WUserBooking userBooking) {
+		userBookingDao.planGuestTransportation(userBooking);
 		return null;
 	}
 	

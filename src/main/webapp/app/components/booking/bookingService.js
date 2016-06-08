@@ -19,9 +19,9 @@ truckTransApp.service('BookingService', function ($http) {
                 return promise;
             },
             confirmBooking: function (bookingData) {
-                    var url="api/dashboards/plantransportation";
+                    var url="ign/basic/planguesttransportation";
                     if(localStorage.getItem('userEmail')!=null && localStorage.getItem('userEmail') != undefined && localStorage.getItem('userEmail') && ""){
-                            url="ign/init/planguesttransportation";
+                            url="api/dashboards/plantransportation";
                     }
                // showProcessDialog();
                 console.log(bookingData);

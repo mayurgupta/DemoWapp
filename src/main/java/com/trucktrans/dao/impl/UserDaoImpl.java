@@ -36,6 +36,7 @@ implements IUserDao{
 
         criteria.setCacheable(true);
         return (UserDTO) criteria.uniqueResult();
+        
 
     }
     

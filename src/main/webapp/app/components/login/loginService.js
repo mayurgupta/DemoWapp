@@ -30,7 +30,7 @@ truckTransApp.service('LoginService',['$location', function ($http,$location) {
                 // The then function here is an opportunity to modify the response
             	if(response.status==200){
             		setLogin(true);
-         	      	   
+            		hideProcessDialog();
             	    	 //  $location.path("/userDashboard"); 
             	       
             	      

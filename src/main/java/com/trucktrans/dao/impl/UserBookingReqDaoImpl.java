@@ -80,6 +80,48 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 		userService.sendMailAfterCommit(userDTO.getEmail(), subject, content);
 		
 	}
+	
+	
+	@Override
+	public void planGuestTransportation(WUserBooking wUserBooking) {
+		UserBookingReqDTO userBookingReqDTO=new UserBookingReqDTO();
+		UserDTO user= userDao.getByEmail(wUserBooking.getEmail());
+		if (user != null) {
+			userBookingReqDTO.setUser(user);
+		}
+		else if (user == null) {
+			WUser wUser=new WUser();
+			wUser.setEmail(wUserBooking.getEmail());
+			wUser.setName(wUserBooking.getName());
+			userService.addUser(wUser);
+			UserDTO newUserDto=new UserDTO();
+			newUserDto.setEmail(wUserBooking.getEmail());
+			newUserDto.setName(wUserBooking.getName());
+			userBookingReqDTO.setUser(userDao.getByEmail(wUserBooking.getEmail()));
+		}
+		userBookingReqDTO.setDestinationAddress(wUserBooking.getDestinationAddress());
+		userBookingReqDTO.setDateOfRequest(wUserBooking.getDateOfRequest());
+		userBookingReqDTO.setDestinationPlace(wUserBooking.getDestinationPlace());
+		userBookingReqDTO.setDestinationState(stateInfo.getByName(wUserBooking.getDestinationState()));
+		userBookingReqDTO.setPartialLoadFlag(false);// keep it false for now
+		userBookingReqDTO.setRemarks(wUserBooking.getRemarks());
+		userBookingReqDTO.setSourceAddress(wUserBooking.getSourceAddress());
+		userBookingReqDTO.setSourcePlace(wUserBooking.getSourcePlace());
+		userBookingReqDTO.setSourceState(stateInfo.getByName(wUserBooking.getSourceState()));
+		merge(userBookingReqDTO);
+//		send the success mail---------------------------
+		String subject = propertyService.findByPropertyName(
+				"transport.plan.subject").getPropertyValue();
+		String emailBody = propertyService.findByPropertyName(
+				"transport.plan.content").getPropertyValue();
+		String passwordKey = String.valueOf(PwdGenerator.generatePswd(8, 15, 2, 1, 1));
+//TODO make the full email content ------------------------------
+		String content = StringEscapeUtils.unescapeJava(Util.formatString(emailBody, new Object[] { userBookingReqDTO.getUser().getName(),
+				userBookingReqDTO.getDestinationAddress() }));
+		userService.sendMailAfterCommit(userBookingReqDTO.getUser().getEmail(), subject, content);
+		
+	}
+	
 
 	@Override
 	public Object getBookingHistory(UserDTO user) {
@@ -93,10 +135,17 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 			Date datefrom, Date dateto, int offset) {
 		
 		Criteria criteria= getSessionFactory().getCurrentSession()
-				.createCriteria(UserBookingReqDTO.class)
-				.add(Restrictions.eq("sourceState", source))
-				.add(Restrictions.eq("destinationState", destination))
-				.add(Restrictions.between("dateOfRequest", datefrom, dateto));
+				.createCriteria(UserBookingReqDTO.class).createAlias("sourceState", "sstate")
+				.createAlias("destinationState", "dstate")
+				.add(Restrictions.eq("sstate.name", source))
+				.add(Restrictions.eq("dstate.name", destination));
+				if (datefrom != null && dateto != null) {
+					criteria.add(Restrictions.between("dateOfRequest", datefrom, dateto));
+				}
+				if (datefrom != null && dateto == null) {
+					criteria.add(Restrictions.between("dateOfRequest", datefrom, System.currentTimeMillis()));
+				}
+				
 		if (offset != 0) {
             criteria.setFirstResult(offset);
         }

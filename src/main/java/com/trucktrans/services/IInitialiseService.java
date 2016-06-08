@@ -12,6 +12,6 @@ import com.trucktrans.entity.web.WUserBooking;
  */
 public interface IInitialiseService {
 
-	Object planGuestTransportation(WUserBooking userBooking, UserDTO userDTO);
+	Object planGuestTransportation(WUserBooking userBooking);
 
 }

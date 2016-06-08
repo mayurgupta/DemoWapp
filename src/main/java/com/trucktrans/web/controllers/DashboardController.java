@@ -60,10 +60,6 @@ public class DashboardController extends AbstractRestController<Object>{
 		System.out.println("executed the controller");
 		System.out.println("this is URI info"+uriInfo);
 		//dummt test line
-		if (getUserDetails() == null) {
-			return Response.ok(dashboardService.planTransportation(userBooking,null)).build();
-		}else{
 			return Response.ok(dashboardService.planTransportation(userBooking,getUserDetails().getUserDto())).build();
-		}
 	}
 }

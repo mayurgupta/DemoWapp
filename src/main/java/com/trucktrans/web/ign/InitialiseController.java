@@ -113,15 +113,10 @@ public class InitialiseController extends AbstractRestController<UserDTO> {
 	@Path("/planguesttransportation")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response planMyTransportation(@Context UriInfo uriInfo,@InjectParam WUserBooking userBooking){
+	public Response planGuestTransportation(@Context UriInfo uriInfo,@InjectParam WUserBooking userBooking){
 		System.out.println("executed the controller");
 		System.out.println("this is URI info"+uriInfo);
-		
-		if (getUserDetails() == null) {
-			return Response.ok(initialiseService.planGuestTransportation(userBooking,null)).build();
-		}else{
-			return Response.ok(initialiseService.planGuestTransportation(userBooking,getUserDetails().getUserDto())).build();
-		}
+			return Response.ok(initialiseService.planGuestTransportation(userBooking)).build();
 	}
     
 	
