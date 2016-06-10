@@ -13,12 +13,12 @@ import com.trucktrans.entity.dto.UserDTO;
 public class WUserDetails {
 
 	Long id;
-	Integer pincode;
+	String pincode;
 	String state;
 	String city;
 	String landMark;
-	Long primaryPhone;
-	Long secondaryPhone;
+	String primaryPhone;
+	String secondaryPhone;
 	
 	private String login;
 	private String screenName;
@@ -28,13 +28,7 @@ public class WUserDetails {
 	
 	
 	
-	public Integer getPincode() {
-		return pincode;
-	}
-
-	public void setPincode(Integer pincode) {
-		this.pincode = pincode;
-	}
+	
 
 	public String getState() {
 		return state;
@@ -60,19 +54,36 @@ public class WUserDetails {
 		this.landMark = landMark;
 	}
 
-	public Long getPrimaryPhone() {
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+
+	public String getPrimaryPhone() {
 		return primaryPhone;
 	}
 
-	public void setPrimaryPhone(Long primaryPhone) {
+	public void setPrimaryPhone(String primaryPhone) {
 		this.primaryPhone = primaryPhone;
 	}
 
-	public Long getSecondaryPhone() {
+	public String getSecondaryPhone() {
 		return secondaryPhone;
 	}
 
-	public void setSecondaryPhone(Long secondaryPhone) {
+	public void setSecondaryPhone(String secondaryPhone) {
 		this.secondaryPhone = secondaryPhone;
 	}
 

@@ -42,8 +42,8 @@ public class TransComDetailsDTO implements java.io.Serializable {
 	private Integer pincode;
 	private String city;
 	private String state;
-	private Long primaryPhoneNo;
-	private Long secondaryPhoneNo;
+	private String primaryPhoneNo;
+	private String secondaryPhoneNo;
 	private Set<TruckServiceTypeDTO> truckServiceTypeDTOs = new HashSet<TruckServiceTypeDTO>(0);
 	
 
@@ -112,18 +112,18 @@ public class TransComDetailsDTO implements java.io.Serializable {
 	}
 
 	@Column(name = "PRIMARY_PHONE_NO", length = 10)
-	public Long getPrimaryPhoneNo() {
+	public String getPrimaryPhoneNo() {
 		return primaryPhoneNo;
 	}
-	public void setPrimaryPhoneNo(Long primaryPhoneNo) {
+	public void setPrimaryPhoneNo(String primaryPhoneNo) {
 		this.primaryPhoneNo = primaryPhoneNo;
 	}
 
 	@Column(name = "SECONDARY_PHONE_NO", length = 6)
-	public Long getSecondaryPhoneNo() {
+	public String getSecondaryPhoneNo() {
 		return secondaryPhoneNo;
 	}
-	public void setSecondaryPhoneNo(Long secondaryPhoneNo) {
+	public void setSecondaryPhoneNo(String secondaryPhoneNo) {
 		this.secondaryPhoneNo = secondaryPhoneNo;
 	}
 	

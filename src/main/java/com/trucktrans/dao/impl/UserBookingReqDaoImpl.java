@@ -58,15 +58,15 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 			newUserDto.setName(wUserBooking.getName());
 			userBookingReqDTO.setUser(userDao.getByEmail(wUserBooking.getEmail()));
 		}
-		userBookingReqDTO.setDestinationAddress(wUserBooking.getDestinationAddress());
+		userBookingReqDTO.setDestinationAddress(wUserBooking.getDestAddress());
 		userBookingReqDTO.setDateOfRequest(wUserBooking.getDateOfRequest());
-		userBookingReqDTO.setDestinationPlace(wUserBooking.getDestinationPlace());
-		userBookingReqDTO.setDestinationState(stateInfo.getByName(wUserBooking.getDestinationState()));
+		userBookingReqDTO.setDestinationPlace(wUserBooking.getDestCity());
+		userBookingReqDTO.setDestinationState(stateInfo.getByName(wUserBooking.getDestState()));
 		userBookingReqDTO.setPartialLoadFlag(false);// keep it false for now
 		userBookingReqDTO.setRemarks(wUserBooking.getRemarks());
-		userBookingReqDTO.setSourceAddress(wUserBooking.getSourceAddress());
-		userBookingReqDTO.setSourcePlace(wUserBooking.getSourcePlace());
-		userBookingReqDTO.setSourceState(stateInfo.getByName(wUserBooking.getSourceState()));
+		userBookingReqDTO.setSourceAddress(wUserBooking.getSrcAddress());
+		userBookingReqDTO.setSourcePlace(wUserBooking.getSrcCity());
+		userBookingReqDTO.setSourceState(stateInfo.getByName(wUserBooking.getSrcState()));
 		merge(userBookingReqDTO);
 //		send the success mail---------------------------
 		String subject = propertyService.findByPropertyName(
@@ -99,15 +99,15 @@ public class UserBookingReqDaoImpl extends AbstractHibernateDaoImpl<UserBookingR
 			newUserDto.setName(wUserBooking.getName());
 			userBookingReqDTO.setUser(userDao.getByEmail(wUserBooking.getEmail()));
 		}
-		userBookingReqDTO.setDestinationAddress(wUserBooking.getDestinationAddress());
+		userBookingReqDTO.setDestinationAddress(wUserBooking.getDestAddress());
 		userBookingReqDTO.setDateOfRequest(wUserBooking.getDateOfRequest());
-		userBookingReqDTO.setDestinationPlace(wUserBooking.getDestinationPlace());
-		userBookingReqDTO.setDestinationState(stateInfo.getByName(wUserBooking.getDestinationState()));
+		userBookingReqDTO.setDestinationPlace(wUserBooking.getDestCity());
+		userBookingReqDTO.setDestinationState(stateInfo.getByName(wUserBooking.getDestAddress()));
 		userBookingReqDTO.setPartialLoadFlag(false);// keep it false for now
 		userBookingReqDTO.setRemarks(wUserBooking.getRemarks());
-		userBookingReqDTO.setSourceAddress(wUserBooking.getSourceAddress());
-		userBookingReqDTO.setSourcePlace(wUserBooking.getSourcePlace());
-		userBookingReqDTO.setSourceState(stateInfo.getByName(wUserBooking.getSourceState()));
+		userBookingReqDTO.setSourceAddress(wUserBooking.getSrcAddress());
+		userBookingReqDTO.setSourcePlace(wUserBooking.getSrcCity());
+		userBookingReqDTO.setSourceState(stateInfo.getByName(wUserBooking.getSrcState()));
 		merge(userBookingReqDTO);
 //		send the success mail---------------------------
 		String subject = propertyService.findByPropertyName(

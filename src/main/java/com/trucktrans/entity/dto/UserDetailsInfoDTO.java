@@ -33,13 +33,13 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	Long id;
-	Integer pincode;
-	String state;
-	String city;
-	String landMark;
-	Long primaryPhone;
-	Long secondaryPhone;
-	UserDTO user;
+	private String pincode;
+	private String state;
+	private String city;
+	private String landMark;
+	private String primaryPhone;
+	private String secondaryPhone;
+	private UserDTO user;
 	
 	
 	public UserDetailsInfoDTO() {
@@ -50,8 +50,8 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 	
 	
 	
-	public UserDetailsInfoDTO(Long id, Integer pincode, String state, String city, String landMark,
-			Long primaryPhone, Long secondaryPhone, UserDTO user) {
+	public UserDetailsInfoDTO(Long id, String pincode, String state, String city, String landMark,
+			String primaryPhone, String secondaryPhone, UserDTO user) {
 		super();
 		this.id = id;
 		this.pincode = pincode;
@@ -74,10 +74,10 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 	}
 	
 	@Column(name = "PINCODE", length = 6)
-	public Integer getPincode() {
+	public String getPincode() {
 		return pincode;
 	}
-	public void setPincode(Integer pincode) {
+	public void setPincode(String pincode) {
 		this.pincode = pincode;
 	}
 	
@@ -106,18 +106,18 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 	}
 	
 	@Column(name = "PRIMARY_PHONE_NO", length = 6)
-	public Long getPrimaryPhone() {
+	public String getPrimaryPhone() {
 		return primaryPhone;
 	}
-	public void setPrimaryPhone(Long primaryPhone) {
+	public void setPrimaryPhone(String primaryPhone) {
 		this.primaryPhone = primaryPhone;
 	}
 	
 	@Column(name = "SECONDARY_PHONE_NO", length = 6)
-	public Long getSecondaryPhone() {
+	public String getSecondaryPhone() {
 		return secondaryPhone;
 	}
-	public void setSecondaryPhone(Long secondaryPhone) {
+	public void setSecondaryPhone(String secondaryPhone) {
 		this.secondaryPhone = secondaryPhone;
 	}
 	
@@ -130,9 +130,5 @@ public class UserDetailsInfoDTO implements java.io.Serializable{
 	public void setUser(UserDTO user) {
 		this.user = user;
 	}
-	
-	/*USER_ID*/
-	
-	
 	
 }

@@ -13,80 +13,76 @@ import java.util.Date;
 public class WUserBooking {
 	
 	
-	private String Source;
-	private String destination;
-	private String sourceState;
-	private String sourcePlace;
-	private String SourceAddress;
-	private String destinationState;
-	private String destinationPlace;
-	private String destinationAddress;
+	
+	private String srcState;
+	private String srcCity;
+	private String srcAddress;
+	private String srcPin;
+	
+	private String destState;
+	private String destCity;
+	private String destAddress;
+	private String destPin;
+	
 	private Date dateOfRequest;
 	private String truckType;
 	private Boolean partialLoadFlag;
 	private String remarks;
 	private String name;
 	private String email;
-
-	public String getName() {
-		return name;
+	private String primaryContact;
+	private String secondaryContact;
+	
+	private String goodsDescp;
+	private String destPrimaryContact;
+	private String destSecondaryContact;
+	public String getSrcState() {
+		return srcState;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setSrcState(String srcState) {
+		this.srcState = srcState;
 	}
-	public String getEmail() {
-		return email;
+	public String getSrcCity() {
+		return srcCity;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSrcCity(String srcCity) {
+		this.srcCity = srcCity;
 	}
-	public String getSourceState() {
-		return sourceState;
+	public String getSrcAddress() {
+		return srcAddress;
 	}
-	public void setSourceState(String sourceState) {
-		this.sourceState = sourceState;
+	public void setSrcAddress(String srcAddress) {
+		this.srcAddress = srcAddress;
 	}
-	public String getSourcePlace() {
-		return sourcePlace;
+	public String getSrcPin() {
+		return srcPin;
 	}
-	public void setSourcePlace(String sourcePlace) {
-		this.sourcePlace = sourcePlace;
+	public void setSrcPin(String srcPin) {
+		this.srcPin = srcPin;
 	}
-	public String getDestinationState() {
-		return destinationState;
+	public String getDestState() {
+		return destState;
 	}
-	public void setDestinationState(String destinationState) {
-		this.destinationState = destinationState;
+	public void setDestState(String destState) {
+		this.destState = destState;
 	}
-	public String getDestinationPlace() {
-		return destinationPlace;
+	public String getDestCity() {
+		return destCity;
 	}
-	public void setDestinationPlace(String destinationPlace) {
-		this.destinationPlace = destinationPlace;
+	public void setDestCity(String destCity) {
+		this.destCity = destCity;
 	}
-	public String getSourceAddress() {
-		return SourceAddress;
+	public String getDestAddress() {
+		return destAddress;
 	}
-	public void setSourceAddress(String sourceAddress) {
-		SourceAddress = sourceAddress;
+	public void setDestAddress(String destAddress) {
+		this.destAddress = destAddress;
 	}
-	public String getDestinationAddress() {
-		return destinationAddress;
+	public String getDestPin() {
+		return destPin;
 	}
-	public void setDestinationAddress(String destinationAddress) {
-		this.destinationAddress = destinationAddress;
-	}
-	public String getSource() {
-		return Source;
-	}
-	public void setSource(String source) {
-		Source = source;
-	}
-	public String getDestination() {
-		return destination;
-	}
-	public void setDestination(String destination) {
-		this.destination = destination;
+	public void setDestPin(String destPin) {
+		this.destPin = destPin;
 	}
 	public Date getDateOfRequest() {
 		return dateOfRequest;
@@ -112,6 +108,47 @@ public class WUserBooking {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPrimaryContact() {
+		return primaryContact;
+	}
+	public void setPrimaryContact(String primaryContact) {
+		this.primaryContact = primaryContact;
+	}
+	public String getSecondaryContact() {
+		return secondaryContact;
+	}
+	public void setSecondaryContact(String secondaryContact) {
+		this.secondaryContact = secondaryContact;
+	}
+	public String getGoodsDescp() {
+		return goodsDescp;
+	}
+	public void setGoodsDescp(String goodsDescp) {
+		this.goodsDescp = goodsDescp;
+	}
+	public String getDestPrimaryContact() {
+		return destPrimaryContact;
+	}
+	public void setDestPrimaryContact(String destPrimaryContact) {
+		this.destPrimaryContact = destPrimaryContact;
+	}
+	public String getDestSecondaryContact() {
+		return destSecondaryContact;
+	}
+	public void setDestSecondaryContact(String destSecondaryContact) {
+		this.destSecondaryContact = destSecondaryContact;
+	}
 	
 }

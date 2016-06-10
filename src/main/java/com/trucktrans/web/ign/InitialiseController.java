@@ -95,10 +95,6 @@ public class InitialiseController extends AbstractRestController<UserDTO> {
     public Response register2User(WStatus wuser) {
     	
     	return Response.ok("this is controller").build();
-    	
-    	/*return Response.ok(
-    			userService.registerUser(wuser)).build();*/
-    	
     }
     
     @GET
@@ -113,7 +109,7 @@ public class InitialiseController extends AbstractRestController<UserDTO> {
 	@Path("/planguesttransportation")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response planGuestTransportation(@Context UriInfo uriInfo,@InjectParam WUserBooking userBooking){
+	public Response planGuestTransportation(@Context UriInfo uriInfo, WUserBooking userBooking){
 		System.out.println("executed the controller");
 		System.out.println("this is URI info"+uriInfo);
 			return Response.ok(initialiseService.planGuestTransportation(userBooking)).build();
